@@ -1,2 +1,0 @@
-# ontour
-Ontour - java app
