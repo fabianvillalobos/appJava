@@ -5,25 +5,25 @@
  */
 package view;
 
-import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+import resources.ContenedorPrincipal;
 
 /**
  *
  * @author luisponce
  */
 public class home extends javax.swing.JFrame {
-    
+    UsuarioListado usuarioListado = new UsuarioListado();
+    UsuarioNuevo usuarioNuevo = new UsuarioNuevo();
+
     /**
      * Creates new form home
      */
     public home() {
         initComponents();
-        this.setLocationRelativeTo(null);  
-        menuBar.setBackground(Color.black);
-        menuBar.setOpaque(true);
-        logoMenu.setBackground(new Color(88,185,87));
-        logoMenu.setOpaque(true);
-        
+        this.setLocationRelativeTo(this);
+        /* load home page */ 
     }
 
     /**
@@ -42,10 +42,11 @@ public class home extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        homePanel = new javax.swing.JDesktopPane();
-        menuBar = new javax.swing.JMenuBar();
-        logoMenu = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu4 = new javax.swing.JMenu();
+        menuVerUSuarios = new javax.swing.JMenuItem();
+        menuAddUsuario = new javax.swing.JMenuItem();
+        menuEliminarUsuario = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -66,71 +67,67 @@ public class home extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(51, 51, 51));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(960, 610));
+        setPreferredSize(new java.awt.Dimension(960, 600));
         setResizable(false);
 
-        homePanel.setBackground(new java.awt.Color(255, 255, 255));
-        homePanel.setPreferredSize(new java.awt.Dimension(960, 550));
-        homePanel.setSize(new java.awt.Dimension(960, 550));
+        jMenu4.setText("Usuarios");
 
-        menuBar.setBackground(new java.awt.Color(51, 51, 51));
-        menuBar.setBorder(null);
-        menuBar.setBorderPainted(false);
-        menuBar.setOpaque(false);
-        menuBar.setPreferredSize(new java.awt.Dimension(960, 50));
-        menuBar.setSize(new java.awt.Dimension(960, 40));
+        menuVerUSuarios.setText("Ver usuarios");
+        menuVerUSuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVerUSuariosActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menuVerUSuarios);
 
-        logoMenu.setBackground(new java.awt.Color(88, 185, 87));
-        logoMenu.setBorder(null);
-        logoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ontour-inside-logo.png"))); // NOI18N
-        logoMenu.setBorderPainted(true);
-        logoMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        logoMenu.setFocusTraversalKeysEnabled(false);
-        logoMenu.setFocusable(false);
-        logoMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logoMenu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        logoMenu.setIconTextGap(0);
-        logoMenu.setPreferredSize(new java.awt.Dimension(190, 40));
-        logoMenu.setRequestFocusEnabled(false);
-        logoMenu.setSize(new java.awt.Dimension(180, 50));
-        menuBar.add(logoMenu);
+        menuAddUsuario.setText("Añadir usuario");
+        menuAddUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAddUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menuAddUsuario);
 
-        jMenu7.setBackground(new java.awt.Color(51, 51, 51));
-        jMenu7.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu7.setText("Usuarios");
-        jMenu7.setContentAreaFilled(false);
-        jMenu7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jMenu7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenu7.setIconTextGap(10);
-        jMenu7.setIgnoreRepaint(true);
-        jMenu7.setPreferredSize(new java.awt.Dimension(90, 21));
-        menuBar.add(jMenu7);
+        menuEliminarUsuario.setText("Eliminar usuario");
+        jMenu4.add(menuEliminarUsuario);
 
-        jMenu5.setText("Contratos");
-        jMenu5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jMenu5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenu5.setIconTextGap(10);
-        jMenu5.setPreferredSize(new java.awt.Dimension(100, 21));
-        jMenu5.setSize(new java.awt.Dimension(100, 0));
-        menuBar.add(jMenu5);
+        jMenuBar1.add(jMenu4);
 
-        setJMenuBar(menuBar);
+        jMenu5.setText("Paquetes de viajes");
+        jMenuBar1.add(jMenu5);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(homePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 1026, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(homePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 594, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuVerUSuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerUSuariosActionPerformed
+        // TODO add your handling code here:     
+        this.add(usuarioListado);
+        usuarioListado.show();
+        usuarioNuevo.hide();
+    }//GEN-LAST:event_menuVerUSuariosActionPerformed
+
+    private void menuAddUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddUsuarioActionPerformed
+        // TODO add your handling code here:
+        BasicInternalFrameUI bi = (BasicInternalFrameUI)usuarioNuevo.getUI();
+        
+
+        this.add(usuarioNuevo);
+        usuarioNuevo.show();
+        usuarioListado.hide();
+    }//GEN-LAST:event_menuAddUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,17 +167,18 @@ public class home extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane homePanel;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenu logoMenu;
-    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem menuAddUsuario;
+    private javax.swing.JMenuItem menuEliminarUsuario;
+    private javax.swing.JMenuItem menuVerUSuarios;
     // End of variables declaration//GEN-END:variables
 }
