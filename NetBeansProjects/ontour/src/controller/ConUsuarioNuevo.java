@@ -5,11 +5,17 @@
  */
 package controller;
 
+import dal.UsuarioDAL;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import view.UsuarioNuevo;
-
+import dto.*;
+import java.sql.SQLException;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 /**
  *
  * @author luisponce
@@ -27,7 +33,7 @@ public class ConUsuarioNuevo implements ActionListener{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public boolean btnAddActionPerformed(ActionEvent e) {   
+    public boolean btnAddActionPerformed(ActionEvent e) throws SQLException {   
         
         // TODO add your handling code here:
         String nombreUsuario = viewUsuarioNuevo.txtUserName.getText();
@@ -63,8 +69,32 @@ public class ConUsuarioNuevo implements ActionListener{
             errores += "Todos los campos deben ser llenados";
             JOptionPane.showMessageDialog(viewUsuarioNuevo, errores);
         }else{
-            int telefono = Integer.parseInt(viewUsuarioNuevo.txtTelefono.getText());
+            String telefono = viewUsuarioNuevo.txtTelefono.getText();
             int numRut = Integer.parseInt(viewUsuarioNuevo.txtNumRut.getText());
+            /*
+            UsuarioDTO usuarioDto = new UsuarioDTO(nombreUsuario, password, tipoUsuario,'T');
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            
+            int usrId = usuarioDAL.AgregarUsuario(usuarioDto); // RETORNAR EL USRID RECIEN CREADO 
+            
+            try {
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+                Date fechaNacimientoFormat = formatter.parse(fechaNacimiento);
+                
+                if (tipoUsuario == 3) { //CLIENTE = 3 CAMBIAR LUEGO NO DEBERIA SER EN DURO
+                    
+                ClienteDTO clienteDTO = new ClienteDTO(numRut, dRut.charAt(0),nombre, apellidoPaterno, apellidoMaterno,email,'T',usrId,direccion, fechaNacimientoFormat, telefono);             
+                //AGREGAR ACA METODO QUE LLAME AL DAL DE CLIENTE
+                }else{
+                        EmpleadoDTO empleadoDTO = new EmpleadoDTO(numRut, dRut.charAt(0),nombre, apellidoPaterno, apellidoMaterno,email,direccion,'T',usrId, fechaNacimientoFormat, telefono);
+                        //AGREGAR ACA METODO QUE LLAME AL DAL DEL EMPLEADO
+                    }
+                
+            } catch (ParseException pe) {
+                pe.printStackTrace();
+            }
+            
+            */
         }
         return true;
     }  
