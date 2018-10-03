@@ -2,7 +2,7 @@
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import view.home;
+import view.Home;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,13 +14,13 @@ import view.home;
  *
  * @author luisponce
  */
-public class main extends javax.swing.JFrame {
-    private view.home home;
+public class Login extends javax.swing.JFrame {
+    //private view.home home;
     
     /**
      * Creates new form main
      */
-    public main() {
+    public Login() {
         initComponents(); 
         this.setLocationRelativeTo(null);
     }
@@ -58,7 +58,6 @@ public class main extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setLocationByPlatform(true);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(400, 514));
 
         jPanel1.setBackground(new java.awt.Color(88, 185, 87));
 
@@ -174,7 +173,7 @@ public class main extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel1)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 252, Short.MAX_VALUE)
                                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(65, 65, 65)
@@ -261,7 +260,8 @@ public class main extends javax.swing.JFrame {
         String password = this.jPassword.getSelectedText();
         if(username.equals("luis")){
             
-            view.home home = new view.home();
+            view.Home home;
+            home = new view.Home();
             home.setVisible(true);
             this.dispose();
             
@@ -297,20 +297,21 @@ public class main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new main().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
@@ -324,18 +325,12 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPasswordField jPassword;
     private javax.swing.JTextField jUserName;
-    private javax.swing.JTextField jUserName1;
-    private javax.swing.JTextField jUserName2;
     // End of variables declaration//GEN-END:variables
 }
