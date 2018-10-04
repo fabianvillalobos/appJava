@@ -5,26 +5,18 @@
  */
 package dal;
 
+import ConexionJB.Conexion;
 import dto.*;
-import servicios.*;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Types;
+import java.sql.*;
 /**
  *
  * @author diego.cifuentes
  */
 public class UsuarioDAL {
     
-    public int AgregarUsuario(UsuarioDTO usuarioDTO) throws SQLException{
+    public int AgregarUsuario(UsuarioDTO usuarioDTO) throws SQLException, ClassNotFoundException{
         
-        ConexionServ connServ = new ConexionServ();
-        Connection con = connServ.abrir();
-        
+        Connection con = new Conexion().abrirOracle();
         CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_InsertaUsuario(?,?,?,?,?)}");
         cstmt.setString(1,usuarioDTO.getLoginUsr());
         cstmt.setString(2, usuarioDTO.getPassUsr());
@@ -33,6 +25,6 @@ public class UsuarioDAL {
         cstmt.registerOutParameter(5, Types.INTEGER);
         cstmt.execute();
                
-        return cstmt.getInt(2);
+        return cstmt.getInt(5);
     }
 }

@@ -1,39 +1,24 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package ConexionJB;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
-
+/**
+ *
+ * @author diego.cifuentes
+ */
 public class Conexion {
-    
-    
-            public ResultSet rs=null;
-            public Statement ts=null ;
-            public Connection con=null;
-            
-            
-            
-    public Connection abrirOracle(){
-        
 
-    try{
-        
-   DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-   con=DriverManager.getConnection("jdbc:oracle:thin:35.199.67.113:1521:xe","ontour","ontour");
-   ts=con.createStatement(rs.TYPE_SCROLL_INSENSITIVE,rs.CONCUR_UPDATABLE);
-   System.out.println("La conexion se realizo con exito");
-        
-        
-    }catch(Exception e){
-        System.out.println("error de conexion: "+e.toString());
+    public Connection abrirOracle() throws ClassNotFoundException, SQLException {
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+
+        Connection con = DriverManager.getConnection(
+                "jdbc:oracle:thin:@35.199.67.113:1521:xe", "ontour", "ontour");
+        return con;
     }
-      return con;
-    }
- 
+    
 }

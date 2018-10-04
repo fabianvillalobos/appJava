@@ -33,7 +33,7 @@ public class ConUsuarioNuevo implements ActionListener{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public boolean btnAddActionPerformed(ActionEvent e) throws SQLException {   
+    public boolean btnAddActionPerformed(ActionEvent e) throws SQLException, ClassNotFoundException {   
         
         // TODO add your handling code here:
         String nombreUsuario = viewUsuarioNuevo.txtUserName.getText();
@@ -71,12 +71,12 @@ public class ConUsuarioNuevo implements ActionListener{
         }else{
             String telefono = viewUsuarioNuevo.txtTelefono.getText();
             int numRut = Integer.parseInt(viewUsuarioNuevo.txtNumRut.getText());
-            /*
+            
             UsuarioDTO usuarioDto = new UsuarioDTO(nombreUsuario, password, tipoUsuario,'T');
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             
             int usrId = usuarioDAL.AgregarUsuario(usuarioDto); // RETORNAR EL USRID RECIEN CREADO 
-            
+            /*
             try {
                 SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
                 Date fechaNacimientoFormat = formatter.parse(fechaNacimiento);
