@@ -5,6 +5,9 @@
  */
 package view;
 
+import controller.ConUsuario;
+import java.math.BigDecimal;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,23 +16,18 @@ import javax.swing.table.DefaultTableModel;
  * @author luisponce
  */
 public class UsuarioListado extends javax.swing.JInternalFrame {
-
+    ConUsuario conUsuario = new ConUsuario();
+    
     /**
      * Creates new form usuarioListado
      */
     public UsuarioListado() {
         initComponents();
-        String[] columnNames = {"First Name", "Last Name", ""};
-        Object[][] data =
-        {
-            {"Homer", "Simpson", "delete Homer"},
-            {"Madge", "Simpson", "delete Madge"},
-            {"Bart",  "Simpson", "delete Bart"},
-            {"Lisa",  "Simpson", "delete Lisa"},
-        };
-
-        DefaultTableModel model = new DefaultTableModel(data, columnNames);
-        JTable table = new JTable( model );
+        try {
+            tableListadoUsuarios.setModel(conUsuario.listarUsuarios());
+        } catch (Exception e) {
+            
+        }
     }
 
     /**
@@ -46,8 +44,11 @@ public class UsuarioListado extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableListadoUsuarios = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
+        btnBorrar = new javax.swing.JButton();
 
         setBorder(null);
+        setClosable(true);
+        setPreferredSize(new java.awt.Dimension(900, 562));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(960, 600));
@@ -55,23 +56,23 @@ public class UsuarioListado extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel1.setText("Usuarios");
 
-        tableListadoUsuarios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"1", "Diego Cifuentes", "18.123.456-7", "di.fuentes@alumnos.duoc.cl", "1", "Editar | Ver detalle | Eliminar"},
-                {"2", "Ariel Rojas", "18.654.321-0", "a.rojase@alumnos.duoc.cl", "1", "Editar | Ver detalle | Eliminar"},
-                {"3", "Fabian Villalobos", "18.060.890-9", "fab.vi@alumnos.duoc.cl", "1", "Editar | Ver detalle | Eliminar"},
-                {"4", "Javier Sánchez", "24.112.420-1", "jav.san@alumnos.duoc.cl", "1", "Editar | Ver detalle | Eliminar"},
-                {"5", "Luis Ponce", "17.120.464-K", "l.ponces@alumnos.duoc.cl", "0", null}
-            },
-            new String [] {
-                "Id", "Nombre", "Rut", "Email", "Activo", "Opciones"
-            }
-        ));
         jScrollPane1.setViewportView(tableListadoUsuarios);
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
         jLabel3.setText("|   Listado");
+
+        btnBorrar.setBackground(new java.awt.Color(88, 185, 87));
+        btnBorrar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar.setText("Eliminar");
+        btnBorrar.setBorderPainted(false);
+        btnBorrar.setFocusPainted(false);
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,13 +80,13 @@ public class UsuarioListado extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addContainerGap(719, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 902, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -96,28 +97,46 @@ public class UsuarioListado extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        // TODO add your handling code here:
+        int row = tableListadoUsuarios.getSelectedRow();
+        BigDecimal dec = (BigDecimal)tableListadoUsuarios.getValueAt(row, 0);
+        int userID = dec.intValue();
+        try {
+            conUsuario.eliminarUsuario(userID);
+            tableListadoUsuarios.repaint();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBorrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

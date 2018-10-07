@@ -5,8 +5,11 @@
  */
 package view;
 
-import controller.ConUsuarioNuevo;
+import controller.ConUsuario;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,10 +19,31 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
     /**
      * Creates new form UsuarioNuevo
      */
+    private JTextField apellidoPaterno, apellidoMaterno, rut, drut, 
+            direccion, email, fechaNacimiento, nombre, segundoNombre, telefono, usuario;
+    private JPasswordField clave, repetirClave;
+    private JComboBox tipoUsuario;
+   
+    
     public UsuarioNuevo() {
         initComponents();
-        ConUsuarioNuevo conUsuarioNuevo = new ConUsuarioNuevo();
-        btnAdd.addActionListener(conUsuarioNuevo);
+        /* datos de la cuenta */
+        usuario = this.txtUserName;
+        clave = this.pswRepetirClave;
+        repetirClave = this.pswRepetirClave;
+        tipoUsuario = this.cbTipoUsuario;
+        /* datos personales */
+        nombre = this.txtNombre;
+        segundoNombre = this.txtSegundoNombre;
+        apellidoPaterno = this.txtApellidoPaterno;
+        apellidoMaterno = this.txtApellidoMaterno;
+        rut = this.txtNumRut;
+        drut = this.txtDRut;
+        fechaNacimiento = this.txtFechaNacimiento;
+        /* datos de contacto */
+        telefono = this.txtTelefono;
+        email = this.txtEmail;
+        direccion = this.txtDireccion;   
     }
 
     /**
@@ -78,10 +102,12 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
         cbTipoUsuario = new javax.swing.JComboBox<>();
 
         setBorder(null);
+        setClosable(true);
         setIconifiable(true);
         setAlignmentX(-5.0F);
         setAlignmentY(-5.0F);
         setAutoscrolls(true);
+        setPreferredSize(new java.awt.Dimension(961, 550));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(960, 600));
@@ -516,7 +542,7 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -527,7 +553,9 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -545,11 +573,6 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFechaNacimientoActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-
-        
-    }//GEN-LAST:event_btnAddActionPerformed
-
     private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionActionPerformed
@@ -557,6 +580,20 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        ConUsuario conUsuarioNuevo = new ConUsuario();
+        try {
+            int userId = conUsuarioNuevo.agregarUsuario(usuario, clave, repetirClave, tipoUsuario, nombre, 
+                    segundoNombre, apellidoPaterno, apellidoMaterno, rut, drut, 
+                    fechaNacimiento, telefono, email , direccion);
+            System.out.println(userId);
+        } catch (Exception e) {
+            System.out.println("3");
+        }
+        
+    }//GEN-LAST:event_btnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -48,6 +48,8 @@ public class Home extends javax.swing.JFrame {
         menuAddUsuario = new javax.swing.JMenuItem();
         menuEliminarUsuario = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        cerrarPrograma = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -64,7 +66,6 @@ public class Home extends javax.swing.JFrame {
         jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(51, 51, 51));
         setUndecorated(true);
         setResizable(false);
@@ -95,6 +96,18 @@ public class Home extends javax.swing.JFrame {
         jMenu5.setText("Paquetes de viajes");
         jMenuBar1.add(jMenu5);
 
+        jMenu7.setText("Salir");
+
+        cerrarPrograma.setText("Cerrar Sesión");
+        cerrarPrograma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarProgramaActionPerformed(evt);
+            }
+        });
+        jMenu7.add(cerrarPrograma);
+
+        jMenuBar1.add(jMenu7);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -121,12 +134,15 @@ public class Home extends javax.swing.JFrame {
     private void menuAddUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddUsuarioActionPerformed
         // TODO add your handling code here:
         BasicInternalFrameUI bi = (BasicInternalFrameUI)usuarioNuevo.getUI();
-        
-
         this.add(usuarioNuevo);
         usuarioNuevo.show();
         usuarioListado.hide();
     }//GEN-LAST:event_menuAddUsuarioActionPerformed
+
+    private void cerrarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarProgramaActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_cerrarProgramaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,12 +183,14 @@ public class Home extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem cerrarPrograma;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
