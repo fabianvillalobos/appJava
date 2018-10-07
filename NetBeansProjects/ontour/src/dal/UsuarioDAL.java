@@ -9,6 +9,7 @@ import ConexionJB.Conexion;
 import dto.*;
 import java.sql.*;
 import java.util.Vector;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -26,6 +27,20 @@ public class UsuarioDAL {
         cstmt.registerOutParameter(5, Types.INTEGER);
         cstmt.execute();
         return cstmt.getInt(5);
+    }
+    
+    public JComboBox listarTipoUsuario() throws SQLException, ClassNotFoundException{
+        JComboBox tipoUsuarios = new JComboBox();
+        Connection con = new Conexion().abrirOracle();
+        Statement stmt;
+        ResultSet result;
+        String query = "SELECT DESC_TIPO_USUARIO FROM TIPO_USUARIO";
+        stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        result = stmt.executeQuery(query); 
+        while(result.next()){                     
+         tipoUsuarios.addItem(result.getString("DESC_TIPO_USUARIO")); 
+        }
+        return tipoUsuarios;
     }
     
     public ResultSet listarUsuario() throws SQLException, ClassNotFoundException{

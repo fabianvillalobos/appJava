@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -42,6 +43,17 @@ public class ConUsuario implements ActionListener{
         } catch (ClassNotFoundException ex) {
             return false;
         }
+    }
+    
+    public ComboBoxModel listarTipoUsuarios() throws SQLException{
+        ComboBoxModel tipoUsuario = null;
+        UsuarioDAL usuarioDAL = new UsuarioDAL();
+        ResultSet rs = null;
+        try {
+            tipoUsuario = usuarioDAL.listarTipoUsuario().getModel();
+        } catch (Exception e) {
+        }
+        return tipoUsuario;
     }
     
     public DefaultTableModel listarUsuarios() throws SQLException{

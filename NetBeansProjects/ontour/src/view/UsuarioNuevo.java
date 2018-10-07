@@ -6,6 +6,9 @@
 package view;
 
 import controller.ConUsuario;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -23,7 +26,7 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
             direccion, email, fechaNacimiento, nombre, segundoNombre, telefono, usuario;
     private JPasswordField clave, repetirClave;
     private JComboBox tipoUsuario;
-   
+    private ConUsuario conUsuario = new ConUsuario();
     
     public UsuarioNuevo() {
         initComponents();
@@ -43,7 +46,12 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
         /* datos de contacto */
         telefono = this.txtTelefono;
         email = this.txtEmail;
-        direccion = this.txtDireccion;   
+        direccion = this.txtDireccion;
+        try {
+            this.cbTipoUsuario.setModel(conUsuario.listarTipoUsuarios());
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }   
     }
 
     /**
@@ -583,9 +591,8 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        ConUsuario conUsuarioNuevo = new ConUsuario();
         try {
-            int userId = conUsuarioNuevo.agregarUsuario(usuario, clave, repetirClave, tipoUsuario, nombre, 
+            int userId = conUsuario.agregarUsuario(usuario, clave, repetirClave, tipoUsuario, nombre, 
                     segundoNombre, apellidoPaterno, apellidoMaterno, rut, drut, 
                     fechaNacimiento, telefono, email , direccion);
             System.out.println(userId);
