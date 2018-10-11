@@ -34,7 +34,7 @@ public class UsuarioDAL {
         Connection con = new Conexion().abrirOracle();
         Statement stmt;
         ResultSet result;
-        String query = "SELECT DESC_TIPO_USUARIO FROM TIPO_USUARIO";
+        String query = "SELECT DESC_TIPO_USUARIO FROM TIPO_USUARIO ";
         stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
         result = stmt.executeQuery(query); 
         while(result.next()){                     
@@ -47,7 +47,7 @@ public class UsuarioDAL {
         Connection con = new Conexion().abrirOracle();
         Statement stmt;
         ResultSet result;
-        String query = "SELECT * FROM USUARIO";
+        String query = "SELECT * FROM USUARIO WHERE ACTIVO = 'T'";
         stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
         result = stmt.executeQuery(query);        
         return result;
@@ -55,13 +55,18 @@ public class UsuarioDAL {
     
     public boolean eliminarUsuario(int userID) throws SQLException, ClassNotFoundException{
         Connection con = new Conexion().abrirOracle();
-        Statement stmt;
-        ResultSet result;
-        String query = "DELETE FROM USUARIO WHERE ID_USR = "+userID;
-        stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        result = stmt.executeQuery(query);
-        con.commit();
+        //Statement stmt;
+        //ResultSet result;        
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_EliminaUsuario(?)}");
+        cstmt.setInt(1,userID);
+        cstmt.execute();
+        //String query = "DELETE FROM USUARIO WHERE ID_USR = "+userID;
+        //stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        //result = stmt.executeQuery(query);
+        
+        //con.commit();
         con.close();
+        
         return true;
     }
 }

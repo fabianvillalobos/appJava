@@ -129,7 +129,9 @@ public class UsuarioListado extends javax.swing.JInternalFrame {
         int userID = dec.intValue();
         try {
             conUsuario.eliminarUsuario(userID);
-            tableListadoUsuarios.repaint();
+            DefaultTableModel usuarioTableModel = (DefaultTableModel)tableListadoUsuarios.getModel(); 
+            usuarioTableModel.removeRow(row);
+            tableListadoUsuarios.revalidate();
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnBorrarActionPerformed

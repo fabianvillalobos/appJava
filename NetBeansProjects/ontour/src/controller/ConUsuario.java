@@ -38,7 +38,7 @@ public class ConUsuario implements ActionListener{
     public boolean eliminarUsuario(int userID) throws SQLException{
         UsuarioDAL usuarioDAL = new UsuarioDAL();
         try {
-            usuarioDAL.eliminarUsuario(userID);
+            usuarioDAL.eliminarUsuario(userID);         
             return true;
         } catch (ClassNotFoundException ex) {
             return false;
