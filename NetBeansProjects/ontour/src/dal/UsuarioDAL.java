@@ -11,6 +11,8 @@ import java.sql.*;
 import java.util.Vector;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
+
+import oracle.jdbc.OracleTypes;
 /**
  *
  * @author diego.cifuentes
@@ -34,9 +36,14 @@ public class UsuarioDAL {
         Connection con = new Conexion().abrirOracle();
         Statement stmt;
         ResultSet result;
-        String query = "SELECT DESC_TIPO_USUARIO FROM TIPO_USUARIO ";
+        /*String query = "SELECT DESC_TIPO_USUARIO FROM TIPO_USUARIO ";
         stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        result = stmt.executeQuery(query); 
+        result = stmt.executeQuery(query); */
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_ListaTipoUsuarios(?)}");
+        cstmt.registerOutParameter(1, OracleTypes.CURSOR);   
+        cstmt.executeUpdate();
+        result = (ResultSet)cstmt.getObject(1);
+           
         while(result.next()){                     
          tipoUsuarios.addItem(result.getString("DESC_TIPO_USUARIO")); 
         }
@@ -45,11 +52,12 @@ public class UsuarioDAL {
     
     public ResultSet listarUsuario() throws SQLException, ClassNotFoundException{
         Connection con = new Conexion().abrirOracle();
-        Statement stmt;
         ResultSet result;
-        String query = "SELECT * FROM USUARIO WHERE ACTIVO = 'T'";
-        stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        result = stmt.executeQuery(query);        
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_ListaUsuarios(?)}");
+        cstmt.registerOutParameter(1, OracleTypes.CURSOR);   
+        cstmt.executeUpdate();
+        result = (ResultSet)cstmt.getObject(1);
+       
         return result;
     }
     
