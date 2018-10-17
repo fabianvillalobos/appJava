@@ -36,9 +36,6 @@ public class UsuarioDAL {
         Connection con = new Conexion().abrirOracle();
         Statement stmt;
         ResultSet result;
-        /*String query = "SELECT DESC_TIPO_USUARIO FROM TIPO_USUARIO ";
-        stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        result = stmt.executeQuery(query); */
         CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_ListaTipoUsuarios(?)}");
         cstmt.registerOutParameter(1, OracleTypes.CURSOR);   
         cstmt.executeUpdate();
@@ -68,13 +65,42 @@ public class UsuarioDAL {
         CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_EliminaUsuario(?)}");
         cstmt.setInt(1,userID);
         cstmt.execute();
-        //String query = "DELETE FROM USUARIO WHERE ID_USR = "+userID;
-        //stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        //result = stmt.executeQuery(query);
-        
-        //con.commit();
         con.close();
         
         return true;
+    }
+    
+    public UsuarioPersonaDTO obtenerUsuarioPersonaPorId(int idUsr) throws SQLException, ClassNotFoundException{
+    
+        Connection con = new Conexion().abrirOracle();
+        ResultSet result;
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_ObtenerUsuarioPersonaPorId(?,?)}");
+        cstmt.setInt(1,idUsr);
+        cstmt.registerOutParameter(2, OracleTypes.CURSOR);   
+        cstmt.executeUpdate();
+        result = (ResultSet)cstmt.getObject(2);
+        
+        UsuarioPersonaDTO usrPerDTO = new UsuarioPersonaDTO();
+        
+        while(result.next()){ System.out.println(result.getString("login_usr"));
+            usrPerDTO.setLoginUsr(result.getString("login_usr"));
+            usrPerDTO.setPassUsr(result.getString("pass_usr"));
+            usrPerDTO.setIdTipoUsuario(result.getInt("id_tipo_usuario")); 
+            usrPerDTO.setUsuarioactivo(result.getString("usuario_activo").charAt(0)); 
+            usrPerDTO.setNumrut(result.getInt("numrut"));  
+            usrPerDTO.setDrut(result.getString("drut").charAt(0)); 
+            usrPerDTO.setNombre(result.getString("nombre")); 
+            usrPerDTO.setApellidoPat(result.getString("apellido_pat")); 
+            usrPerDTO.setApelliddoMat(result.getString("apellido_mat"));  
+            usrPerDTO.setMail(result.getString("mail") ); 
+            usrPerDTO.setActivo(result.getString("activo").charAt(0));
+            usrPerDTO.setIdUsr(result.getInt("id_usr") ); 
+            usrPerDTO.setDireccion(result.getString("direccion"));
+            usrPerDTO.setFechaNacimiento(result.getDate("fecha_nacimiento"));
+            usrPerDTO.setFono(result.getString("fono")); 
+        }
+ 
+        System.out.println("ACA ESTOY"); 
+        return usrPerDTO;
     }
 }
