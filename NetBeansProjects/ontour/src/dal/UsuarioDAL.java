@@ -82,25 +82,24 @@ public class UsuarioDAL {
         
         UsuarioPersonaDTO usrPerDTO = new UsuarioPersonaDTO();
         
-        while(result.next()){ System.out.println(result.getString("login_usr"));
-            usrPerDTO.setLoginUsr(result.getString("login_usr"));
-            usrPerDTO.setPassUsr(result.getString("pass_usr"));
-            usrPerDTO.setIdTipoUsuario(result.getInt("id_tipo_usuario")); 
-            usrPerDTO.setUsuarioactivo(result.getString("usuario_activo").charAt(0)); 
-            usrPerDTO.setNumrut(result.getInt("numrut"));  
-            usrPerDTO.setDrut(result.getString("drut").charAt(0)); 
-            usrPerDTO.setNombre(result.getString("nombre")); 
-            usrPerDTO.setApellidoPat(result.getString("apellido_pat")); 
-            usrPerDTO.setApelliddoMat(result.getString("apellido_mat"));  
-            usrPerDTO.setMail(result.getString("mail") ); 
-            usrPerDTO.setActivo(result.getString("activo").charAt(0));
-            usrPerDTO.setIdUsr(result.getInt("id_usr") ); 
-            usrPerDTO.setDireccion(result.getString("direccion"));
-            usrPerDTO.setFechaNacimiento(result.getDate("fecha_nacimiento"));
-            usrPerDTO.setFono(result.getString("fono")); 
-        }
- 
-        System.out.println("ACA ESTOY"); 
+        result.next(); 
+        usrPerDTO.setLoginUsr(result.getString("login_usr"));
+        usrPerDTO.setPassUsr(result.getString("pass_usr"));
+        usrPerDTO.setIdTipoUsuario(result.getInt("id_tipo_usuario")); 
+        usrPerDTO.setUsuarioactivo(result.getString("usuario_activo").charAt(0)); 
+        usrPerDTO.setNumrut(result.getInt("numrut"));  
+        usrPerDTO.setDrut(result.getString("drut").charAt(0)); 
+        usrPerDTO.setNombre(result.getString("nombre")); 
+        usrPerDTO.setApellidoPat(result.getString("apellido_pat")); 
+        usrPerDTO.setApelliddoMat(result.getString("apellido_mat"));  
+        usrPerDTO.setMail(result.getString("mail") ); 
+        usrPerDTO.setActivo(result.getString("activo").charAt(0));
+        usrPerDTO.setIdUsr(result.getInt("id_usr") ); 
+        usrPerDTO.setDireccion(result.getString("direccion"));
+        usrPerDTO.setFechaNacimiento(result.getDate("fecha_nacimiento"));
+        usrPerDTO.setFono(result.getString("fono")); 
+        
+
         return usrPerDTO;
     }
 }
