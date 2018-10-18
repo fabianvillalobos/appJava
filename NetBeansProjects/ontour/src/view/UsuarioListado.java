@@ -136,7 +136,19 @@ public class UsuarioListado extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnBorrarActionPerformed
 
-
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+        int row = tableListadoUsuarios.getSelectedRow();
+        BigDecimal dec = (BigDecimal)tableListadoUsuarios.getValueAt(row, 0);
+        int userID = dec.intValue();
+        try {
+            UsuarioActualizacion usuarioActualizacion = new UsuarioActualizacion(userID);
+            usuarioActualizacion.show();
+            this.hide();
+            
+        } catch (Exception e) {
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrar;
     private javax.swing.JLabel jLabel1;

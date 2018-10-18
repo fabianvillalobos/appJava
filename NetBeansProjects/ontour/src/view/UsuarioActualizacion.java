@@ -8,6 +8,7 @@ package view;
 import controller.*;
 import dto.*;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -29,26 +30,26 @@ public class UsuarioActualizacion extends javax.swing.JInternalFrame {
     private JComboBox tipoUsuario;
     private ConUsuario conUsuario = new ConUsuario();
     
-    public UsuarioActualizacion() throws SQLException, ClassNotFoundException {
+    public UsuarioActualizacion(int usrId) throws SQLException, ClassNotFoundException {
         initComponents();
         /* datos de la cuenta */
-        UsuarioPersonaDTO usuarioPersonaDTO = conUsuario.verUsuarioPersona(1);
+        UsuarioPersonaDTO usuarioPersonaDTO = conUsuario.verUsuarioPersona(usrId);
         this.txtUserName.setText(usuarioPersonaDTO.getLoginUsr());
         this.pswRepetirClave.setText(usuarioPersonaDTO.getPassUsr());
         this.pswRepetirClave.setText(usuarioPersonaDTO.getPassUsr());
         tipoUsuario = this.cbTipoUsuario;
         /* datos personales */
-        nombre = this.txtNombre;
+        this.txtNombre.setText(usuarioPersonaDTO.getNombre()); ;
         segundoNombre = this.txtSegundoNombre;
-        apellidoPaterno = this.txtApellidoPaterno;
-        apellidoMaterno = this.txtApellidoMaterno;
-        rut = this.txtNumRut;
-        drut = this.txtDRut;
-        fechaNacimiento = this.txtFechaNacimiento;
+        this.txtApellidoPaterno.setText(usuarioPersonaDTO.getApellidoPat());
+        this.txtApellidoMaterno.setText(usuarioPersonaDTO.getApelliddoMat()) ;
+        this.txtNumRut.setText(Integer.toString(usuarioPersonaDTO.getNumrut()));
+        this.txtDRut.setText(Character.toString(usuarioPersonaDTO.getDrut()));
+        this.txtFechaNacimiento.setText((new SimpleDateFormat("yyyy-mm-dd")).format( usuarioPersonaDTO.getFechaNacimiento()));
         /* datos de contacto */
-        telefono = this.txtTelefono;
-        email = this.txtEmail;
-        direccion = this.txtDireccion;
+        this.txtTelefono.setText(usuarioPersonaDTO.getFono());
+        this.txtEmail.setText(usuarioPersonaDTO.getMail());
+        this.txtDireccion.setText(usuarioPersonaDTO.getDireccion());
         try {
             this.cbTipoUsuario.setModel(conUsuario.listarTipoUsuarios());
         } catch (SQLException ex) {
