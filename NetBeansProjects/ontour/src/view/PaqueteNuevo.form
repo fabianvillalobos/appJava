@@ -38,7 +38,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jScrollPane2" pref="739" max="32767" attributes="0"/>
+              <Component id="jScrollPane2" pref="753" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -65,13 +65,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="jPanel6" alignment="0" min="-2" pref="648" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -83,15 +82,15 @@
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jPanel8" alignment="0" min="-2" pref="960" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                  </Group>
                                   <Component id="jPanel9" alignment="0" min="-2" pref="960" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -110,11 +109,11 @@
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="132" max="32767" attributes="0"/>
                   </Group>
@@ -268,10 +267,10 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel18" min="-2" pref="16" max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="26" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel4" max="32767" attributes="0"/>
+                              <Component id="jLabel18" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -356,126 +355,115 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jIniciarSesion" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                                          <Component id="jLabel36" min="-2" pref="21" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtUserName" min="-2" pref="159" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                                          <Component id="jLabel38" min="-2" pref="21" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtUserName1" min="-2" pref="159" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                          <Component id="jLabel39" min="-2" pref="21" max="-2" attributes="0"/>
+                                          <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jLabel36" min="-2" pref="21" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="txtUserName2" max="32767" attributes="0"/>
+                                      <Component id="txtOrigen" pref="201" max="32767" attributes="0"/>
+                                      <Component id="jLabel41" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+                                      <Component id="txtUserName4" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel40" min="-2" pref="109" max="-2" attributes="0"/>
-                                      <Component id="txtUserName3" min="-2" pref="140" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel41" min="-2" pref="65" max="-2" attributes="0"/>
-                                      <Component id="txtUserName4" min="-2" pref="74" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cbTipoUsuario1" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel21" min="-2" pref="116" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jLabel38" min="-2" pref="21" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="txtDestino" pref="200" max="32767" attributes="0"/>
+                                      <Component id="cbTipoUsuario1" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Component id="jLabel37" min="-2" pref="16" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="btnConsultar" min="-2" pref="127" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jLabel39" min="-2" pref="21" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jDatePanel1" min="-2" pref="221" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jDatePanel2" min="-2" pref="220" max="-2" attributes="0"/>
+                              <Component id="jLabel40" min="-2" pref="109" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
+                          <Component id="jLabel37" min="-2" pref="16" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                                  <Component id="jLabel21" min="-2" pref="16" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="cbTipoUsuario1" alignment="3" max="32767" attributes="0"/>
-                                      <Component id="txtUserName4" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jDatePanel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel26" alignment="0" max="32767" attributes="0"/>
-                                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                                  <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel34" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="txtOrigen" min="-2" pref="41" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="jLabel34" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                                      <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="txtDestino" min="-2" pref="41" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtUserName" min="-2" pref="41" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="47" pref="47" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtUserName1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                              <Component id="txtUserName2" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                              <Component id="txtUserName3" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel21" min="-2" pref="16" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="cbTipoUsuario1" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="txtUserName4" min="-2" pref="41" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btnConsultar" min="-2" pref="45" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jDatePanel1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace pref="15" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jIniciarSesion" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="14" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel40" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel41" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -492,7 +480,7 @@
                     <Property name="text" type="java.lang.String" value="Origen"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtUserName">
+                <Component class="javax.swing.JTextField" name="txtOrigen">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Santiago, Chile"/>
                     <Property name="toolTipText" type="java.lang.String" value="Santiago, Chile"/>
@@ -514,7 +502,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserNameActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOrigenActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -637,8 +625,9 @@
                     <Property name="text" type="java.lang.String" value="Pasajeros"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtUserName1">
+                <Component class="javax.swing.JTextField" name="txtDestino">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="Calama, Chile"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
@@ -658,61 +647,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserName1ActionPerformed"/>
-                  </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtUserName2">
-                  <Properties>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
-                        <CompoundBorder>
-                          <Border PropertyName="outside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                            <LineBorder roundedCorners="true">
-                              <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
-                            </LineBorder>
-                          </Border>
-                          <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                            <LineBorder thickness="5">
-                              <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
-                            </LineBorder>
-                          </Border>
-                        </CompoundBorder>
-                      </Border>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserName2ActionPerformed"/>
-                  </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtUserName3">
-                  <Properties>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
-                        <CompoundBorder>
-                          <Border PropertyName="outside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                            <LineBorder roundedCorners="true">
-                              <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
-                            </LineBorder>
-                          </Border>
-                          <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                            <LineBorder thickness="5">
-                              <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
-                            </LineBorder>
-                          </Border>
-                        </CompoundBorder>
-                      </Border>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserName3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDestinoActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -720,6 +655,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtUserName4">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="1"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
@@ -745,7 +681,7 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="jIniciarSesion">
+                <Component class="javax.swing.JButton" name="btnConsultar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="57" green="b9" red="58" type="rgb"/>
@@ -764,11 +700,15 @@
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jIniciarSesionMouseClicked"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jIniciarSesionMouseExited"/>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jIniciarSesionMouseEntered"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jIniciarSesionActionPerformed"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsultarMouseClicked"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsultarMouseExited"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsultarMouseEntered"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="org.jdatepicker.JDatePanel" name="jDatePanel1">
+                </Component>
+                <Component class="org.jdatepicker.JDatePanel" name="jDatePanel2">
                 </Component>
               </SubComponents>
             </Container>
