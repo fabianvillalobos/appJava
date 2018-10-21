@@ -87,6 +87,24 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Paquetes de viajes"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="btnVerPaquetes">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ver paquetes tur&#xed;sticos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerPaquetesActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="btnNuevoPaquete">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Crear un paquete tur&#xed;stico"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevoPaqueteActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu7">
           <Properties>

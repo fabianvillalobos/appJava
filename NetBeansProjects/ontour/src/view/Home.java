@@ -5,9 +5,7 @@
  */
 package view;
 
-import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import resources.ContenedorPrincipal;
 
 /**
  *
@@ -16,7 +14,10 @@ import resources.ContenedorPrincipal;
 public class Home extends javax.swing.JFrame {
     UsuarioListado usuarioListado = new UsuarioListado();
     UsuarioNuevo usuarioNuevo = new UsuarioNuevo();
-
+    
+    PaqueteNuevo paqueteNuevo = new PaqueteNuevo();
+    PaqueteListado paqueteListado = new PaqueteListado();
+    
     /**
      * Creates new form home
      */
@@ -48,6 +49,8 @@ public class Home extends javax.swing.JFrame {
         menuAddUsuario = new javax.swing.JMenuItem();
         menuEliminarUsuario = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        btnVerPaquetes = new javax.swing.JMenuItem();
+        btnNuevoPaquete = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         cerrarPrograma = new javax.swing.JMenuItem();
 
@@ -94,6 +97,23 @@ public class Home extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Paquetes de viajes");
+
+        btnVerPaquetes.setText("Ver paquetes turísticos");
+        btnVerPaquetes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerPaquetesActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btnVerPaquetes);
+
+        btnNuevoPaquete.setText("Crear un paquete turístico");
+        btnNuevoPaquete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoPaqueteActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btnNuevoPaquete);
+
         jMenuBar1.add(jMenu5);
 
         jMenu7.setText("Salir");
@@ -129,6 +149,8 @@ public class Home extends javax.swing.JFrame {
         this.add(usuarioListado);
         usuarioListado.show();
         usuarioNuevo.hide();
+        paqueteNuevo.hide();
+        paqueteListado.hide();
     }//GEN-LAST:event_menuVerUSuariosActionPerformed
 
     private void menuAddUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddUsuarioActionPerformed
@@ -137,12 +159,32 @@ public class Home extends javax.swing.JFrame {
         this.add(usuarioNuevo);
         usuarioNuevo.show();
         usuarioListado.hide();
+        paqueteNuevo.hide();
+        paqueteListado.hide();
     }//GEN-LAST:event_menuAddUsuarioActionPerformed
 
     private void cerrarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarProgramaActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_cerrarProgramaActionPerformed
+
+    private void btnVerPaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPaquetesActionPerformed
+        // TODO add your handling code here:
+        this.add(paqueteListado);
+        paqueteListado.show();
+        paqueteNuevo.hide();
+        usuarioNuevo.hide();
+        usuarioListado.hide();
+    }//GEN-LAST:event_btnVerPaquetesActionPerformed
+
+    private void btnNuevoPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPaqueteActionPerformed
+        // TODO add your handling code here:
+        this.add(paqueteNuevo);
+        paqueteNuevo.show();
+        paqueteListado.hide();
+        usuarioNuevo.hide();
+        usuarioListado.hide();
+    }//GEN-LAST:event_btnNuevoPaqueteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,6 +225,8 @@ public class Home extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnNuevoPaquete;
+    private javax.swing.JMenuItem btnVerPaquetes;
     private javax.swing.JMenuItem cerrarPrograma;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
