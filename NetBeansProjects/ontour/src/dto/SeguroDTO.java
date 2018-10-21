@@ -5,31 +5,43 @@
  */
 package dto;
 
+import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  *
  * @author luisponce
  */
-
-@XmlRootElement(name = "seguro")
-@XmlAccessorType (XmlAccessType.FIELD)
 public class SeguroDTO {
+    @SerializedName("se_id")
     private int se_id;
+    
+    @SerializedName("se_nombre")
     private String se_nombre;
+    
+    @SerializedName("se_empresa")
     private String se_empresa;
+    
+    @SerializedName("se_desc")
     private String se_desc;
-    private Date se_vigencia;
+    
+    @SerializedName("se_vigencia")
+    private DateTime se_vigencia;
+    
+    @SerializedName("se_activo")
     private char se_activo;
+    
+    @SerializedName("se_precio")
     private int se_precio;
 
     public SeguroDTO() {
     }
 
-    public SeguroDTO(int se_id, String se_nombre, String se_empresa, String se_desc, Date se_vigencia, char se_activo, int se_precio) {
+    public SeguroDTO(int se_id, String se_nombre, String se_empresa, String se_desc, DateTime se_vigencia, char se_activo, int se_precio) {
         this.se_id = se_id;
         this.se_nombre = se_nombre;
         this.se_empresa = se_empresa;
@@ -72,11 +84,11 @@ public class SeguroDTO {
         this.se_desc = se_desc;
     }
 
-    public Date getSe_vigencia() {
+    public DateTime getSe_vigencia() {
         return se_vigencia;
     }
 
-    public void setSe_vigencia(Date se_vigencia) {
+    public void setSe_vigencia(DateTime se_vigencia) {
         this.se_vigencia = se_vigencia;
     }
 
@@ -94,6 +106,11 @@ public class SeguroDTO {
 
     public void setSe_precio(int se_precio) {
         this.se_precio = se_precio;
+    }
+
+    @Override
+    public String toString() {
+        return "SeguroDTO{" + "se_id=" + se_id + ", se_nombre=" + se_nombre + ", se_empresa=" + se_empresa + ", se_desc=" + se_desc + ", se_vigencia=" + se_vigencia + ", se_activo=" + se_activo + ", se_precio=" + se_precio + '}';
     }
     
     

@@ -15,11 +15,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author luisponce
  */
-@XmlRootElement(name = "seguros")
-@XmlAccessorType (XmlAccessType.FIELD)
 public class SegurosDTO {
  
-    @XmlElement(name = "seguro")
     private List<SeguroDTO> seguros;
 
     public List<SeguroDTO> getEmployees() {
@@ -29,5 +26,12 @@ public class SegurosDTO {
     public void setEmployees(List<SeguroDTO> employees) {
         this.seguros = employees;
     }
+
+    @Override
+    public String toString() {
+        return "SegurosDTO{" + "seguros=" + seguros + '}';
+    }
+    
+    
     
 }
