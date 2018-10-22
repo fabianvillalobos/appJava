@@ -5,15 +5,21 @@
  */
 package view;
 
-import controller.ConUsuario;
+import controller.ConPaqueteViaje;
 import java.awt.Color;
-import java.sql.SQLException;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import org.jdatepicker.JDatePanel;
 
 /**
  *
@@ -23,18 +29,32 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
     /**
      * Creates new form UsuarioNuevo
      */
-    private JTextField apellidoPaterno, apellidoMaterno, rut, drut, 
-            direccion, email, fechaNacimiento, nombre, segundoNombre, telefono, usuario;
-    private JPasswordField clave, repetirClave;
-    private JComboBox tipoUsuario;
-    private ConUsuario conUsuario = new ConUsuario();
+    private JTextArea descripcion;
+    private JTextField origen, numPasajeros, destino;
+    private JTable viajes;
+    private JDatePanel fechaIda, fechaRegreso;
+    private JLabel precio, fecha;
+    private JComboBox transporte;
+    ConPaqueteViaje controllerPaqueteViaje = new ConPaqueteViaje();
+    
     
     public PaqueteNuevo() {
         initComponents();
-        /* datos de la cuenta */
+        descripcion = this.txtDescripcion;
+        origen = this.txtOrigen;
+        numPasajeros = this.txtNumPasajeros;
+        destino = this.txtDestino;
+        viajes = this.listadoViajes;
+        fechaIda = this.dateIda;
+        fechaRegreso = this.dateRegreso;
+        precio = this.lblPrecio;
+        fecha = this.lblFecha;
+        transporte = this.cbTipoTransporte;
         
-        /* datos personales */
-        
+        precio.setText("$0");
+        Date fechaHoy = new Date();
+        fecha.setText(fechaHoy.toString());
+        Date date = new Date();
         
     }
 
@@ -56,11 +76,11 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         jLabel30 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtDescripcion = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        lblPrecio = new javax.swing.JLabel();
+        lblFecha = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -73,20 +93,20 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        cbTipoUsuario1 = new javax.swing.JComboBox<>();
+        cbTipoTransporte = new javax.swing.JComboBox<>();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         txtDestino = new javax.swing.JTextField();
-        txtUserName4 = new javax.swing.JTextField();
+        txtNumPasajeros = new javax.swing.JTextField();
         btnConsultar = new javax.swing.JButton();
-        jDatePanel1 = new org.jdatepicker.JDatePanel();
-        jDatePanel2 = new org.jdatepicker.JDatePanel();
+        dateIda = new org.jdatepicker.JDatePanel();
+        dateRegreso = new org.jdatepicker.JDatePanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        listadoViajes = new javax.swing.JTable();
 
         setBorder(null);
         setClosable(true);
@@ -124,9 +144,9 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel32.setText("*");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setRows(5);
+        jScrollPane3.setViewportView(txtDescripcion);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -165,15 +185,15 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         jLabel18.setForeground(new java.awt.Color(102, 102, 102));
         jLabel18.setText("Valor del paquete:");
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("$ 2200500");
+        lblPrecio.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        lblPrecio.setForeground(new java.awt.Color(153, 153, 153));
+        lblPrecio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPrecio.setText("$ 2200500");
 
-        jLabel19.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel19.setText("21/10/2018");
+        lblFecha.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        lblFecha.setForeground(new java.awt.Color(102, 102, 102));
+        lblFecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblFecha.setText("21/10/2018");
 
         jLabel20.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(102, 102, 102));
@@ -190,8 +210,8 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPrecio)
+                    .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
         jPanel2Layout.setVerticalGroup(
@@ -199,11 +219,11 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
         );
@@ -259,7 +279,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         jLabel21.setForeground(new java.awt.Color(102, 102, 102));
         jLabel21.setText("Transporte");
 
-        cbTipoUsuario1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vuelo", "Bus" }));
+        cbTipoTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vuelo", "Bus" }));
 
         jLabel40.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(102, 102, 102));
@@ -278,12 +298,12 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             }
         });
 
-        txtUserName4.setText("1");
-        txtUserName4.setToolTipText("");
-        txtUserName4.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
-        txtUserName4.addActionListener(new java.awt.event.ActionListener() {
+        txtNumPasajeros.setText("1");
+        txtNumPasajeros.setToolTipText("");
+        txtNumPasajeros.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
+        txtNumPasajeros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserName4ActionPerformed(evt);
+                txtNumPasajerosActionPerformed(evt);
             }
         });
 
@@ -328,7 +348,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtOrigen, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                             .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUserName4))
+                            .addComponent(txtNumPasajeros))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -337,7 +357,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(cbTipoUsuario1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(cbTipoTransporte, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -345,10 +365,10 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                         .addComponent(jLabel35)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDatePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dateIda, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDatePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateRegreso, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(269, 269, 269)
                 .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -364,7 +384,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                             .addComponent(jLabel40)
                             .addComponent(jLabel39))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDatePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dateRegreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,11 +408,11 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                                     .addGroup(jPanel8Layout.createSequentialGroup()
                                         .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbTipoUsuario1))
+                                        .addComponent(cbTipoTransporte))
                                     .addGroup(jPanel8Layout.createSequentialGroup()
                                         .addComponent(jLabel41)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtUserName4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtNumPasajeros, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
@@ -400,7 +420,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel35)
                                     .addComponent(jLabel38))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jDatePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(dateIda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(15, Short.MAX_VALUE))))
         );
 
@@ -419,7 +439,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel45.setText("*");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        listadoViajes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -430,7 +450,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(listadoViajes);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -441,7 +461,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85)
+                        .addGap(81, 81, 81)
                         .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel28))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -458,7 +478,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel28)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -505,7 +525,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel1);
@@ -518,9 +538,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
         );
 
         pack();
@@ -534,9 +552,9 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDestinoActionPerformed
 
-    private void txtUserName4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserName4ActionPerformed
+    private void txtNumPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumPasajerosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserName4ActionPerformed
+    }//GEN-LAST:event_txtNumPasajerosActionPerformed
 
     private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
         
@@ -554,17 +572,50 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
+        String v_origen = origen.getText();
+        int v_pasajeros = Integer.parseInt(numPasajeros.getText());
+        String v_destino = destino.getText();
+        
+        
+        String day = String.valueOf(fechaIda.getModel().getDay());
+        String month = String.valueOf(fechaIda.getModel().getMonth());
+        String year = String.valueOf(fechaIda.getModel().getYear());
+        String salida = day+"-"+month+"-"+year;
+        System.out.println(salida);
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date v_fecha = formatter.parse(salida);
+            int v_transporte = transporte.getSelectedIndex();
+        
+            DefaultTableModel model = new DefaultTableModel();
+            try {
+                model = controllerPaqueteViaje.cargarViajes(v_origen, v_pasajeros, v_destino, v_fecha, v_transporte);
+            } catch (IOException ex) {
+                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            this.listadoViajes.setModel(model);
+            this.listadoViajes.revalidate();
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+               
+        
+        
     }//GEN-LAST:event_btnConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
-    public javax.swing.JComboBox<String> cbTipoUsuario1;
-    private org.jdatepicker.JDatePanel jDatePanel1;
-    private org.jdatepicker.JDatePanel jDatePanel2;
+    public javax.swing.JComboBox<String> cbTipoTransporte;
+    private org.jdatepicker.JDatePanel dateIda;
+    private org.jdatepicker.JDatePanel dateRegreso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel26;
@@ -579,7 +630,6 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel45;
@@ -593,10 +643,12 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblPrecio;
+    private javax.swing.JTable listadoViajes;
+    private javax.swing.JTextArea txtDescripcion;
     public javax.swing.JTextField txtDestino;
+    public javax.swing.JTextField txtNumPasajeros;
     public javax.swing.JTextField txtOrigen;
-    public javax.swing.JTextField txtUserName4;
     // End of variables declaration//GEN-END:variables
 }

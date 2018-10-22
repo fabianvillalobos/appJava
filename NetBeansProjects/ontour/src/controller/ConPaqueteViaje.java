@@ -8,11 +8,17 @@ package controller;
 import dal.PaqueteDAL;
 import dal.UsuarioDAL;
 import dto.UsuarioDTO;
+import dto.Vuelo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,12 +26,15 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.table.DefaultTableModel;
+import org.jdatepicker.JDatePanel;
 /**
  *
  * @author luisponce
  */
 public class ConPaqueteViaje implements ActionListener{
     
+    private PaqueteDAL paqueteDAL = new PaqueteDAL();
+            
     public ConPaqueteViaje(){
     }
 
@@ -44,10 +53,7 @@ public class ConPaqueteViaje implements ActionListener{
         }
     }
     
-    
-    
     public DefaultTableModel listarPaquetes() throws SQLException{
-        PaqueteDAL paqueteDAL = new PaqueteDAL();
         ResultSet rs = null;
         try {
             rs = paqueteDAL.listarPaquetes();
@@ -55,7 +61,7 @@ public class ConPaqueteViaje implements ActionListener{
             Logger.getLogger(ConPaqueteViaje.class.getName()).log(Level.SEVERE, null, ex);
 
         }
-        
+         
         ResultSetMetaData metaData = rs.getMetaData();
         Vector<String> columnNames = new Vector<String>();
         int columnCount = metaData.getColumnCount();
@@ -74,58 +80,39 @@ public class ConPaqueteViaje implements ActionListener{
 
         return new DefaultTableModel(data, columnNames); 
     }
-    
-    public int agregarUsuario(
-            JTextField usuario, JPasswordField clave, JPasswordField repetirClave, 
-            JComboBox cbtipoUsuario, JTextField txtNombre, JTextField txtSegundoNombre, 
-            JTextField txtApellidoMaterno, JTextField txtApellidoPaterno, JTextField txtRut, 
-            JTextField txtDRut, JTextField txtFechaNacimiento, JTextField txtTelefono, 
-            JTextField txtEmail, JTextField txtDireccion) 
-        throws SQLException, ClassNotFoundException {
-       
-        String nombreUsuario = usuario.getText();
-        String password = clave.getPassword().toString();
-        String passwordRe = repetirClave.getPassword().toString();
-        int tipoUsuario = cbtipoUsuario.getSelectedIndex();
-        String nombre = txtNombre.getText();
-        String segundoNombre = txtSegundoNombre.getText();
-        String apellidoMaterno = txtApellidoMaterno.getText();
-        String apellidoPaterno = txtApellidoPaterno.getText();
-        String dRut = txtDRut.getText();
-        String email = txtEmail.getText();
-        String fechaNacimiento = txtFechaNacimiento.getText();
-        String direccion = txtDireccion.getText();
 
-        if (nombreUsuario.trim().isEmpty()){
-            return 0;
-        }else{
-            String telefono = txtTelefono.getText();
-            int numRut = Integer.parseInt(txtRut.getText());
-            System.out.println(nombreUsuario+password+tipoUsuario+"T");
-            UsuarioDTO usuarioDto = new UsuarioDTO(nombreUsuario, password, tipoUsuario,'T');
-            UsuarioDAL usuarioDAL = new UsuarioDAL();
-            int usrId = usuarioDAL.AgregarUsuario(usuarioDto); // RETORNAR EL USRID RECIEN CREADO 
-            /*
-            try {
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-                Date fechaNacimientoFormat = formatter.parse(fechaNacimiento);
-                
-                if (tipoUsuario == 3) { //CLIENTE = 3 CAMBIAR LUEGO NO DEBERIA SER EN DURO
-                    
-                ClienteDTO clienteDTO = new ClienteDTO(numRut, dRut.charAt(0),nombre, apellidoPaterno, apellidoMaterno,email,'T',usrId,direccion, fechaNacimientoFormat, telefono);             
-                AGREGAR ACA METODO QUE LLAME AL DAL DE CLIENTE
-                }else{
-                        EmpleadoDTO empleadoDTO = new EmpleadoDTO(numRut, dRut.charAt(0),nombre, apellidoPaterno, apellidoMaterno,email,direccion,'T',usrId, fechaNacimientoFormat, telefono);
-                        AGREGAR ACA METODO QUE LLAME AL DAL DEL EMPLEADO
-                    }
-                
-            } catch (ParseException pe) {
-                pe.printStackTrace();
+ 
+    public DefaultTableModel cargarViajes(String v_origen, int v_pasajeros, String v_destino, Date v_fecha, int v_transporte) throws IOException, MalformedURLException, ParseException {
+        DefaultTableModel model = new DefaultTableModel();
+        if (v_transporte == 0) {
+            //Vuelo
+            String col[] = {"ID","Aerolinea","Origen","Destino","Fecha Salida","Precio","Duracion","Capacidad"};
+            List<Vuelo> vuelos = this.paqueteDAL.getVuelos(v_origen, v_pasajeros, v_destino, v_fecha);
+            
+            for (int i = 0; i < vuelos.size(); i++) {
+                int id = vuelos.get(i).getId();
+                char aerolinea = vuelos.get(i).getAerolinea();
+                String origen = vuelos.get(i).getOrigen();
+                String destino = vuelos.get(i).getDestino();
+                Date salida = vuelos.get(i).getSalida();
+                int precio = vuelos.get(i).getPrecio();
+                int duracion = vuelos.get(i).getDuracion();
+                int capacidad = vuelos.get(i).getCapacidad();
+                Object[] data = {id, aerolinea, origen, destino, salida,precio,duracion,capacidad};
+                System.out.println(id+aerolinea+origen+destino+salida+precio+duracion+capacidad);
+                model.addRow(data);
             }
-            */
-            return usrId;
+            
+        }else{
+            //Buses
+            
         }
+        
+        return model;
+    
     }
+    
+    
     
     
 }

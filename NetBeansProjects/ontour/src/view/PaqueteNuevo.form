@@ -37,10 +37,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jScrollPane2" pref="753" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="jScrollPane2" alignment="0" pref="715" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -115,7 +112,7 @@
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="132" max="32767" attributes="0"/>
+                      <EmptySpace pref="27" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -229,7 +226,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea2">
+                    <Component class="javax.swing.JTextArea" name="txtDescripcion">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
@@ -257,8 +254,8 @@
                           </Group>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel19" min="-2" pref="116" max="-2" attributes="0"/>
+                              <Component id="lblPrecio" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFecha" min="-2" pref="116" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       </Group>
@@ -269,12 +266,12 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="26" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel4" max="32767" attributes="0"/>
+                              <Component id="lblPrecio" max="32767" attributes="0"/>
                               <Component id="jLabel18" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel19" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                              <Component id="lblFecha" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                               <Component id="jLabel20" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -294,7 +291,7 @@
                     <Property name="text" type="java.lang.String" value="Valor del paquete:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel4">
+                <Component class="javax.swing.JLabel" name="lblPrecio">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Roboto" size="24" style="0"/>
@@ -306,7 +303,7 @@
                     <Property name="text" type="java.lang.String" value="$ 2200500"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel19">
+                <Component class="javax.swing.JLabel" name="lblFecha">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Roboto" size="18" style="0"/>
@@ -364,7 +361,7 @@
                                       </Group>
                                       <Component id="txtOrigen" pref="201" max="32767" attributes="0"/>
                                       <Component id="jLabel41" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
-                                      <Component id="txtUserName4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtNumPasajeros" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -375,7 +372,7 @@
                                           <Component id="jLabel38" min="-2" pref="21" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="txtDestino" pref="200" max="32767" attributes="0"/>
-                                      <Component id="cbTipoUsuario1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cbTipoTransporte" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="btnConsultar" min="-2" pref="127" max="-2" attributes="0"/>
@@ -387,11 +384,11 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jLabel39" min="-2" pref="21" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jDatePanel1" min="-2" pref="221" max="-2" attributes="0"/>
+                              <Component id="dateIda" min="-2" pref="221" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jDatePanel2" min="-2" pref="220" max="-2" attributes="0"/>
+                              <Component id="dateRegreso" min="-2" pref="220" max="-2" attributes="0"/>
                               <Component id="jLabel40" min="-2" pref="109" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
@@ -411,7 +408,7 @@
                                       <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jDatePanel2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dateRegreso" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
@@ -441,12 +438,12 @@
                                               <Group type="102" attributes="0">
                                                   <Component id="jLabel21" min="-2" pref="16" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="cbTipoUsuario1" max="32767" attributes="0"/>
+                                                  <Component id="cbTipoTransporte" max="32767" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="txtUserName4" min="-2" pref="41" max="-2" attributes="0"/>
+                                                  <Component id="txtNumPasajeros" min="-2" pref="41" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -458,7 +455,7 @@
                                               <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jDatePanel1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="dateIda" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace pref="15" max="32767" attributes="0"/>
@@ -589,7 +586,7 @@
                     <Property name="text" type="java.lang.String" value="Transporte"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbTipoUsuario1">
+                <Component class="javax.swing.JComboBox" name="cbTipoTransporte">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
@@ -653,7 +650,7 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtUserName4">
+                <Component class="javax.swing.JTextField" name="txtNumPasajeros">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="1"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -675,7 +672,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserName4ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNumPasajerosActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -706,9 +703,9 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="org.jdatepicker.JDatePanel" name="jDatePanel1">
+                <Component class="org.jdatepicker.JDatePanel" name="dateIda">
                 </Component>
-                <Component class="org.jdatepicker.JDatePanel" name="jDatePanel2">
+                <Component class="org.jdatepicker.JDatePanel" name="dateRegreso">
                 </Component>
               </SubComponents>
             </Container>
@@ -738,7 +735,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jScrollPane1" min="-2" pref="909" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                                   <Component id="jLabel45" min="-2" pref="16" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
@@ -762,7 +759,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="230" max="32767" attributes="0"/>
+                          <EmptySpace pref="13" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -798,7 +795,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable1">
+                    <Component class="javax.swing.JTable" name="listadoViajes">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="4">
