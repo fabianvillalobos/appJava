@@ -7,8 +7,6 @@ package view;
 
 import controller.ConUsuario;
 import java.math.BigDecimal;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**

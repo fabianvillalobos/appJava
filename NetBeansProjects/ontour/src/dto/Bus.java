@@ -11,9 +11,9 @@ import java.util.Date;
  *
  * @author luisponce
  */
-public class Vuelo {
+public class Bus {
     private int id;
-    private char aerolinea;
+    private char linea;
     private String origen;
     private String destino;
     private Date salida;
@@ -23,9 +23,12 @@ public class Vuelo {
     private char activo;
     private int precio;
 
-    public Vuelo(int id, char aerolinea, String origen, String destino, Date salida, int duracion, int capacidad, int ocupados, char activo, int precio) {
+    public Bus() {
+    }
+
+    public Bus(int id, char linea, String origen, String destino, Date salida, int duracion, int capacidad, int ocupados, char activo, int precio) {
         this.id = id;
-        this.aerolinea = aerolinea;
+        this.linea = linea;
         this.origen = origen;
         this.destino = destino;
         this.salida = salida;
@@ -36,16 +39,6 @@ public class Vuelo {
         this.precio = precio;
     }
 
-    public Vuelo(int id, char aerolinea) {
-        this.id = id;
-        this.aerolinea = aerolinea;
-    }
-    
-    
-
-    public Vuelo() {
-    }
-
     public int getId() {
         return id;
     }
@@ -54,12 +47,12 @@ public class Vuelo {
         this.id = id;
     }
 
-    public char getAerolinea() {
-        return aerolinea;
+    public char getLinea() {
+        return linea;
     }
 
-    public void setAerolinea(char aerolinea) {
-        this.aerolinea = aerolinea;
+    public void setLinea(char linea) {
+        this.linea = linea;
     }
 
     public String getOrigen() {

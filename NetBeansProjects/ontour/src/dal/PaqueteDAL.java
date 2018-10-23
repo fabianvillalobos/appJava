@@ -10,7 +10,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import dto.SeguroDTO;
+import dto.Alojamiento;
+import dto.Bus;
 import dto.Vuelo;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,7 +29,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.swing.table.DefaultTableModel;
 import oracle.jdbc.OracleTypes;
 
 /**
@@ -93,6 +93,84 @@ public class PaqueteDAL {
         return vuelos;
         
     }
+
+    public List<Bus> getBuses(String v_origen, int v_pasajeros, String v_destino, Date v_fecha) throws MalformedURLException, IOException, ParseException {
+        String v_origen_cortada = v_origen.substring(0, v_origen.indexOf(","));
+        String v_destino_cortada = v_destino.substring(0, v_destino.indexOf(","));
+        
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String v_salida = df.format(v_fecha);
+        String laUrl = "http://ontour.somee.com/wsproveedores.asmx/json_getBuses?origen="
+                +v_origen_cortada+"&destino="+v_destino_cortada+"&salida="+v_salida+"&pasajeros="+v_pasajeros;
+        laUrl = laUrl.replaceAll(" ", "%20");
     
-    
+        URL oracle = new URL(laUrl);
+        
+        System.out.println(oracle.toString());
+        URLConnection yc = oracle.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+        JsonParser parser = new JsonParser();
+        String inputLine;
+        ArrayList<Bus> buses = new ArrayList<Bus>();
+        while ((inputLine = in.readLine()) != null) {               
+            JsonArray gsonArr = (JsonArray) parser.parse(inputLine);
+            for (JsonElement obj : gsonArr) {
+                JsonObject gsonObj = obj.getAsJsonObject();
+
+                int id = gsonObj.get("id").getAsInt();
+                char linea = gsonObj.get("linea").getAsCharacter();
+                String origen = gsonObj.get("origen").getAsString();
+                String destino = gsonObj.get("destino").getAsString();
+                String salida = gsonObj.get("salida").getAsString();
+                
+                String str = salida.replace("/Date(", "").replace(")/", ""); 
+                SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy");
+                Date d_salida = new Date(Long.parseLong(str));
+               
+                int duracion = gsonObj.get("duracion").getAsInt();
+                int capacidad = gsonObj.get("capacidad").getAsInt();
+                int ocupados = gsonObj.get("ocupados").getAsInt();
+                char activo = gsonObj.get("activo").getAsCharacter();
+                int precio = gsonObj.get("precio").getAsInt();
+                
+                Bus bus = new Bus(id,linea,origen,destino,d_salida,duracion,capacidad,ocupados,activo,precio);
+                buses.add(bus);
+            }
+        }
+        
+        return buses;
+    }
+
+    public List<Alojamiento> getAlojamientos(String v_ciudad, String v_pais, int v_pasajeros)throws MalformedURLException, IOException, ParseException {
+        String laUrl = "http://ontour.somee.com/wsproveedores.asmx/json_getAlojamientos?ciudad="+v_ciudad+"&pais="+v_pais+"&habitacion="+v_pasajeros;
+        laUrl = laUrl.replaceAll(" ", "%20");
+        URL oracle = new URL(laUrl);
+        System.out.println(oracle.toString());
+        URLConnection yc = oracle.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+        JsonParser parser = new JsonParser();
+        String inputLine;
+        ArrayList<Alojamiento> alojamientos = new ArrayList<Alojamiento>();
+        while ((inputLine = in.readLine()) != null) {               
+            JsonArray gsonArr = (JsonArray) parser.parse(inputLine);
+            for (JsonElement obj : gsonArr) {
+                JsonObject gsonObj = obj.getAsJsonObject();
+
+                int id = gsonObj.get("h_id").getAsInt();
+                String nombre = gsonObj.get("h_nombre").getAsString();
+                String direccion = gsonObj.get("h_direccion").getAsString();
+                String ciudad = gsonObj.get("h_ciudad").getAsString();
+                String pais = gsonObj.get("h_pais").getAsString();
+                int habitacion = gsonObj.get("h_habitacion").getAsInt();
+                int precio = gsonObj.get("h_precio").getAsInt();
+                char ocupada = gsonObj.get("h_ocupada").getAsCharacter();
+                char activo = gsonObj.get("h_activa").getAsCharacter();
+                String servicios = gsonObj.get("h_servicios").getAsString();
+                
+                Alojamiento alojamiento = new Alojamiento(id,nombre, direccion, ciudad, pais, habitacion, precio, ocupada, activo, servicios);
+                alojamientos.add(alojamiento);
+            }
+        }
+        return alojamientos;
+    }
 }

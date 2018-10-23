@@ -7,7 +7,8 @@ package controller;
 
 import dal.PaqueteDAL;
 import dal.UsuarioDAL;
-import dto.UsuarioDTO;
+import dto.Alojamiento;
+import dto.Bus;
 import dto.Vuelo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,18 +23,14 @@ import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import javax.swing.table.DefaultTableModel;
-import org.jdatepicker.JDatePanel;
 /**
  *
  * @author luisponce
  */
 public class ConPaqueteViaje implements ActionListener{
     
-    private PaqueteDAL paqueteDAL = new PaqueteDAL();
+    private final PaqueteDAL paqueteDAL = new PaqueteDAL();
             
     public ConPaqueteViaje(){
     }
@@ -83,10 +80,11 @@ public class ConPaqueteViaje implements ActionListener{
 
  
     public DefaultTableModel cargarViajes(String v_origen, int v_pasajeros, String v_destino, Date v_fecha, int v_transporte) throws IOException, MalformedURLException, ParseException {
-        DefaultTableModel model = new DefaultTableModel();
         if (v_transporte == 0) {
             //Vuelo
             String col[] = {"ID","Aerolinea","Origen","Destino","Fecha Salida","Precio","Duracion","Capacidad"};
+            DefaultTableModel model = new DefaultTableModel(col, 0);
+                        
             List<Vuelo> vuelos = this.paqueteDAL.getVuelos(v_origen, v_pasajeros, v_destino, v_fecha);
             
             for (int i = 0; i < vuelos.size(); i++) {
@@ -102,14 +100,58 @@ public class ConPaqueteViaje implements ActionListener{
                 System.out.println(id+aerolinea+origen+destino+salida+precio+duracion+capacidad);
                 model.addRow(data);
             }
-            
+            return model;
         }else{
             //Buses
+            String col[] = {"ID","Linea","Origen","Destino","Fecha Salida","Precio","Duracion"};
+            DefaultTableModel model = new DefaultTableModel(col, 0);
+                        
+            List<Bus> buses = this.paqueteDAL.getBuses(v_origen, v_pasajeros, v_destino, v_fecha);
             
+            for (int i = 0; i < buses.size(); i++) {
+                int id = buses.get(i).getId();
+                char linea = buses.get(i).getLinea();
+                String origen = buses.get(i).getOrigen();
+                String destino = buses.get(i).getDestino();
+                Date salida = buses.get(i).getSalida();
+                int precio = buses.get(i).getPrecio();
+                int duracion = buses.get(i).getDuracion();
+                
+                Object[] data = {id, linea, origen, destino, salida,precio,duracion};
+                System.out.println(id+linea+origen+destino+salida+precio+duracion);
+                model.addRow(data);
+            }
+            return model;
         }
+    }
+
+    public DefaultTableModel cargarEstadia(String v_destino, int v_pasajeros) throws IOException, MalformedURLException, ParseException {
         
+        //Estadia
+        String col[] = {"ID","Nombre","Direccion","Ciudad","Pais","Servicios","Precio"};
+        DefaultTableModel model = new DefaultTableModel(col, 0);
+        
+        String v_ciudad = v_destino.substring(0, v_destino.indexOf(","));
+        String v_pais = v_destino.substring(v_destino.lastIndexOf(',')+1).trim();
+        
+        List<Alojamiento> alojamientos = this.paqueteDAL.getAlojamientos(v_ciudad, v_pais, v_pasajeros);
+
+        for (int i = 0; i < alojamientos.size(); i++) {
+            int id = alojamientos.get(i).getId();
+            String nombre = alojamientos.get(i).getNombre();
+            String direccion = alojamientos.get(i).getDireccion();
+            String ciudad = alojamientos.get(i).getCiudad();
+            String pais = alojamientos.get(i).getPais();
+            String servicios = alojamientos.get(i).getServicios();
+            int precio = alojamientos.get(i).getPrecio();
+            
+            Object[] data = {id, nombre, direccion, ciudad, pais, servicios, precio};
+            System.out.println(id+nombre+direccion+ciudad+pais+servicios+precio);
+            model.addRow(data);
+        }
         return model;
-    
+        
+            
     }
     
     
