@@ -72,7 +72,7 @@ public class ConUsuario implements ActionListener{
         for (int column = 1; column <= columnCount; column++) {
             columnNames.add(metaData.getColumnName(column));
         }
-        System.out.println(rs.next());    
+        
         Vector<Vector<Object>> data = new Vector<Vector<Object>>();
         while (rs.next()) {
             Vector<Object> vector = new Vector<Object>();
