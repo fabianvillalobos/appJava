@@ -32,9 +32,9 @@ public class UsuarioActualizacion extends javax.swing.JInternalFrame {
     
     public UsuarioActualizacion(int usrId) throws SQLException, ClassNotFoundException {
         initComponents();
-        /* datos de la cuenta */
+        /* datos de la cuenta */   
         UsuarioPersonaDTO usuarioPersonaDTO = conUsuario.verUsuarioPersona(usrId);
-        this.txtUserName.setText(usuarioPersonaDTO.getLoginUsr());
+        this.txtUserName.setText(usuarioPersonaDTO.getLoginUsr()); 
         this.pswRepetirClave.setText(usuarioPersonaDTO.getPassUsr());
         this.pswRepetirClave.setText(usuarioPersonaDTO.getPassUsr());
         tipoUsuario = this.cbTipoUsuario;
