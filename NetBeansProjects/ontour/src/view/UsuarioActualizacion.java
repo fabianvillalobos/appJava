@@ -5,8 +5,10 @@
  */
 package view;
 
-import controller.ConUsuario;
+import controller.*;
+import dto.*;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -18,7 +20,7 @@ import javax.swing.JTextField;
  *
  * @author luisponce
  */
-public class UsuarioNuevo extends javax.swing.JInternalFrame {
+public class UsuarioActualizacion extends javax.swing.JInternalFrame {
     /**
      * Creates new form UsuarioNuevo
      */
@@ -28,29 +30,30 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
     private JComboBox tipoUsuario;
     private ConUsuario conUsuario = new ConUsuario();
     
-    public UsuarioNuevo() {
+    public UsuarioActualizacion(int usrId) throws SQLException, ClassNotFoundException {
         initComponents();
-        /* datos de la cuenta */
-        usuario = this.txtUserName;
-        clave = this.pswRepetirClave;
-        repetirClave = this.pswRepetirClave;
+        /* datos de la cuenta */   
+        UsuarioPersonaDTO usuarioPersonaDTO = conUsuario.verUsuarioPersona(usrId);
+        this.txtUserName.setText(usuarioPersonaDTO.getLoginUsr()); 
+        this.pswRepetirClave.setText(usuarioPersonaDTO.getPassUsr());
+        this.pswRepetirClave.setText(usuarioPersonaDTO.getPassUsr());
         tipoUsuario = this.cbTipoUsuario;
         /* datos personales */
-        nombre = this.txtNombre;
+        this.txtNombre.setText(usuarioPersonaDTO.getNombre()); ;
         segundoNombre = this.txtSegundoNombre;
-        apellidoPaterno = this.txtApellidoPaterno;
-        apellidoMaterno = this.txtApellidoMaterno;
-        rut = this.txtNumRut;
-        drut = this.txtDRut;
-        fechaNacimiento = this.txtFechaNacimiento;
+        this.txtApellidoPaterno.setText(usuarioPersonaDTO.getApellidoPat());
+        this.txtApellidoMaterno.setText(usuarioPersonaDTO.getApelliddoMat()) ;
+        this.txtNumRut.setText(Integer.toString(usuarioPersonaDTO.getNumrut()));
+        this.txtDRut.setText(Character.toString(usuarioPersonaDTO.getDrut()));
+        this.txtFechaNacimiento.setText((new SimpleDateFormat("yyyy-mm-dd")).format( usuarioPersonaDTO.getFechaNacimiento()));
         /* datos de contacto */
-        telefono = this.txtTelefono;
-        email = this.txtEmail;
-        direccion = this.txtDireccion;
+        this.txtTelefono.setText(usuarioPersonaDTO.getFono());
+        this.txtEmail.setText(usuarioPersonaDTO.getMail());
+        this.txtDireccion.setText(usuarioPersonaDTO.getDireccion());
         try {
             this.cbTipoUsuario.setModel(conUsuario.listarTipoUsuarios());
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioActualizacion.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
 
@@ -125,7 +128,7 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("|   Nuevo");
+        jLabel3.setText("|   Actualización");
 
         jPanel2.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -229,7 +232,7 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSegundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         txtNombre.getAccessibleContext().setAccessibleDescription("");
@@ -344,13 +347,13 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
                             .addComponent(txtDRut, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnAdd.setBackground(new java.awt.Color(88, 185, 87));
         btnAdd.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdd.setText("Añadir");
+        btnAdd.setText("Actualizar");
         btnAdd.setBorder(null);
         btnAdd.setBorderPainted(false);
         btnAdd.setFocusPainted(false);
@@ -504,7 +507,7 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
                             .addComponent(pswRepetirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pswClave, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbTipoUsuario))))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         txtUserName.getAccessibleContext().setAccessibleName("");
@@ -550,7 +553,7 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -561,7 +564,9 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -593,9 +598,9 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
             int userId = conUsuario.agregarUsuario(usuario, clave, repetirClave, tipoUsuario, nombre, 
                     segundoNombre, apellidoPaterno, apellidoMaterno, rut, drut, 
                     fechaNacimiento, telefono, email , direccion);
-          
+            System.out.println(userId);
         } catch (Exception e) {
-          
+            System.out.println("3");
         }
         
     }//GEN-LAST:event_btnAddActionPerformed
