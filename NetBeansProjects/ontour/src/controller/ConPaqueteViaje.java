@@ -27,8 +27,13 @@ import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import org.jdatepicker.JDatePanel;
 /**
  *
  * @author luisponce
@@ -224,6 +229,13 @@ public class ConPaqueteViaje implements ActionListener{
            id = (int) listado.getModel().getValueAt(row, 0); 
         }
         return id;
+    }
+
+    public void limpiarCampos(JTextArea descripcion, JTextField origen, JTextField numPasajeros, JTextField destino, JTable viajes, JDatePanel fechaIda, JDatePanel fechaRegreso, JLabel precio, JComboBox transporte, JTable listadoEstadia, JTable listadoSeguros, JTable listadoViajes) {
+        descripcion.setText("");
+        origen.setText("Ciudad, País");
+        numPasajeros.setText("");
+        destino.setText("Ciudad, País");
     }
     
     

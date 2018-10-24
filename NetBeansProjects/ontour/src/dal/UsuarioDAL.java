@@ -65,7 +65,7 @@ public class UsuarioDAL {
         cstmt.registerOutParameter(1, OracleTypes.CURSOR);   
         cstmt.executeUpdate();
         result = (ResultSet)cstmt.getObject(1);
-       
+        
         return result;
     }
     
@@ -112,5 +112,22 @@ public class UsuarioDAL {
         
 
         return usrPerDTO;
+    }
+    
+    public boolean obtenerUsuarioPorLogin(String login, String hash) throws SQLException, ClassNotFoundException{
+        Connection con = new Conexion().abrirOracle();
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.SP_VALIDAUSUARIO(?,?,?}");
+        cstmt.setString(1,login);
+        cstmt.setString(2,hash);
+        cstmt.registerOutParameter(3, Types.CHAR);  
+        System.out.println(login+hash);
+        cstmt.execute();
+        if (cstmt.getString(3).charAt(0)=='T') {
+            System.out.println(cstmt.getString(3).charAt(0));
+            return true;
+        }else{
+            System.out.println(cstmt.getString(3).charAt(0));
+            return false;
+        }
     }
 }

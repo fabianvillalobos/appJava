@@ -883,8 +883,9 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         if(v_precio > 0){
             try {
                 if (controllerPaqueteViaje.nuevoPaquete(descripcion.getText(),v_precio,this.servicios)) {
-                    
                     JOptionPane.showMessageDialog(this, "El paquete ha sido guardado");
+                    controllerPaqueteViaje.limpiarCampos(descripcion, origen, numPasajeros, destino, viajes, fechaIda, fechaRegreso, precio, transporte, listadoEstadia, listadoSeguros, listadoViajes);
+                    
                 } else{
                     JOptionPane.showMessageDialog(this, "ERROR");
                 }

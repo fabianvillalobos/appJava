@@ -47,7 +47,6 @@ public class Home extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         menuVerUSuarios = new javax.swing.JMenuItem();
         menuAddUsuario = new javax.swing.JMenuItem();
-        menuEliminarUsuario = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         btnVerPaquetes = new javax.swing.JMenuItem();
         btnNuevoPaquete = new javax.swing.JMenuItem();
@@ -92,9 +91,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
         jMenu4.add(menuAddUsuario);
-
-        menuEliminarUsuario.setText("Eliminar usuario");
-        jMenu4.add(menuEliminarUsuario);
 
         jMenuBar1.add(jMenu4);
 
@@ -242,7 +238,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem menuAddUsuario;
-    private javax.swing.JMenuItem menuEliminarUsuario;
     private javax.swing.JMenuItem menuVerUSuarios;
     // End of variables declaration//GEN-END:variables
 }

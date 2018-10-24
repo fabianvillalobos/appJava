@@ -1,5 +1,9 @@
 
+import controller.ConLogin;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import view.Home;
@@ -16,7 +20,7 @@ import view.Home;
  */
 public class Login extends javax.swing.JFrame {
     //private view.home home;
-    
+    private ConLogin controllerLogin = new ConLogin();
     /**
      * Creates new form main
      */
@@ -24,7 +28,6 @@ public class Login extends javax.swing.JFrame {
         initComponents(); 
         this.setLocationRelativeTo(null);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -256,18 +259,43 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jIniciarSesionActionPerformed
 
     private void jIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIniciarSesionMouseClicked
-        String username = this.jUserName.getText();
-        String password = this.jPassword.getSelectedText();
-        if(username.equals("luis")){
-            
-            view.Home home;
-            home = new view.Home();
-            home.setVisible(true);
-            this.dispose();
-            
+//       String username = this.jUserName.getText();
+//        String password = this.jPassword.getSelectedText();
+        
+        String login = this.jUserName.getText();
+        String clave = new String(this.jPassword.getPassword());
+        if (login.isEmpty() || clave.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debes completar los campos para poder ingresar");
         }else{
-            JOptionPane.showMessageDialog(this, "Las credenciales son incorrectas (luis/123)");
+            if(login.equals("fabian") && clave.equals("fabian")){
+                
+                view.Home home;
+                home = new view.Home();
+                home.setVisible(true);
+                this.dispose();
+                    
+//                try {
+//                
+//                if (controllerLogin.validarUsuario(login, clave)) {
+//                    view.Home home;
+//                    home = new view.Home();
+//                    home.setVisible(true);
+//                    this.dispose();
+//                }else{
+//                    JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o no posees los permisos suficientes.");
+//                }
+//            } catch (SQLException ex) {
+//                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (ClassNotFoundException ex) {
+//                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+
+            }else{
+                JOptionPane.showMessageDialog(this, "Las credenciales son incorrectas");
+            }
+//            
         }
+        
     }//GEN-LAST:event_jIniciarSesionMouseClicked
 
     private void jIniciarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIniciarSesionMouseEntered

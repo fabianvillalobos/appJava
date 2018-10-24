@@ -16,10 +16,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import dal.UsuarioDAL;
 import dto.Vuelo;
 import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
 import java.net.URLConnection;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 public class Test {
     // http://localhost:8080/RESTfulExample/json/product/get
    
-    public static void main(String[] args) throws JAXBException, MalformedURLException, IOException, ParseException {  
+    public static void main(String[] args) throws JAXBException, MalformedURLException, IOException, ParseException, SQLException, ClassNotFoundException {  
         
 //        FOR JSON Only Object.
 //        URL oracle = new URL("http://ontour.somee.com/wsproveedores.asmx/json_getSegurosConID?id=2");
@@ -100,8 +102,8 @@ public class Test {
 
 
                   
-            
-        
+           UsuarioDAL usuario = new UsuarioDAL();
+           usuario.obtenerUsuarioPorLogin("fabian", "as");
             
             
       
