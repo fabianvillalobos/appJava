@@ -7,6 +7,7 @@ package controller;
 
 import dal.UsuarioDAL;
 import dto.*;
+import hash.HashMD5;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -17,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -147,12 +149,12 @@ public class ConUsuario implements ActionListener{
     }
     
     
-    public int actualizarUsuario(
+    public void actualizarUsuario(
             JTextField usuario, JPasswordField clave, JPasswordField repetirClave, 
             JComboBox cbtipoUsuario, JTextField txtNombre, JTextField txtSegundoNombre, 
             JTextField txtApellidoMaterno, JTextField txtApellidoPaterno, JTextField txtRut, 
             JTextField txtDRut, JTextField txtFechaNacimiento, JTextField txtTelefono, 
-            JTextField txtEmail, JTextField txtDireccion) 
+            JTextField txtEmail, JTextField txtDireccion, JLabel lblIdUser) 
         throws SQLException, ClassNotFoundException {
        
         String nombreUsuario = usuario.getText();
@@ -167,16 +169,21 @@ public class ConUsuario implements ActionListener{
         String email = txtEmail.getText();
         String fechaNacimiento = txtFechaNacimiento.getText();
         String direccion = txtDireccion.getText();
+        int idUser = Integer.parseInt(lblIdUser.getText());
 
         if (nombreUsuario.trim().isEmpty()){
-            return 0;
+
         }else{
             String telefono = txtTelefono.getText();
             int numRut = Integer.parseInt(txtRut.getText());
             System.out.println(nombreUsuario+password+tipoUsuario+"T");
-            UsuarioDTO usuarioDto = new UsuarioDTO(nombreUsuario, password, tipoUsuario,'T');
+            UsuarioDTO usuarioDto = new UsuarioDTO();
+            usuarioDto.setIdTipoUsuario(tipoUsuario);
+            usuarioDto.setIdUsr(idUser);
+            usuarioDto.setLoginUsr(nombreUsuario);
+            usuarioDto.setPassUsr(HashMD5.getHashMD5(password));
             UsuarioDAL usuarioDAL = new UsuarioDAL();
-            int usrId = usuarioDAL.AgregarUsuario(usuarioDto); // RETORNAR EL USRID RECIEN CREADO 
+            usuarioDAL.AgregarUsuario(usuarioDto); // RETORNAR EL USRID RECIEN CREADO 
             /*
             try {
                 SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
@@ -185,7 +192,8 @@ public class ConUsuario implements ActionListener{
                 if (tipoUsuario == 3) { //CLIENTE = 3 CAMBIAR LUEGO NO DEBERIA SER EN DURO
                     
                 ClienteDTO clienteDTO = new ClienteDTO(numRut, dRut.charAt(0),nombre, apellidoPaterno, apellidoMaterno,email,'T',usrId,direccion, fechaNacimientoFormat, telefono);             
-                AGREGAR ACA METODO QUE LLAME AL DAL DE CLIENTE
+                
+            }
                 }else{
                         EmpleadoDTO empleadoDTO = new EmpleadoDTO(numRut, dRut.charAt(0),nombre, apellidoPaterno, apellidoMaterno,email,direccion,'T',usrId, fechaNacimientoFormat, telefono);
                         AGREGAR ACA METODO QUE LLAME AL DAL DEL EMPLEADO
@@ -195,7 +203,6 @@ public class ConUsuario implements ActionListener{
                 pe.printStackTrace();
             }
             */
-            return usrId;
         }
                     
     }

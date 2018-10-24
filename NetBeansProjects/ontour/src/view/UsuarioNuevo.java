@@ -550,7 +550,7 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -595,9 +595,9 @@ public class UsuarioNuevo extends javax.swing.JInternalFrame {
             int userId = conUsuario.agregarUsuario(usuario, clave, repetirClave, tipoUsuario, nombre, 
                     segundoNombre, apellidoPaterno, apellidoMaterno, rut, drut, 
                     fechaNacimiento, telefono, email , direccion);
-            System.out.println(userId);
+          
         } catch (Exception e) {
-            System.out.println("3");
+          
         }
         
     }//GEN-LAST:event_btnAddActionPerformed

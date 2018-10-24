@@ -19,6 +19,18 @@ import oracle.jdbc.OracleTypes;
  */
 public class UsuarioDAL {
     
+    public int actualizarUsuario(UsuarioDTO usuarioDTO) throws SQLException, ClassNotFoundException{  
+        Connection con = new Conexion().abrirOracle();
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_ActualizaUsuario(?,?,?,?)}");
+        cstmt.setInt(1,usuarioDTO.getIdUsr());
+        cstmt.setString(2,usuarioDTO.getLoginUsr());
+        cstmt.setString(3, usuarioDTO.getPassUsr());
+        cstmt.setInt(4,usuarioDTO.getIdTipoUsuario());
+        cstmt.execute();
+        return cstmt.getInt(5);
+    }
+    
+    
     public int AgregarUsuario(UsuarioDTO usuarioDTO) throws SQLException, ClassNotFoundException{  
         Connection con = new Conexion().abrirOracle();
         CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_InsertaUsuario(?,?,?,?,?)}");
