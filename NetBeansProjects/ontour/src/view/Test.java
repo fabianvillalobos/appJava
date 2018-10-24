@@ -64,39 +64,39 @@ public class Test {
 //        }
         
         
-        URL oracle = new URL("http://ontour.somee.com/wsproveedores.asmx/json_getVuelos?origen=Santiago,%20Chile&destino=Calama,%20Chile&salida=2019-11-01%2000:00:00&pasajeros=2");
-        URLConnection yc = oracle.openConnection();
-        BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
-        JsonParser parser = new JsonParser();
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {               
-            JsonArray gsonArr = (JsonArray) parser.parse(inputLine);
-            for (JsonElement obj : gsonArr) {
-
-                JsonObject gsonObj = obj.getAsJsonObject();
-
-                int id = gsonObj.get("id").getAsInt();
-                char aerolinea = gsonObj.get("aerolinea").getAsCharacter();
-                String origen = gsonObj.get("origen").getAsString();
-                String destino = gsonObj.get("destino").getAsString();
-                String salida = gsonObj.get("salida").getAsString();
-                
-                String str = salida.replace("/Date(", "").replace(")/", ""); 
-                SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy");
-                Date d_salida = new Date(Long.parseLong(str));
-               
-                
-                int duracion = gsonObj.get("duracion").getAsInt();
-                int capacidad = gsonObj.get("capacidad").getAsInt();
-                int ocupados = gsonObj.get("ocupados").getAsInt();
-                char activo = gsonObj.get("activo").getAsCharacter();
-                int precio = gsonObj.get("precio").getAsInt();
-                
-                Vuelo vuelo = new Vuelo(id,aerolinea,origen,destino,d_salida,duracion,capacidad,ocupados,activo,precio);
-
-                System.out.println(vuelo.toString());
-            }
-        }
+//        URL oracle = new URL("http://ontour.somee.com/wsproveedores.asmx/json_getVuelos?origen=Santiago,%20Chile&destino=Calama,%20Chile&salida=2019-11-01%2000:00:00&pasajeros=2");
+//        URLConnection yc = oracle.openConnection();
+//        BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+//        JsonParser parser = new JsonParser();
+//        String inputLine;
+//        while ((inputLine = in.readLine()) != null) {               
+//            JsonArray gsonArr = (JsonArray) parser.parse(inputLine);
+//            for (JsonElement obj : gsonArr) {
+//
+//                JsonObject gsonObj = obj.getAsJsonObject();
+//
+//                int id = gsonObj.get("id").getAsInt();
+//                char aerolinea = gsonObj.get("aerolinea").getAsCharacter();
+//                String origen = gsonObj.get("origen").getAsString();
+//                String destino = gsonObj.get("destino").getAsString();
+//                String salida = gsonObj.get("salida").getAsString();
+//                
+//                String str = salida.replace("/Date(", "").replace(")/", ""); 
+//                SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy");
+//                Date d_salida = new Date(Long.parseLong(str));
+//               
+//                
+//                int duracion = gsonObj.get("duracion").getAsInt();
+//                int capacidad = gsonObj.get("capacidad").getAsInt();
+//                int ocupados = gsonObj.get("ocupados").getAsInt();
+//                char activo = gsonObj.get("activo").getAsCharacter();
+//                int precio = gsonObj.get("precio").getAsInt();
+//                
+//                Vuelo vuelo = new Vuelo(id,aerolinea,origen,destino,d_salida,duracion,capacidad,ocupados,activo,precio);
+//
+//                System.out.println(vuelo.toString());
+//            }
+//        }
 
 
                   
