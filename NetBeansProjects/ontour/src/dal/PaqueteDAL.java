@@ -12,6 +12,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dto.Alojamiento;
 import dto.Bus;
+import dto.PaqueteViajeDTO;
+import dto.Seguro;
+import dto.Servicio;
 import dto.Vuelo;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,6 +26,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -141,7 +145,7 @@ public class PaqueteDAL {
         return buses;
     }
 
-    public List<Alojamiento> getAlojamientos(String v_ciudad, String v_pais, int v_pasajeros)throws MalformedURLException, IOException, ParseException {
+    public List<Alojamiento> getAlojamientos(String v_ciudad, String v_pais, int v_pasajeros) throws MalformedURLException, IOException, ParseException {
         String laUrl = "http://ontour.somee.com/wsproveedores.asmx/json_getAlojamientos?ciudad="+v_ciudad+"&pais="+v_pais+"&habitacion="+v_pasajeros;
         laUrl = laUrl.replaceAll(" ", "%20");
         URL oracle = new URL(laUrl);
@@ -172,5 +176,74 @@ public class PaqueteDAL {
             }
         }
         return alojamientos;
+    }
+
+    public List<Seguro> getSeguros() throws MalformedURLException, IOException, ParseException {
+        String laUrl = "http://ontour.somee.com/wsproveedores.asmx/json_getSeguros";
+        laUrl = laUrl.replaceAll(" ", "%20");
+        URL oracle = new URL(laUrl);
+        System.out.println(oracle.toString());
+        URLConnection yc = oracle.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+        JsonParser parser = new JsonParser();
+        String inputLine;
+        ArrayList<Seguro> seguros = new ArrayList<Seguro>();
+        while ((inputLine = in.readLine()) != null) {               
+            JsonArray gsonArr = (JsonArray) parser.parse(inputLine);
+            for (JsonElement obj : gsonArr) {
+                JsonObject gsonObj = obj.getAsJsonObject();
+
+                int id = gsonObj.get("se_id").getAsInt();
+                String nombre = gsonObj.get("se_nombre").getAsString();
+                String empresa = gsonObj.get("se_empresa").getAsString();
+                String desc = gsonObj.get("se_desc").getAsString();
+                String salida = gsonObj.get("se_vigencia").getAsString();
+                String str = salida.replace("/Date(", "").replace(")/", ""); 
+                SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy");
+                Date d_salida = new Date(Long.parseLong(str));
+                
+                char activo = gsonObj.get("se_activo").getAsCharacter();
+                int precio = gsonObj.get("se_precio").getAsInt();
+                
+                Seguro seguro = new Seguro(id,nombre, empresa, desc, d_salida, activo, precio);
+                seguros.add(seguro);
+            }
+        }
+        return seguros;
+    }
+
+    public int nuevoPaqueteViaje(PaqueteViajeDTO paqueteViaje) throws SQLException, ClassNotFoundException{  
+        Connection con = new Conexion().abrirOracle();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String fecha = df.format(paqueteViaje.getFechaCreacionPaqviaje());
+        
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.SP_INSERTAPAQUETE(?,?,?,?,?)}");
+        cstmt.setString(1,paqueteViaje.getDescPaqueteviaje());
+        cstmt.setInt(2, paqueteViaje.getValorPaqueteviaje());
+        cstmt.setString(3,String.valueOf(paqueteViaje.getActivo()));
+        cstmt.setDate(4, java.sql.Date.valueOf(java.time.LocalDate.now()));
+        cstmt.registerOutParameter(5, Types.INTEGER);
+        cstmt.execute();
+        return cstmt.getInt(5);
+    }
+
+    public int nuevoServicio(Servicio servicio) throws SQLException, ClassNotFoundException{  
+        Connection con = new Conexion().abrirOracle();
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.SP_INSERTASERVICIO(?,?,?,?)}");
+        cstmt.setInt(1,servicio.getIdWs());
+        cstmt.setString(2,String.valueOf('T'));
+        cstmt.setInt(3,servicio.getIdTipoServicio());
+        cstmt.registerOutParameter(4, Types.INTEGER);
+        cstmt.execute();
+        return cstmt.getInt(4);
+    }
+
+    public void nuevoServicioPaquete(int id_servicio, int id_paqueteViaje, char activo) throws SQLException, ClassNotFoundException{  
+        Connection con = new Conexion().abrirOracle();
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.SP_INSERTASERVICIOPAQUETE(?,?,?)}");
+        cstmt.setInt(1,id_servicio);
+        cstmt.setInt(2,id_paqueteViaje);
+        cstmt.setString(3,String.valueOf(activo));
+        cstmt.execute();
     }
 }

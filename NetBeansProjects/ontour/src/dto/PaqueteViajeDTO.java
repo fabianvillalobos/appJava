@@ -6,6 +6,7 @@
 package dto;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -13,37 +14,44 @@ import java.util.Date;
  */
 public class PaqueteViajeDTO {
     
-    private int id_paqueteviaje;
-    private String desc_paqueteviaje;
-    private int valor_paqueteviaje;
+    private int idPaqueteviaje;
+    private String descPaqueteviaje;
+    private int valorPaqueteviaje;
     private char activo;
-    private Date fecha_creacion_paqviaje;
+    private Date fechaCreacionPaqviaje;
 
     public PaqueteViajeDTO() {
     }
 
+    public PaqueteViajeDTO(String descPaqueteviaje, int valorPaqueteviaje, char activo, Date fechaCreacionPaqviaje) {
+        this.descPaqueteviaje = descPaqueteviaje;
+        this.valorPaqueteviaje = valorPaqueteviaje;
+        this.activo = activo;
+        this.fechaCreacionPaqviaje = fechaCreacionPaqviaje;
+    }
+
     public int getId_paqueteviaje() {
-        return id_paqueteviaje;
+        return idPaqueteviaje;
     }
 
-    public void setId_paqueteviaje(int id_paqueteviaje) {
-        this.id_paqueteviaje = id_paqueteviaje;
+    public void setId_paqueteviaje(int idPaqueteviaje) {
+        this.idPaqueteviaje = idPaqueteviaje;
     }
 
-    public String getDesc_paqueteviaje() {
-        return desc_paqueteviaje;
+    public String getDescPaqueteviaje() {
+        return descPaqueteviaje;
     }
 
-    public void setDesc_paqueteviaje(String desc_paqueteviaje) {
-        this.desc_paqueteviaje = desc_paqueteviaje;
+    public void setDescPaqueteviaje(String descPaqueteviaje) {
+        this.descPaqueteviaje = descPaqueteviaje;
     }
 
-    public int getValor_paqueteviaje() {
-        return valor_paqueteviaje;
+    public int getValorPaqueteviaje() {
+        return valorPaqueteviaje;
     }
 
-    public void setValor_paqueteviaje(int valor_paqueteviaje) {
-        this.valor_paqueteviaje = valor_paqueteviaje;
+    public void setValorPaqueteviaje(int valorPaqueteviaje) {
+        this.valorPaqueteviaje = valorPaqueteviaje;
     }
 
     public char getActivo() {
@@ -54,13 +62,15 @@ public class PaqueteViajeDTO {
         this.activo = activo;
     }
 
-    public Date getFecha_creacion_paqviaje() {
-        return fecha_creacion_paqviaje;
+    public Date getFechaCreacionPaqviaje() {
+        return fechaCreacionPaqviaje;
     }
 
-    public void setFecha_creacion_paqviaje(Date fecha_creacion_paqviaje) {
-        this.fecha_creacion_paqviaje = fecha_creacion_paqviaje;
+    public void setFechaCreacionPaqviaje(Date fechaCreacionPaqviaje) {
+        this.fechaCreacionPaqviaje = fechaCreacionPaqviaje;
     }
+
+    
     
     
     

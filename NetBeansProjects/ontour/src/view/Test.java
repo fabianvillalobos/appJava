@@ -5,7 +5,7 @@
  */
 package view;
 
-import dto.SeguroDTO;
+import dto.Seguro;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

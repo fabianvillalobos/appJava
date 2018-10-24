@@ -9,6 +9,9 @@ import dal.PaqueteDAL;
 import dal.UsuarioDAL;
 import dto.Alojamiento;
 import dto.Bus;
+import dto.PaqueteViajeDTO;
+import dto.Seguro;
+import dto.Servicio;
 import dto.Vuelo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,11 +21,13 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -128,7 +133,7 @@ public class ConPaqueteViaje implements ActionListener{
     public DefaultTableModel cargarEstadia(String v_destino, int v_pasajeros) throws IOException, MalformedURLException, ParseException {
         
         //Estadia
-        String col[] = {"ID","Nombre","Direccion","Ciudad","Pais","Servicios","Precio"};
+        String col[] = {"ID","Nombre","Direccion","Ciudad","Pais","Precio","Servicios"};
         DefaultTableModel model = new DefaultTableModel(col, 0);
         
         String v_ciudad = v_destino.substring(0, v_destino.indexOf(","));
@@ -145,13 +150,80 @@ public class ConPaqueteViaje implements ActionListener{
             String servicios = alojamientos.get(i).getServicios();
             int precio = alojamientos.get(i).getPrecio();
             
-            Object[] data = {id, nombre, direccion, ciudad, pais, servicios, precio};
+            Object[] data = {id, nombre, direccion, ciudad, pais, precio, servicios};
             System.out.println(id+nombre+direccion+ciudad+pais+servicios+precio);
             model.addRow(data);
         }
-        return model;
-        
+        return model;       
+    }
+
+    public DefaultTableModel cargarSeguros()  throws IOException, MalformedURLException, ParseException {
+        //Seguros
+        String col[] = {"ID","Nombre","Empresa","Descripcion","Precio"};
+        DefaultTableModel model = new DefaultTableModel(col, 0);
+                
+        List<Seguro> seguros = this.paqueteDAL.getSeguros();
+
+        for (int i = 0; i < seguros.size(); i++) {
+            int id = seguros.get(i).getId();
+            String nombre = seguros.get(i).getNombre();
+            String empresa = seguros.get(i).getEmpresa();
+            String descripcion = seguros.get(i).getDesc();
+            int precio = seguros.get(i).getPrecio();
             
+            Object[] data = {id, nombre, empresa, descripcion, precio};
+            System.out.println(id+nombre+empresa+descripcion+precio);
+            model.addRow(data);
+        }
+        return model;       
+    }
+
+    public String calcularPrecio(JTable listadoViajes, JTable listadoEstadia, JTable listadoSeguros) {
+        int valor = 0;
+        int valor2 = 0;
+        int valor3 = 0;
+        int precioTotal = 0;
+        int row = listadoViajes.getSelectedRow();
+        if(row>=0){
+           valor = (int) listadoViajes.getModel().getValueAt(row, 5); 
+        }
+
+        row = listadoEstadia.getSelectedRow();
+        if (row>=0) {
+          valor2 = (int) listadoEstadia.getModel().getValueAt(row, 5);   
+        }
+        
+        row = listadoSeguros.getSelectedRow();
+        if (row>=0) {
+           valor3 = (int) listadoSeguros.getModel().getValueAt(row, 4);
+        }
+        
+        precioTotal = valor+valor2+valor3;
+        String precioFormat = String.valueOf(precioTotal);
+        
+        return precioFormat;
+    }
+
+    public boolean nuevoPaquete(String descripcion, int precio, ArrayList<Servicio> servicios) throws SQLException, ClassNotFoundException {
+        PaqueteViajeDTO paqueteViaje = new PaqueteViajeDTO(descripcion,precio,'T',new Date());
+        int id_paqueteViaje = this.paqueteDAL.nuevoPaqueteViaje(paqueteViaje);
+        
+        for (int i = 0; i < servicios.size(); i++) {
+            int id_servicio = this.paqueteDAL.nuevoServicio(servicios.get(i));
+            this.paqueteDAL.nuevoServicioPaquete(id_servicio, id_paqueteViaje, 'T');
+        }
+
+        return true;
+    }
+
+    public int obtenerWS(JTable listado) {
+        int row = listado.getSelectedRow();
+        int id = 0;
+        
+        if(row>=0){
+           id = (int) listado.getModel().getValueAt(row, 0); 
+        }
+        return id;
     }
     
     

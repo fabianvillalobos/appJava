@@ -6,15 +6,20 @@
 package view;
 
 import controller.ConPaqueteViaje;
+import dto.Servicio;
 import java.awt.Color;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -35,7 +40,9 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
     private JDatePanel fechaIda, fechaRegreso;
     private JLabel precio, fecha;
     private JComboBox transporte;
-    private int precioTotal;
+    private int precioTotal = 0;
+    private ArrayList<Servicio> servicios = new ArrayList<Servicio>();
+    
     ConPaqueteViaje controllerPaqueteViaje = new ConPaqueteViaje();
     
     
@@ -52,10 +59,18 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         fecha = this.lblFecha;
         transporte = this.cbTipoTransporte;
         
-        precio.setText("$0");
+        this.listadoEstadia.setEnabled(false);
+        this.listadoSeguros.setEnabled(false);
+        this.listadoViajes.setEnabled(false);
+        this.servicios.clear();
+        
+        precio.setText("0");
         Date fechaHoy = new Date();
         fecha.setText(fechaHoy.toString());
         Date date = new Date();
+    }
+    
+    public void clear(){
         
     }
 
@@ -466,6 +481,11 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        listadoViajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listadoViajesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(listadoViajes);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -523,6 +543,11 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        listadoEstadia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listadoEstadiaMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(listadoEstadia);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -577,6 +602,11 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        listadoSeguros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listadoSegurosMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(listadoSeguros);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -772,6 +802,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
+        
         String v_origen = origen.getText();
         int v_pasajeros = Integer.parseInt(numPasajeros.getText());
         String v_destino = destino.getText();
@@ -801,7 +832,6 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                
             //Estadia
             DefaultTableModel modelEstadia = new DefaultTableModel();   
-            
             try {
                 modelEstadia = controllerPaqueteViaje.cargarEstadia(v_destino, v_pasajeros);   
             } catch (IOException ex) {
@@ -811,17 +841,21 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             }
             this.listadoEstadia.setModel(modelEstadia);
             
-//            //Seguros
-//            try {
-//                modelEstadia = controllerPaqueteViaje.cargarEstadia(v_destino, v_pasajeros);   
-//            } catch (IOException ex) {
-//                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (ParseException ex) {
-//                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            this.listadoEstadia.setModel(modelEstadia);
-//            
-//            
+            
+            //Seguros
+            DefaultTableModel modelSeguros = new DefaultTableModel();
+            try {
+                modelSeguros = controllerPaqueteViaje.cargarSeguros();   
+            } catch (IOException ex) {
+                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.listadoSeguros.setModel(modelSeguros);
+            
+            this.listadoEstadia.setEnabled(true);
+            this.listadoSeguros.setEnabled(true);
+            this.listadoViajes.setEnabled(true);
             
         } catch (ParseException ex) {
             Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
@@ -845,8 +879,122 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        // Crear paquete turistico
+        int v_precio = Integer.parseInt(this.lblPrecio.getText());
+        if(v_precio > 0){
+            try {
+                if (controllerPaqueteViaje.nuevoPaquete(descripcion.getText(),v_precio,this.servicios)) {
+                    
+                    JOptionPane.showMessageDialog(this, "El paquete ha sido guardado");
+                } else{
+                    JOptionPane.showMessageDialog(this, "ERROR");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Debes completar los campos para crear un paquete.");
+        }
+        
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void listadoViajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoViajesMouseClicked
+        // TODO add your handling code here:
+        String pprecio = this.controllerPaqueteViaje.calcularPrecio(listadoViajes, listadoEstadia, listadoSeguros);
+        this.lblPrecio.setText(pprecio);
+        
+        Servicio servicio = new Servicio();
+        boolean activado = false;
+        
+        if (this.servicios.isEmpty()) {
+            activado = true;
+        }else{
+            for (int i = 0; i < servicios.size(); i++) {
+                servicio = servicios.get(i);
+                
+                   if (servicio.getIdTipoServicio()==1 || servicio.getIdTipoServicio()==2) {
+                       servicio.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoViajes)); 
+                       activado = false;
+                       break;
+                   } else{
+                        activado = true;
+                   } 
+            }
+        }
+        if (activado) {
+            Servicio servicioNuevo = new Servicio();
+            servicioNuevo.setIdTipoServicio(2);
+            if (this.transporte.getSelectedIndex()==0) {
+               servicioNuevo.setIdTipoServicio(1);
+            }
+            servicioNuevo.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoViajes)); 
+            this.servicios.add(servicioNuevo);
+        }
+    }//GEN-LAST:event_listadoViajesMouseClicked
+
+    private void listadoEstadiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoEstadiaMouseClicked
+        // TODO add your handling code here:
+        String pprecio = this.controllerPaqueteViaje.calcularPrecio(listadoViajes, listadoEstadia, listadoSeguros);
+        this.lblPrecio.setText(pprecio);
+        
+        Servicio servicio = new Servicio();
+        boolean activado = false;
+        
+        if (this.servicios.isEmpty()) {
+            activado = true;
+        }else{
+            for (int i = 0; i < servicios.size(); i++) {
+                servicio = servicios.get(i);
+                   if (servicio.getIdTipoServicio()==3) {
+                        servicio.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoEstadia));
+                        activado = false;
+                        break;
+                    }else{
+                        activado = true;
+                   } 
+            }
+        }
+        if (activado) {
+            Servicio servicioNuevo = new Servicio();
+            servicioNuevo.setIdTipoServicio(3);
+            servicioNuevo.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoEstadia));
+            this.servicios.add(servicioNuevo);
+        }
+    }//GEN-LAST:event_listadoEstadiaMouseClicked
+
+    private void listadoSegurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoSegurosMouseClicked
+        // TODO add your handling code here:
+        String pprecio = this.controllerPaqueteViaje.calcularPrecio(listadoViajes, listadoEstadia, listadoSeguros);
+        this.lblPrecio.setText(pprecio);
+        
+        Servicio servicio = new Servicio();
+        boolean activado = false;
+        
+        if (this.servicios.isEmpty()) {
+            activado = true;
+        }else{
+            for (int i = 0; i < servicios.size(); i++) {
+                servicio = servicios.get(i);
+                   if (servicio.getIdTipoServicio()==4) {
+                        servicio.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoSeguros));
+                        activado = false;
+                        break;
+                    }else{
+                       activado = true;
+                   }
+            }
+        }
+        if(activado){
+            Servicio servicioNuevo = new Servicio();
+            servicioNuevo.setIdTipoServicio(4);
+            servicioNuevo.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoSeguros));
+            this.servicios.add(servicioNuevo);
+        }
+    }//GEN-LAST:event_listadoSegurosMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
