@@ -10,6 +10,7 @@ import dto.Servicio;
 import java.awt.Color;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -64,10 +65,11 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         this.listadoViajes.setEnabled(false);
         this.servicios.clear();
         
-        precio.setText("0");
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         Date fechaHoy = new Date();
-        fecha.setText(fechaHoy.toString());
-        Date date = new Date();
+        String fechaahora = df.format(fechaHoy);
+        precio.setText("0");
+        fecha.setText(fechaahora);
     }
     
     public void clear(){
