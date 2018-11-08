@@ -56,7 +56,6 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Usuario:");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(88, 185, 87));
         setLocation(new java.awt.Point(0, 0));
         setLocationByPlatform(true);
@@ -176,7 +175,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel1)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 252, Short.MAX_VALUE)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(65, 65, 65)
@@ -259,43 +258,27 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jIniciarSesionActionPerformed
 
     private void jIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIniciarSesionMouseClicked
-//       String username = this.jUserName.getText();
-//        String password = this.jPassword.getSelectedText();
-        
+
         String login = this.jUserName.getText();
         String clave = new String(this.jPassword.getPassword());
         if (login.isEmpty() || clave.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debes completar los campos para poder ingresar");
         }else{
-            if(login.equals("fabian") && clave.equals("fabian")){
-                
-                view.Home home;
-                home = new view.Home();
-                home.setVisible(true);
-                this.dispose();
-                    
-//                try {
-//                
-//                if (controllerLogin.validarUsuario(login, clave)) {
-//                    view.Home home;
-//                    home = new view.Home();
-//                    home.setVisible(true);
-//                    this.dispose();
-//                }else{
-//                    JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o no posees los permisos suficientes.");
-//                }
-//            } catch (SQLException ex) {
-//                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (ClassNotFoundException ex) {
-//                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-
-            }else{
-                JOptionPane.showMessageDialog(this, "Las credenciales son incorrectas");
-            }
-//            
+            try {    
+                if (controllerLogin.validarUsuario(login, clave)) {
+                    view.Home home;
+                    home = new view.Home();
+                    home.setVisible(true);
+                    this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o no posees los permisos suficientes.");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }    
         }
-        
     }//GEN-LAST:event_jIniciarSesionMouseClicked
 
     private void jIniciarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIniciarSesionMouseEntered

@@ -68,7 +68,6 @@ public class Home extends javax.swing.JFrame {
         jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(51, 51, 51));
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1024, 620));
@@ -141,9 +140,11 @@ public class Home extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /*
+    
+    */
     private void menuVerUSuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerUSuariosActionPerformed
-        // TODO add your handling code here:     
+        // Muestra ventana usuarios
         this.add(usuarioListado);
         usuarioListado.show();
         usuarioNuevo.hide();
@@ -152,7 +153,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_menuVerUSuariosActionPerformed
 
     private void menuAddUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddUsuarioActionPerformed
-        // TODO add your handling code here:
+        // Muestra ventana añadir usuario
         BasicInternalFrameUI bi = (BasicInternalFrameUI)usuarioNuevo.getUI();
         this.add(usuarioNuevo);
         usuarioNuevo.show();
@@ -162,12 +163,12 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_menuAddUsuarioActionPerformed
 
     private void cerrarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarProgramaActionPerformed
-        // TODO add your handling code here:
+        // Cierra la aplicación
         System.exit(0);
     }//GEN-LAST:event_cerrarProgramaActionPerformed
 
     private void btnVerPaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPaquetesActionPerformed
-        // TODO add your handling code here:
+        // Muestra ventana paquetes
         this.add(paqueteListado);
         paqueteListado.show();
         paqueteNuevo.hide();
@@ -176,7 +177,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerPaquetesActionPerformed
 
     private void btnNuevoPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPaqueteActionPerformed
-        // TODO add your handling code here:
+        // Muestra ventana nuevo paquete
         this.add(paqueteNuevo);
         paqueteNuevo.show();
         paqueteListado.hide();

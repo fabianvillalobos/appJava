@@ -27,11 +27,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 
 public class Test {
     // http://localhost:8080/RESTfulExample/json/product/get
    
-    public static void main(String[] args) throws JAXBException, MalformedURLException, IOException, ParseException, SQLException, ClassNotFoundException {  
+    public static void main(String[] args) throws JAXBException, MalformedURLException, IOException, ParseException, SQLException, ClassNotFoundException, NoSuchAlgorithmException {  
         
 //        FOR JSON Only Object.
 //        URL oracle = new URL("http://ontour.somee.com/wsproveedores.asmx/json_getSegurosConID?id=2");
@@ -99,13 +103,11 @@ public class Test {
 //                System.out.println(vuelo.toString());
 //            }
 //        }
-
-
-                  
-           UsuarioDAL usuario = new UsuarioDAL();
-           usuario.obtenerUsuarioPorLogin("fabian", "as");
-            
-            
-      
+        byte[] bytes = { 0x35, 0x24, 0x76, 0x12 };
+        String input = "javier";
+        MessageDigest m = MessageDigest.getInstance("MD5");
+        byte[] digest = m.digest(input.getBytes());
+        String hash = new BigInteger(1, digest).toString(16);
+        System.out.println(hash);
     }
 }

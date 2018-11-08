@@ -21,15 +21,9 @@ public class ConLogin {
         UsuarioDAL usuario = new UsuarioDAL();
         String hash = HashMD5.getHashMD5(clave);
         System.out.println(hash);
-        if (usuario.obtenerUsuarioPorLogin(login, hash)) {
-            return true;
-        }
-        return false;
-        
+        return usuario.obtenerUsuarioPorLogin(login, hash);
     }
-
     public ConLogin() {
         
     }
-    
 }

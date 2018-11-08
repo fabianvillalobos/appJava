@@ -116,7 +116,7 @@ public class UsuarioDAL {
     
     public boolean obtenerUsuarioPorLogin(String login, String hash) throws SQLException, ClassNotFoundException{
         Connection con = new Conexion().abrirOracle();
-        CallableStatement cstmt = con.prepareCall("{CALL ontour.SP_VALIDAUSUARIO(?,?,?}");
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.SP_VALIDAUSUARIO(?,?,?)}");
         cstmt.setString(1,login);
         cstmt.setString(2,hash);
         cstmt.registerOutParameter(3, Types.CHAR);  
