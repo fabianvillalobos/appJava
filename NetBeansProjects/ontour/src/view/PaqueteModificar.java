@@ -10,6 +10,7 @@ import resources.MyIntFilter;
 import dto.Servicio;
 import java.awt.Color;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -35,7 +36,7 @@ import org.jdatepicker.constraints.DateSelectionConstraint;
  *
  * @author luisponce
  */
-public class PaqueteNuevo extends javax.swing.JInternalFrame {
+public class PaqueteModificar extends javax.swing.JInternalFrame {
     /**
      * Creates new form UsuarioNuevo
      */
@@ -51,7 +52,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
     ConPaqueteViaje controllerPaqueteViaje = new ConPaqueteViaje();
     
     
-    public PaqueteNuevo() {
+    public PaqueteModificar() {
         initComponents();
         descripcion = this.txtDescripcion;
         origen = this.txtOrigen;
@@ -151,6 +152,9 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         jPanel12 = new javax.swing.JPanel();
         jLabel48 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        listadoPaquetes = new javax.swing.JTable();
 
         setBorder(null);
         setClosable(true);
@@ -170,7 +174,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("|   Nuevo");
+        jLabel3.setText("|   Modificar");
 
         jPanel6.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -274,7 +278,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel5.setText("1. Consultar viaje");
+        jLabel5.setText("Consultar por otros servicios");
 
         jPanel8.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -512,7 +516,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel6.setText("2. Disponibilidad");
+        jLabel6.setText("Transporte");
 
         jPanel9.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -744,6 +748,43 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
+        jPanel7.setBackground(new java.awt.Color(245, 245, 245));
+
+        listadoPaquetes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        listadoPaquetes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listadoPaquetesMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(listadoPaquetes);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -775,8 +816,9 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                             .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jLabel6)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addComponent(jLabel6))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -786,6 +828,8 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -820,7 +864,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1399, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE)
         );
 
         pack();
@@ -875,9 +919,9 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             try {
                 modelViajes = controllerPaqueteViaje.cargarViajes(v_origen, v_pasajeros, v_destino, v_fecha, v_transporte);   
             } catch (IOException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(PaqueteModificar.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ParseException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(PaqueteModificar.class.getName()).log(Level.SEVERE, null, ex);
             }
             this.listadoViajes.setModel(modelViajes);
 
@@ -886,9 +930,9 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             try {
                 modelEstadia = controllerPaqueteViaje.cargarEstadia(v_destino, v_pasajeros);   
             } catch (IOException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(PaqueteModificar.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ParseException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(PaqueteModificar.class.getName()).log(Level.SEVERE, null, ex);
             }
             this.listadoEstadia.setModel(modelEstadia);
 
@@ -897,9 +941,9 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             try {
                 modelSeguros = controllerPaqueteViaje.cargarSeguros();   
             } catch (IOException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(PaqueteModificar.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ParseException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(PaqueteModificar.class.getName()).log(Level.SEVERE, null, ex);
             }
             this.listadoSeguros.setModel(modelSeguros);
             this.listadoEstadia.setEnabled(true);
@@ -914,7 +958,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             this.origen.setEnabled(false);
             this.btnOtraConsulta.setEnabled(true);
         } catch (ParseException ex) {
-            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PaqueteModificar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
@@ -951,9 +995,9 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(this, "ERROR");
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(PaqueteModificar.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(PaqueteModificar.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }else{
@@ -1067,7 +1111,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                 this.fechaRegreso.setEnabled(true);
             }
         } catch (ParseException ex) {
-            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PaqueteModificar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_dateIdaActionPerformed
 
@@ -1095,9 +1139,81 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                 this.fechaRegreso.getModel().setValue(null);
             }
         } catch (ParseException ex) {
-            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PaqueteModificar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_dateRegresoActionPerformed
+
+    private void listadoPaquetesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoPaquetesMouseClicked
+//        int paqueteSeleccionado = this.listadoPaquetes.getSelectedRow();
+//        BigDecimal numeroPaquete = (BigDecimal) this.listadoPaquetes.getModel().getValueAt(paqueteSeleccionado, 0);
+//        int idPaqueteTuristico = numeroPaquete.intValue();
+//        DefaultTableModel model = (DefaultTableModel) this.listadoTransporte.getModel();
+//        model.setColumnCount(0);
+//        model.setRowCount(0);
+//        model = (DefaultTableModel) this.listadoEstadia.getModel();
+//        model.setColumnCount(0);
+//        model.setRowCount(0);
+//        model = (DefaultTableModel) this.listadoSeguros.getModel();
+//        model.setColumnCount(0);
+//        model.setRowCount(0);
+//        this.btnBorrar.setEnabled(true);
+//        try {
+//            List<Servicio> servicios = this.controllerPaqueteViaje.getServiciosElegidos(numeroPaquete);
+//            for (Servicio servicio : servicios) {
+//                int idWs = servicio.getIdWs();
+//                switch(servicio.getIdTipoServicio()){
+//                    case 1:
+//                    //vuelo
+//                    try {
+//                        DefaultTableModel modelVuelo = new DefaultTableModel();
+//                        modelVuelo = this.controllerPaqueteViaje.getVueloConId(idWs);
+//                        this.listadoTransporte.setModel(modelVuelo);
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                    break;
+//                    case 2:
+//                    //Bus
+//                    try {
+//                        DefaultTableModel modelBus = new DefaultTableModel();
+//                        modelBus = this.controllerPaqueteViaje.getBusConId(idWs);
+//                        this.listadoTransporte.setModel(modelBus);
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                    break;
+//                    case 3:
+//                    //Estadia
+//                    try {
+//                        DefaultTableModel modelEstadia = new DefaultTableModel();
+//                        modelEstadia = this.controllerPaqueteViaje.getEstadiaConId(idWs);
+//                        this.listadoEstadia.setModel(modelEstadia);
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                    break;
+//                    case 4:
+//                    //Seguro
+//                    try {
+//                        DefaultTableModel modelSeguro = new DefaultTableModel();
+//                        modelSeguro = this.controllerPaqueteViaje.getSeguroConId(idWs);
+//                        this.listadoSeguros.setModel(modelSeguro);
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                    break;
+//                    case 5:
+//                    //actividad
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+    }//GEN-LAST:event_listadoPaquetesMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
@@ -1140,6 +1256,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1147,9 +1264,11 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JTable listadoEstadia;
+    private javax.swing.JTable listadoPaquetes;
     private javax.swing.JTable listadoSeguros;
     private javax.swing.JTable listadoViajes;
     private javax.swing.JTextArea txtDescripcion;

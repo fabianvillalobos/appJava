@@ -63,11 +63,15 @@ public class UsuarioListado extends javax.swing.JInternalFrame {
             Logger.getLogger(UsuarioNuevo.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        this.actualizar();
+    }
+    
+    public void actualizar(){
         try {
             tableListadoUsuarios.setModel(conUsuario.listarUsuarios());
         } catch (Exception e) {
-
-        }
+        
+        } 
     }
 
     /**

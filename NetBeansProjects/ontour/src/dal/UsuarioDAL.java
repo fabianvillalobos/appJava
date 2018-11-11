@@ -70,14 +70,11 @@ public class UsuarioDAL {
     }
     
     public boolean eliminarUsuario(int userID) throws SQLException, ClassNotFoundException{
-        Connection con = new Conexion().abrirOracle();
-        //Statement stmt;
-        //ResultSet result;        
+        Connection con = new Conexion().abrirOracle();        
         CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_EliminaUsuario(?)}");
         cstmt.setInt(1,userID);
         cstmt.execute();
         con.close();
-        
         return true;
     }
     
@@ -110,7 +107,6 @@ public class UsuarioDAL {
         usrPerDTO.setFechaNacimiento(result.getDate("fecha_nacimiento"));
         usrPerDTO.setFono(result.getString("fono")); 
         
-
         return usrPerDTO;
     }
     

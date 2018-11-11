@@ -16,11 +16,13 @@ import dto.Vuelo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -66,7 +68,6 @@ public class ConPaqueteViaje implements ActionListener{
             rs = paqueteDAL.listarPaquetes();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConPaqueteViaje.class.getName()).log(Level.SEVERE, null, ex);
-
         }
          
         ResultSetMetaData metaData = rs.getMetaData();
@@ -84,7 +85,6 @@ public class ConPaqueteViaje implements ActionListener{
             }
             data.add(vector);
         }
-
         return new DefaultTableModel(data, columnNames); 
     }
 
@@ -96,8 +96,8 @@ public class ConPaqueteViaje implements ActionListener{
             DefaultTableModel model = new DefaultTableModel(col, 0);
                         
             List<Vuelo> vuelos = this.paqueteDAL.getVuelos(v_origen, v_pasajeros, v_destino, v_fecha);
-            
-            for (int i = 0; i < vuelos.size(); i++) {
+            if (!vuelos.isEmpty()) {
+                for (int i = 0; i < vuelos.size(); i++) {
                 int id = vuelos.get(i).getId();
                 char aerolinea = vuelos.get(i).getAerolinea();
                 String origen = vuelos.get(i).getOrigen();
@@ -108,6 +108,10 @@ public class ConPaqueteViaje implements ActionListener{
                 int capacidad = vuelos.get(i).getCapacidad();
                 Object[] data = {id, aerolinea, origen, destino, salida,precio,duracion,capacidad};
                 System.out.println(id+aerolinea+origen+destino+salida+precio+duracion+capacidad);
+                model.addRow(data);
+                }
+            } else{
+                Object[] data = {"No se han encontrado vuelos"};
                 model.addRow(data);
             }
             return model;
@@ -136,7 +140,6 @@ public class ConPaqueteViaje implements ActionListener{
     }
 
     public DefaultTableModel cargarEstadia(String v_destino, int v_pasajeros) throws IOException, MalformedURLException, ParseException {
-        
         //Estadia
         String col[] = {"ID","Nombre","Direccion","Ciudad","Pais","Precio","Servicios"};
         DefaultTableModel model = new DefaultTableModel(col, 0);
@@ -237,8 +240,144 @@ public class ConPaqueteViaje implements ActionListener{
         numPasajeros.setText("");
         destino.setText("Ciudad, País");
     }
+
+    public boolean fechaValida(JDatePanel fecha) throws ParseException {
+        String day = String.valueOf(fecha.getModel().getDay()); 
+        String month = String.valueOf(fecha.getModel().getMonth()+1);
+        String year = String.valueOf(fecha.getModel().getYear());
+        String salida = day+"-"+month+"-"+year;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date fechaSalida = formatter.parse(salida);
+        Date fechaActual;
+        fechaActual = formatter.parse(formatter.format(new Date()));
+        fechaActual.setHours(0);
+        fechaActual.setMinutes(0);
+        fechaActual.setSeconds(0);
+        System.out.println(fechaActual.toString());
+        System.out.println(fechaSalida.toString());
+        
+        return fechaActual.compareTo(fechaSalida) <= 0;
+    }
     
-    
-    
-    
+    public Date getCalendarFecha(JDatePanel fecha) throws ParseException{
+        String day = String.valueOf(fecha.getModel().getDay()); 
+        String month = String.valueOf(fecha.getModel().getMonth()+1);
+        String year = String.valueOf(fecha.getModel().getYear());
+        String salida = day+"-"+month+"-"+year;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date fechaSalida = formatter.parse(salida);
+        return fechaSalida;
+    }
+
+    public boolean fechaValidaRegreso(JDatePanel fechaR, JDatePanel fechaI) throws ParseException {
+        String day = String.valueOf(fechaR.getModel().getDay()); 
+        String month = String.valueOf(fechaR.getModel().getMonth()+1);
+        String year = String.valueOf(fechaR.getModel().getYear());
+        String salida = day+"-"+month+"-"+year;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date fechaRegreso = formatter.parse(salida);
+        
+        day = String.valueOf(fechaI.getModel().getDay()); 
+        month = String.valueOf(fechaI.getModel().getMonth()+1);
+        year = String.valueOf(fechaI.getModel().getYear());
+        salida = day+"-"+month+"-"+year;
+        formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date fechaIda = formatter.parse(salida);
+
+        return fechaRegreso.compareTo(fechaIda) >= 0;
+    }
+
+    public List<Servicio> getServiciosElegidos(BigDecimal numeroPaquete) throws ClassNotFoundException, SQLException {
+        int idPaquete = numeroPaquete.intValue();
+        List<Servicio> servicios = this.paqueteDAL.getServiciosElegidos(idPaquete);
+        return servicios;
+    }
+
+    public DefaultTableModel getVueloConId(int idWs) throws IOException {
+        //Vuelo
+            String col[] = {"ID","Aerolinea","Origen","Destino","Fecha Salida","Precio","Duracion","Capacidad"};
+            DefaultTableModel model = new DefaultTableModel(col, 0);
+                        
+            List<Vuelo> vuelos = this.paqueteDAL.getVuelosConId(idWs);
+            if (!vuelos.isEmpty()) {
+                for (int i = 0; i < vuelos.size(); i++) {
+                int id = vuelos.get(i).getId();
+                char aerolinea = vuelos.get(i).getAerolinea();
+                String origen = vuelos.get(i).getOrigen();
+                String destino = vuelos.get(i).getDestino();
+                Date salida = vuelos.get(i).getSalida();
+                int precio = vuelos.get(i).getPrecio();
+                int duracion = vuelos.get(i).getDuracion();
+                int capacidad = vuelos.get(i).getCapacidad();
+                Object[] data = {id, aerolinea, origen, destino, salida,precio,duracion,capacidad};
+                System.out.println(id+aerolinea+origen+destino+salida+precio+duracion+capacidad);
+                model.addRow(data);
+                }
+            } else{
+                Object[] data = {"No se han encontrado vuelos"};
+                model.addRow(data);
+            }
+            return model;
+    }
+
+    public DefaultTableModel getBusConId(int idWs) throws IOException {
+        String col[] = {"ID","Linea","Origen","Destino","Fecha Salida","Precio","Duracion"};
+        DefaultTableModel model = new DefaultTableModel(col, 0);
+        List<Bus> buses = this.paqueteDAL.getBusesConId(idWs);
+        for (int i = 0; i < buses.size(); i++) {
+            int id = buses.get(i).getId();
+            char linea = buses.get(i).getLinea();
+            String origen = buses.get(i).getOrigen();
+            String destino = buses.get(i).getDestino();
+            Date salida = buses.get(i).getSalida();
+            int precio = buses.get(i).getPrecio();
+            int duracion = buses.get(i).getDuracion();
+            Object[] data = {id, linea, origen, destino, salida,precio,duracion};
+            System.out.println(id+linea+origen+destino+salida+precio+duracion);
+            model.addRow(data);
+        }
+        return model;
+    }
+
+    public DefaultTableModel getEstadiaConId(int idWs) throws IOException {
+        //Estadia
+        String col[] = {"ID","Nombre","Direccion","Ciudad","Pais","Precio","Servicios"};
+        DefaultTableModel model = new DefaultTableModel(col, 0);
+        List<Alojamiento> alojamientos = this.paqueteDAL.getAlojamientosConId(idWs);
+        for (int i = 0; i < alojamientos.size(); i++) {
+            int id = alojamientos.get(i).getId();
+            String nombre = alojamientos.get(i).getNombre();
+            String direccion = alojamientos.get(i).getDireccion();
+            String ciudad = alojamientos.get(i).getCiudad();
+            String pais = alojamientos.get(i).getPais();
+            String servicios = alojamientos.get(i).getServicios();
+            int precio = alojamientos.get(i).getPrecio();
+            Object[] data = {id, nombre, direccion, ciudad, pais, precio, servicios};
+            System.out.println(id+nombre+direccion+ciudad+pais+servicios+precio);
+            model.addRow(data);
+        }
+        return model;
+    }
+
+    public DefaultTableModel getSeguroConId(int idWs) throws IOException, IOException {
+        //Seguros
+        String col[] = {"ID","Nombre","Empresa","Descripcion","Precio"};
+        DefaultTableModel model = new DefaultTableModel(col, 0);  
+        List<Seguro> seguros = this.paqueteDAL.getSeguroConId(idWs);
+        for (int i = 0; i < seguros.size(); i++) {
+            int id = seguros.get(i).getId();
+            String nombre = seguros.get(i).getNombre();
+            String empresa = seguros.get(i).getEmpresa();
+            String descripcion = seguros.get(i).getDesc();
+            int precio = seguros.get(i).getPrecio();
+            Object[] data = {id, nombre, empresa, descripcion, precio};
+            System.out.println(id+nombre+empresa+descripcion+precio);
+            model.addRow(data);
+        }
+        return model;
+    }
+
+    public boolean eliminarPaqueteViaje(int idPaqueteTuristico) throws ClassNotFoundException, SQLException {
+        return this.paqueteDAL.eliminarPaqueteViaje(idPaqueteTuristico);
+    }
 }

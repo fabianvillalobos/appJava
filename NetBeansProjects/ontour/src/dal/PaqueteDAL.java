@@ -44,7 +44,7 @@ public class PaqueteDAL {
     public ResultSet listarPaquetes() throws SQLException, ClassNotFoundException{
         Connection con = new Conexion().abrirOracle();
         ResultSet result;
-        CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_ListaPaqueteViaje(?)}");
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_ListaPaqueteViajeFormateado(?)}");
         cstmt.registerOutParameter(1, OracleTypes.CURSOR);   
         cstmt.executeUpdate();
         result = (ResultSet)cstmt.getObject(1);
@@ -245,5 +245,163 @@ public class PaqueteDAL {
         cstmt.setInt(2,id_paqueteViaje);
         cstmt.setString(3,String.valueOf(activo));
         cstmt.execute();
+    }
+
+    public List<Servicio> getServiciosElegidos(int idPaquete) throws ClassNotFoundException, SQLException {
+        Connection con = new Conexion().abrirOracle();
+        ResultSet result;
+        System.out.println(idPaquete);
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_ListarServiciosPorPaquete(?,?)}");
+        cstmt.setInt(1,idPaquete);
+        cstmt.registerOutParameter(2, OracleTypes.CURSOR);   
+        cstmt.executeUpdate();
+        result = (ResultSet)cstmt.getObject(2);
+        ArrayList<Servicio> servicios = new ArrayList<Servicio>();
+        while (result.next()) { 
+            Servicio servicio = new Servicio();
+            servicio.setIdWs(result.getInt("ID_SERVICIO_WS"));
+            servicio.setIdTipoServicio(result.getInt("ID_TIPO_SERVICIO"));
+            servicios.add(servicio);
+        }
+        return servicios;
+    }
+
+    public List<Vuelo> getVuelosConId(int idWs) throws MalformedURLException, IOException {
+        String laUrl = "http://ontour.somee.com/wsproveedores.asmx/json_getVueloConID?id="+idWs;
+        URL oracle = new URL(laUrl);
+        System.out.println(oracle.toString());
+        URLConnection yc = oracle.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+        JsonParser parser = new JsonParser();
+        String inputLine;
+        ArrayList<Vuelo> vuelos = new ArrayList<Vuelo>();
+        while ((inputLine = in.readLine()) != null) {               
+            JsonArray gsonArr = (JsonArray) parser.parse(inputLine);
+            for (JsonElement obj : gsonArr) {
+                JsonObject gsonObj = obj.getAsJsonObject();
+
+                int id = gsonObj.get("id").getAsInt();
+                char aerolinea = gsonObj.get("aerolinea").getAsCharacter();
+                String origen = gsonObj.get("origen").getAsString();
+                String destino = gsonObj.get("destino").getAsString();
+                String salida = gsonObj.get("salida").getAsString();
+                
+                String str = salida.replace("/Date(", "").replace(")/", ""); 
+                SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy");
+                Date d_salida = new Date(Long.parseLong(str));
+               
+                int duracion = gsonObj.get("duracion").getAsInt();
+                int capacidad = gsonObj.get("capacidad").getAsInt();
+                int ocupados = gsonObj.get("ocupados").getAsInt();
+                char activo = gsonObj.get("activo").getAsCharacter();
+                int precio = gsonObj.get("precio").getAsInt();
+                
+                Vuelo vuelo = new Vuelo(id,aerolinea,origen,destino,d_salida,duracion,capacidad,ocupados,activo,precio);
+                vuelos.add(vuelo);
+            }
+        }
+        return vuelos;
+    }
+
+    public List<Bus> getBusesConId(int idWs) throws MalformedURLException, IOException {
+        String laUrl = "http://ontour.somee.com/wsproveedores.asmx/json_getBusesConID?id="+idWs;
+        URL oracle = new URL(laUrl);
+        System.out.println(oracle.toString());
+        URLConnection yc = oracle.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+        JsonParser parser = new JsonParser();
+        String inputLine;
+        ArrayList<Bus> buses = new ArrayList<Bus>();
+        while ((inputLine = in.readLine()) != null) {               
+            JsonArray gsonArr = (JsonArray) parser.parse(inputLine);
+            for (JsonElement obj : gsonArr) {
+                JsonObject gsonObj = obj.getAsJsonObject();
+                int id = gsonObj.get("id").getAsInt();
+                char linea = gsonObj.get("linea").getAsCharacter();
+                String origen = gsonObj.get("origen").getAsString();
+                String destino = gsonObj.get("destino").getAsString();
+                String salida = gsonObj.get("salida").getAsString();
+                String str = salida.replace("/Date(", "").replace(")/", ""); 
+                SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy");
+                Date d_salida = new Date(Long.parseLong(str));
+                int duracion = gsonObj.get("duracion").getAsInt();
+                int capacidad = gsonObj.get("capacidad").getAsInt();
+                int ocupados = gsonObj.get("ocupados").getAsInt();
+                char activo = gsonObj.get("activo").getAsCharacter();
+                int precio = gsonObj.get("precio").getAsInt();
+                Bus bus = new Bus(id,linea,origen,destino,d_salida,duracion,capacidad,ocupados,activo,precio);
+                buses.add(bus);
+            }
+        }
+        return buses;
+    }
+
+    public List<Alojamiento> getAlojamientosConId(int idWs) throws MalformedURLException, IOException {
+        String laUrl = "http://ontour.somee.com/wsproveedores.asmx/json_getAlojamientoConID?id="+idWs;
+        URL oracle = new URL(laUrl);
+        System.out.println(oracle.toString());
+        URLConnection yc = oracle.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+        JsonParser parser = new JsonParser();
+        String inputLine;
+        ArrayList<Alojamiento> alojamientos = new ArrayList<Alojamiento>();
+        while ((inputLine = in.readLine()) != null) {               
+            JsonArray gsonArr = (JsonArray) parser.parse(inputLine);
+            for (JsonElement obj : gsonArr) {
+                JsonObject gsonObj = obj.getAsJsonObject();
+                int id = gsonObj.get("h_id").getAsInt();
+                String nombre = gsonObj.get("h_nombre").getAsString();
+                String direccion = gsonObj.get("h_direccion").getAsString();
+                String ciudad = gsonObj.get("h_ciudad").getAsString();
+                String pais = gsonObj.get("h_pais").getAsString();
+                int habitacion = gsonObj.get("h_habitacion").getAsInt();
+                int precio = gsonObj.get("h_precio").getAsInt();
+                char ocupada = gsonObj.get("h_ocupada").getAsCharacter();
+                char activo = gsonObj.get("h_activa").getAsCharacter();
+                String servicios = gsonObj.get("h_servicios").getAsString();
+                Alojamiento alojamiento = new Alojamiento(id,nombre, direccion, ciudad, pais, habitacion, precio, ocupada, activo, servicios);
+                alojamientos.add(alojamiento);
+            }
+        }
+        return alojamientos;
+    }
+
+    public List<Seguro> getSeguroConId(int idWs) throws MalformedURLException, IOException {
+        String laUrl = "http://ontour.somee.com/wsproveedores.asmx/json_getSegurosConID?id="+idWs;
+        URL oracle = new URL(laUrl);
+        System.out.println(oracle.toString());
+        URLConnection yc = oracle.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+        JsonParser parser = new JsonParser();
+        String inputLine;
+        ArrayList<Seguro> seguros = new ArrayList<Seguro>();
+        while ((inputLine = in.readLine()) != null) {               
+            JsonArray gsonArr = (JsonArray) parser.parse(inputLine);
+            for (JsonElement obj : gsonArr) {
+                JsonObject gsonObj = obj.getAsJsonObject();
+                int id = gsonObj.get("se_id").getAsInt();
+                String nombre = gsonObj.get("se_nombre").getAsString();
+                String empresa = gsonObj.get("se_empresa").getAsString();
+                String desc = gsonObj.get("se_desc").getAsString();
+                String salida = gsonObj.get("se_vigencia").getAsString();
+                String str = salida.replace("/Date(", "").replace(")/", ""); 
+                SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy");
+                Date d_salida = new Date(Long.parseLong(str));
+                char activo = gsonObj.get("se_activo").getAsCharacter();
+                int precio = gsonObj.get("se_precio").getAsInt();
+                Seguro seguro = new Seguro(id,nombre, empresa, desc, d_salida, activo, precio);
+                seguros.add(seguro);
+            }
+        }
+        return seguros;
+    }
+
+    public boolean eliminarPaqueteViaje(int idPaqueteTuristico) throws ClassNotFoundException, SQLException {
+        Connection con = new Conexion().abrirOracle();        
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_EliminaPaqueteViaje(?)}");
+        cstmt.setInt(1,idPaqueteTuristico);
+        cstmt.execute();
+        con.close();
+        return true;
     }
 }

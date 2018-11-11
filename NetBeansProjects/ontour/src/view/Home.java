@@ -71,7 +71,6 @@ public class Home extends javax.swing.JFrame {
         setBackground(new java.awt.Color(51, 51, 51));
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1024, 620));
-        setResizable(false);
 
         jMenu4.setText("Usuarios");
 
@@ -171,6 +170,7 @@ public class Home extends javax.swing.JFrame {
         // Muestra ventana paquetes
         this.add(paqueteListado);
         paqueteListado.show();
+        paqueteListado.actualizar();
         paqueteNuevo.hide();
         usuarioNuevo.hide();
         usuarioListado.hide();
