@@ -65,7 +65,6 @@ public class ConUsuario implements ActionListener{
             rs = usuarioDAL.listarUsuario();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConUsuario.class.getName()).log(Level.SEVERE, null, ex);
-
         }
         
         ResultSetMetaData metaData = rs.getMetaData();

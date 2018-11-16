@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.awt.Color;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -24,6 +25,9 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         this.setLocationRelativeTo(this);
+        this.setBackground(Color.white);
+        this.setState(this.NORMAL);
+        this.setExtendedState( this.getExtendedState()|this.MAXIMIZED_BOTH );
         /* load home page */ 
     }
 
@@ -70,7 +74,7 @@ public class Home extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1024, 620));
+        setPreferredSize(null);
 
         jMenu4.setText("Usuarios");
 

@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import view.Home;
@@ -26,7 +28,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents(); 
-        this.setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        this.setExtendedState(this.getExtendedState()|this.MAXIMIZED_BOTH );
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,7 +41,9 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
+        jpanelPrincipal = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jIniciarSesion = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -51,17 +56,28 @@ public class Login extends javax.swing.JFrame {
         jPassword = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
 
         jLabel2.setText("Usuario:");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(88, 185, 87));
+        setIgnoreRepaint(true);
         setLocation(new java.awt.Point(0, 0));
         setLocationByPlatform(true);
         setUndecorated(true);
+        setResizable(false);
+
+        jpanelPrincipal.setBackground(new java.awt.Color(88, 185, 87));
+        jpanelPrincipal.setAlignmentX(0.0F);
+        jpanelPrincipal.setAlignmentY(0.0F);
+        jpanelPrincipal.setPreferredSize(null);
+        jpanelPrincipal.setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(88, 185, 87));
+
+        jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("v1.0");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -202,10 +218,6 @@ public class Login extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ontour-logo.png"))); // NOI18N
 
-        jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("v1.0");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -213,37 +225,40 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
+                        .addGap(20, 20, 20)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
+                        .addGap(160, 160, 160)
                         .addComponent(jLabel10)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(71, 71, 71))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addComponent(jLabel4)
-                .addGap(39, 39, 39)
+                .addGap(27, 27, 27)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
+
+        jpanelPrincipal.add(jPanel1, new java.awt.GridBagConstraints());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
         );
 
         pack();
@@ -266,9 +281,13 @@ public class Login extends javax.swing.JFrame {
         }else{
             try {    
                 if (controllerLogin.validarUsuario(login, clave)) {
-                    view.Home home;
-                    home = new view.Home();
+                    //view.Home home;
+                    //home = new view.Home();
+                    view.HomeNewTest home;
+                    home = new view.HomeNewTest();
+                    home.setState(home.NORMAL);
                     home.setVisible(true);
+                    
                     this.dispose();
                 }else{
                     JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o no posees los permisos suficientes.");
@@ -343,5 +362,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPasswordField jPassword;
     private javax.swing.JTextField jUserName;
+    private javax.swing.JPanel jpanelPrincipal;
     // End of variables declaration//GEN-END:variables
 }

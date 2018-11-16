@@ -8,6 +8,7 @@ package view;
 import controller.ConPaqueteViaje;
 import resources.MyIntFilter;
 import dto.Servicio;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -32,7 +34,7 @@ import org.jdatepicker.JDatePanel;
  *
  * @author luisponce
  */
-public class PaqueteNuevo extends javax.swing.JInternalFrame {
+public class PaqueteNuevoNew extends javax.swing.JPanel {
     private JTextArea descripcion;
     private JTextField origen, numPasajeros, destino;
     private JTable viajes;
@@ -41,9 +43,11 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
     private JComboBox transporte;
     private int precioTotal = 0;
     private ArrayList<Servicio> servicios = new ArrayList<Servicio>();
-    ConPaqueteViaje controllerPaqueteViaje = new ConPaqueteViaje();    
-    
-    public PaqueteNuevo() {
+    ConPaqueteViaje controllerPaqueteViaje = new ConPaqueteViaje(); 
+    /**
+     * Creates new form PaqueteNuevoNew
+     */
+    public PaqueteNuevoNew() {
         initComponents();
         descripcion = this.txtDescripcion;
         origen = this.txtOrigen;
@@ -57,7 +61,6 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         fechaIda = this.dateIda;
         fechaRegreso = this.dateRegreso;
         precio = this.lblPrecio;
-        fecha = this.lblFecha;
         transporte = this.cbTipoTransporte;
         
         this.listadoEstadia.setEnabled(false);
@@ -74,8 +77,29 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         this.btnOtraConsulta.setEnabled(false);
     }
     
-    public void clear(){
-        
+    public void limpiarTablas() {
+        DefaultTableModel model = (DefaultTableModel) this.listadoSeguros.getModel();
+        model.setColumnCount(0);
+        model.setRowCount(0);
+        model = (DefaultTableModel) this.listadoEstadia.getModel();
+        model.setColumnCount(0);
+        model.setRowCount(0);
+        model = (DefaultTableModel) this.listadoViajes.getModel();
+        model.setColumnCount(0);
+        model.setRowCount(0);
+    }
+    
+    public void activarCampos(){
+        this.listadoEstadia.setEnabled(false);
+        this.listadoSeguros.setEnabled(false);
+        this.listadoViajes.setEnabled(false);
+        this.dateIda.setEnabled(true);
+        this.dateRegreso.setEnabled(true);
+        this.btnConsultar.setEnabled(true);
+        this.cbTipoTransporte.setEnabled(true);
+        this.destino.setEnabled(true);
+        this.numPasajeros.setEnabled(true);
+        this.origen.setEnabled(true);
     }
 
     /**
@@ -87,10 +111,6 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
@@ -100,8 +120,6 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         lblPrecio = new javax.swing.JLabel();
-        lblFecha = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
@@ -125,44 +143,27 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listadoViajes = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         listadoEstadia = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         listadoSeguros = new javax.swing.JTable();
         jPanel12 = new javax.swing.JPanel();
-        jLabel48 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
+        headerPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        verPaquetesTuristicos = new javax.swing.JButton();
 
-        setBorder(null);
-        setClosable(true);
-        setIconifiable(true);
-        setAlignmentX(-5.0F);
-        setAlignmentY(-5.0F);
-        setAutoscrolls(true);
-        setPreferredSize(new java.awt.Dimension(980, 550));
-
-        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(980, 1034));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        jLabel1.setText("Paquetes");
-
-        jLabel3.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("|   Nuevo");
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel6.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -197,7 +198,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                         .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1047, 1047, 1047))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -211,8 +212,8 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                         .addComponent(jLabel30))
                     .addComponent(jLabel32))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(245, 245, 245));
@@ -226,42 +227,25 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         lblPrecio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPrecio.setText("$ 2200500");
 
-        lblFecha.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        lblFecha.setForeground(new java.awt.Color(102, 102, 102));
-        lblFecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblFecha.setText("21/10/2018");
-
-        jLabel20.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel20.setText("Fecha de creación:");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPrecio)
-                    .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPrecio)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -429,8 +413,8 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel34)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(cbTipoTransporte, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txtDestino)
+                            .addComponent(cbTipoTransporte, 0, 200, Short.MAX_VALUE)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -512,11 +496,6 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         jLabel28.setForeground(new java.awt.Color(102, 102, 102));
         jLabel28.setText("Seleccione presionando con un clic dentro del listado la opción deseada.");
 
-        jLabel45.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel45.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel45.setText("*");
-
         listadoViajes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -542,10 +521,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -553,9 +529,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel45)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel28)
                 .addContainerGap(13, Short.MAX_VALUE))
@@ -570,11 +544,6 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         jLabel29.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(102, 102, 102));
         jLabel29.setText("Seleccione presionando con un clic dentro del listado la opción deseada.");
-
-        jLabel46.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel46.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel46.setText("*");
 
         listadoEstadia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -601,10 +570,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -612,9 +578,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel46)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel29)
                 .addContainerGap(13, Short.MAX_VALUE))
@@ -629,11 +593,6 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         jLabel31.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(102, 102, 102));
         jLabel31.setText("Seleccione presionando con un clic dentro del listado la opción deseada.");
-
-        jLabel47.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel47.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel47.setText("*");
 
         listadoSeguros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -660,10 +619,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel31))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -671,20 +627,13 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel47)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel31)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jPanel12.setBackground(new java.awt.Color(245, 245, 245));
-
-        jLabel48.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel48.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel48.setText("*");
 
         btnGuardar.setBackground(new java.awt.Color(88, 185, 87));
         btnGuardar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -719,68 +668,127 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(btnGuardar)
-                .addGap(800, 800, 800)
-                .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel48))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel5))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3))
-                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabel7))
-                            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabel8))
-                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel6)))
-                .addContainerGap(16, Short.MAX_VALUE))
+        headerPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel9.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel9.setText("Paquetes");
+
+        jLabel10.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel10.setText("|   Nuevo");
+
+        jLabel22.setFont(new java.awt.Font("Open Sans", 2, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel22.setText("Completa los campos para crear un nuevo paquete turístico");
+
+        verPaquetesTuristicos.setBackground(new java.awt.Color(88, 185, 87));
+        verPaquetesTuristicos.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        verPaquetesTuristicos.setForeground(java.awt.Color.white);
+        verPaquetesTuristicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon-add.png"))); // NOI18N
+        verPaquetesTuristicos.setText("Ver paquetes turísticos");
+        verPaquetesTuristicos.setBorderPainted(false);
+        verPaquetesTuristicos.setContentAreaFilled(false);
+        verPaquetesTuristicos.setFocusPainted(false);
+        verPaquetesTuristicos.setOpaque(true);
+        verPaquetesTuristicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                verPaquetesTuristicosMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                verPaquetesTuristicosMouseEntered(evt);
+            }
+        });
+        verPaquetesTuristicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verPaquetesTuristicosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout headerPanel1Layout = new javax.swing.GroupLayout(headerPanel1);
+        headerPanel1.setLayout(headerPanel1Layout);
+        headerPanel1Layout.setHorizontalGroup(
+            headerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(headerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headerPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(headerPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(verPaquetesTuristicos, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        headerPanel1Layout.setVerticalGroup(
+            headerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(headerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9)
+                    .addComponent(verPaquetesTuristicos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel22)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLabel5))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jLabel6)))
+                        .addGap(0, 1034, Short.MAX_VALUE))
+                    .addComponent(headerPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
+            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 861, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(headerPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -798,24 +806,8 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jScrollPane2.setViewportView(jPanel1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
-        );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrigenActionPerformed
@@ -831,7 +823,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNumPasajerosActionPerformed
 
     private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
-        
+
     }//GEN-LAST:event_btnConsultarMouseClicked
 
     private void btnConsultarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseExited
@@ -851,21 +843,21 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             if (!numPasajeros.getText().isEmpty()) {
                 v_pasajeros = Integer.parseInt(numPasajeros.getText());
             }
-            
+
             String v_destino = destino.getText();
             Date v_fecha = controllerPaqueteViaje.getCalendarFecha(fechaIda);
             int v_transporte = transporte.getSelectedIndex();
-            
+
             if (v_origen.isEmpty() && v_destino.isEmpty() && v_pasajeros<=0) {
                 System.out.println("campos vacios");
             } else{
                 System.out.println("campos llenos");
             }
-            
+
             //Viajes
             DefaultTableModel modelViajes = new DefaultTableModel();
             try {
-                modelViajes = controllerPaqueteViaje.cargarViajes(v_origen, v_pasajeros, v_destino, v_fecha, v_transporte);   
+                modelViajes = controllerPaqueteViaje.cargarViajes(v_origen, v_pasajeros, v_destino, v_fecha, v_transporte);
             } catch (IOException ex) {
                 Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ParseException ex) {
@@ -874,9 +866,9 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             this.listadoViajes.setModel(modelViajes);
 
             //Estadia
-            DefaultTableModel modelEstadia = new DefaultTableModel();   
+            DefaultTableModel modelEstadia = new DefaultTableModel();
             try {
-                modelEstadia = controllerPaqueteViaje.cargarEstadia(v_destino, v_pasajeros);   
+                modelEstadia = controllerPaqueteViaje.cargarEstadia(v_destino, v_pasajeros);
             } catch (IOException ex) {
                 Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ParseException ex) {
@@ -887,7 +879,7 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             //Seguros
             DefaultTableModel modelSeguros = new DefaultTableModel();
             try {
-                modelSeguros = controllerPaqueteViaje.cargarSeguros();   
+                modelSeguros = controllerPaqueteViaje.cargarSeguros();
             } catch (IOException ex) {
                 Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ParseException ex) {
@@ -910,16 +902,152 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
+    private void dateIdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateIdaActionPerformed
+        try {
+            if (!this.controllerPaqueteViaje.fechaValida(fechaIda)) {
+                JOptionPane.showMessageDialog(this, "No puedes seleccionar una fecha pasada");
+                this.fechaIda.getModel().setValue(null);
+            }else{
+                this.fechaRegreso.getModel().setValue(null);
+                this.fechaRegreso.setEnabled(true);
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_dateIdaActionPerformed
+
+    private void dateRegresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateRegresoActionPerformed
+        try {
+            if (!this.controllerPaqueteViaje.fechaValidaRegreso(fechaRegreso, fechaIda)) {
+                JOptionPane.showMessageDialog(this, "No puedes seleccionar una fecha pasada");
+                this.fechaRegreso.getModel().setValue(null);
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_dateRegresoActionPerformed
+
+    private void btnOtraConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOtraConsultaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOtraConsultaMouseClicked
+
+    private void btnOtraConsultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOtraConsultaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOtraConsultaMouseExited
+
+    private void btnOtraConsultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOtraConsultaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOtraConsultaMouseEntered
+
+    private void btnOtraConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOtraConsultaActionPerformed
+        this.activarCampos();
+        this.limpiarTablas();
+    }//GEN-LAST:event_btnOtraConsultaActionPerformed
+
+    private void listadoViajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoViajesMouseClicked
+        // TODO add your handling code here:
+        String pprecio = this.controllerPaqueteViaje.calcularPrecio(listadoViajes, listadoEstadia, listadoSeguros);
+        this.lblPrecio.setText(pprecio);
+
+        Servicio servicio = new Servicio();
+        boolean activado = false;
+
+        if (this.servicios.isEmpty()) {
+            activado = true;
+        }else{
+            for (int i = 0; i < servicios.size(); i++) {
+                servicio = servicios.get(i);
+
+                if (servicio.getIdTipoServicio()==1 || servicio.getIdTipoServicio()==2) {
+                    servicio.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoViajes));
+                    activado = false;
+                    break;
+                } else{
+                    activado = true;
+                }
+            }
+        }
+        if (activado) {
+            Servicio servicioNuevo = new Servicio();
+            servicioNuevo.setIdTipoServicio(2);
+            if (this.transporte.getSelectedIndex()==0) {
+                servicioNuevo.setIdTipoServicio(1);
+            }
+            servicioNuevo.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoViajes));
+            this.servicios.add(servicioNuevo);
+        }
+    }//GEN-LAST:event_listadoViajesMouseClicked
+
+    private void listadoEstadiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoEstadiaMouseClicked
+        // TODO add your handling code here:
+        String pprecio = this.controllerPaqueteViaje.calcularPrecio(listadoViajes, listadoEstadia, listadoSeguros);
+        this.lblPrecio.setText(pprecio);
+
+        Servicio servicio = new Servicio();
+        boolean activado = false;
+
+        if (this.servicios.isEmpty()) {
+            activado = true;
+        }else{
+            for (int i = 0; i < servicios.size(); i++) {
+                servicio = servicios.get(i);
+                if (servicio.getIdTipoServicio()==3) {
+                    servicio.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoEstadia));
+                    activado = false;
+                    break;
+                }else{
+                    activado = true;
+                }
+            }
+        }
+        if (activado) {
+            Servicio servicioNuevo = new Servicio();
+            servicioNuevo.setIdTipoServicio(3);
+            servicioNuevo.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoEstadia));
+            this.servicios.add(servicioNuevo);
+        }
+    }//GEN-LAST:event_listadoEstadiaMouseClicked
+
+    private void listadoSegurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoSegurosMouseClicked
+        // TODO add your handling code here:
+        String pprecio = this.controllerPaqueteViaje.calcularPrecio(listadoViajes, listadoEstadia, listadoSeguros);
+        this.lblPrecio.setText(pprecio);
+
+        Servicio servicio = new Servicio();
+        boolean activado = false;
+
+        if (this.servicios.isEmpty()) {
+            activado = true;
+        }else{
+            for (int i = 0; i < servicios.size(); i++) {
+                servicio = servicios.get(i);
+                if (servicio.getIdTipoServicio()==4) {
+                    servicio.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoSeguros));
+                    activado = false;
+                    break;
+                }else{
+                    activado = true;
+                }
+            }
+        }
+        if(activado){
+            Servicio servicioNuevo = new Servicio();
+            servicioNuevo.setIdTipoServicio(4);
+            servicioNuevo.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoSeguros));
+            this.servicios.add(servicioNuevo);
+        }
+    }//GEN-LAST:event_listadoSegurosMouseClicked
+
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarMouseClicked
 
     private void btnGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseExited
-        // TODO add your handling code here:
+        this.btnGuardar.setBackground(new Color(88,185,87));
     }//GEN-LAST:event_btnGuardarMouseExited
 
     private void btnGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseEntered
-        // TODO add your handling code here:
+        this.btnGuardar.setBackground(Color.black);
     }//GEN-LAST:event_btnGuardarMouseEntered
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -947,166 +1075,54 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }else{
             JOptionPane.showMessageDialog(this, "Debes completar los campos para crear un paquete.");
         }
-        
-        
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void listadoViajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoViajesMouseClicked
+    private void verPaquetesTuristicosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verPaquetesTuristicosMouseExited
+        this.verPaquetesTuristicos.setBackground(new Color(88,185,87));
+    }//GEN-LAST:event_verPaquetesTuristicosMouseExited
+
+    private void verPaquetesTuristicosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verPaquetesTuristicosMouseEntered
+        this.verPaquetesTuristicos.setBackground(Color.black);
+    }//GEN-LAST:event_verPaquetesTuristicosMouseEntered
+
+    private void verPaquetesTuristicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPaquetesTuristicosActionPerformed
         // TODO add your handling code here:
-        String pprecio = this.controllerPaqueteViaje.calcularPrecio(listadoViajes, listadoEstadia, listadoSeguros);
-        this.lblPrecio.setText(pprecio);
-        
-        Servicio servicio = new Servicio();
-        boolean activado = false;
-        
-        if (this.servicios.isEmpty()) {
-            activado = true;
-        }else{
-            for (int i = 0; i < servicios.size(); i++) {
-                servicio = servicios.get(i);
-                
-                   if (servicio.getIdTipoServicio()==1 || servicio.getIdTipoServicio()==2) {
-                       servicio.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoViajes)); 
-                       activado = false;
-                       break;
-                   } else{
-                        activado = true;
-                   } 
-            }
-        }
-        if (activado) {
-            Servicio servicioNuevo = new Servicio();
-            servicioNuevo.setIdTipoServicio(2);
-            if (this.transporte.getSelectedIndex()==0) {
-               servicioNuevo.setIdTipoServicio(1);
-            }
-            servicioNuevo.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoViajes)); 
-            this.servicios.add(servicioNuevo);
-        }
-    }//GEN-LAST:event_listadoViajesMouseClicked
+        JPanel parent = HomeNewTest.getParentPanel();
+        PaqueteNuevoNew listado = new PaqueteNuevoNew();
+        HomeNewTest.setNewPanel(listado);
+        listado.setLocation(0, 0);
+        parent.removeAll();
+        parent.add(listado, BorderLayout.CENTER);
+        parent.repaint();
+        parent.revalidate();
+    }//GEN-LAST:event_verPaquetesTuristicosActionPerformed
 
-    private void listadoEstadiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoEstadiaMouseClicked
-        // TODO add your handling code here:
-        String pprecio = this.controllerPaqueteViaje.calcularPrecio(listadoViajes, listadoEstadia, listadoSeguros);
-        this.lblPrecio.setText(pprecio);
-        
-        Servicio servicio = new Servicio();
-        boolean activado = false;
-        
-        if (this.servicios.isEmpty()) {
-            activado = true;
-        }else{
-            for (int i = 0; i < servicios.size(); i++) {
-                servicio = servicios.get(i);
-                   if (servicio.getIdTipoServicio()==3) {
-                        servicio.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoEstadia));
-                        activado = false;
-                        break;
-                    }else{
-                        activado = true;
-                   } 
-            }
-        }
-        if (activado) {
-            Servicio servicioNuevo = new Servicio();
-            servicioNuevo.setIdTipoServicio(3);
-            servicioNuevo.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoEstadia));
-            this.servicios.add(servicioNuevo);
-        }
-    }//GEN-LAST:event_listadoEstadiaMouseClicked
-
-    private void listadoSegurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoSegurosMouseClicked
-        // TODO add your handling code here:
-        String pprecio = this.controllerPaqueteViaje.calcularPrecio(listadoViajes, listadoEstadia, listadoSeguros);
-        this.lblPrecio.setText(pprecio);
-        
-        Servicio servicio = new Servicio();
-        boolean activado = false;
-        
-        if (this.servicios.isEmpty()) {
-            activado = true;
-        }else{
-            for (int i = 0; i < servicios.size(); i++) {
-                servicio = servicios.get(i);
-                   if (servicio.getIdTipoServicio()==4) {
-                        servicio.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoSeguros));
-                        activado = false;
-                        break;
-                    }else{
-                       activado = true;
-                   }
-            }
-        }
-        if(activado){
-            Servicio servicioNuevo = new Servicio();
-            servicioNuevo.setIdTipoServicio(4);
-            servicioNuevo.setIdWs(this.controllerPaqueteViaje.obtenerWS(listadoSeguros));
-            this.servicios.add(servicioNuevo);
-        }
-    }//GEN-LAST:event_listadoSegurosMouseClicked
-
-    private void dateIdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateIdaActionPerformed
-        try {
-            if (!this.controllerPaqueteViaje.fechaValida(fechaIda)) {
-                JOptionPane.showMessageDialog(this, "No puedes seleccionar una fecha pasada");
-                this.fechaIda.getModel().setValue(null);
-            }else{
-                this.fechaRegreso.getModel().setValue(null);
-                this.fechaRegreso.setEnabled(true);
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_dateIdaActionPerformed
-
-    private void btnOtraConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOtraConsultaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnOtraConsultaMouseClicked
-
-    private void btnOtraConsultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOtraConsultaMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnOtraConsultaMouseExited
-
-    private void btnOtraConsultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOtraConsultaMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnOtraConsultaMouseEntered
-
-    private void btnOtraConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOtraConsultaActionPerformed
-        this.activarCampos();
-        this.limpiarTablas();
-    }//GEN-LAST:event_btnOtraConsultaActionPerformed
-
-    private void dateRegresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateRegresoActionPerformed
-        try {
-            if (!this.controllerPaqueteViaje.fechaValidaRegreso(fechaRegreso, fechaIda)) {
-                JOptionPane.showMessageDialog(this, "No puedes seleccionar una fecha pasada");
-                this.fechaRegreso.getModel().setValue(null);
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_dateRegresoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnOtraConsulta;
     public javax.swing.JComboBox<String> cbTipoTransporte;
+    private javax.swing.JButton crearPaqueteTuristico;
     private org.jdatepicker.JDatePanel dateIda;
     private org.jdatepicker.JDatePanel dateRegreso;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel headerPanel;
+    private javax.swing.JPanel headerPanel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -1116,17 +1132,14 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
@@ -1135,11 +1148,9 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JTable listadoEstadia;
     private javax.swing.JTable listadoSeguros;
@@ -1148,30 +1159,6 @@ public class PaqueteNuevo extends javax.swing.JInternalFrame {
     public javax.swing.JTextField txtDestino;
     public javax.swing.JTextField txtNumPasajeros;
     public javax.swing.JTextField txtOrigen;
+    private javax.swing.JButton verPaquetesTuristicos;
     // End of variables declaration//GEN-END:variables
-
-    public void limpiarTablas() {
-        DefaultTableModel model = (DefaultTableModel) this.listadoSeguros.getModel();
-        model.setColumnCount(0);
-        model.setRowCount(0);
-        model = (DefaultTableModel) this.listadoEstadia.getModel();
-        model.setColumnCount(0);
-        model.setRowCount(0);
-        model = (DefaultTableModel) this.listadoViajes.getModel();
-        model.setColumnCount(0);
-        model.setRowCount(0);
-    }
-    
-    public void activarCampos(){
-        this.listadoEstadia.setEnabled(false);
-        this.listadoSeguros.setEnabled(false);
-        this.listadoViajes.setEnabled(false);
-        this.dateIda.setEnabled(true);
-        this.dateRegreso.setEnabled(true);
-        this.btnConsultar.setEnabled(true);
-        this.cbTipoTransporte.setEnabled(true);
-        this.destino.setEnabled(true);
-        this.numPasajeros.setEnabled(true);
-        this.origen.setEnabled(true);
-    }
 }
