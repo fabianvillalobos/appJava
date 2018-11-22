@@ -14,8 +14,12 @@ import java.util.Date;
 public class Vuelo {
     private int id;
     private char aerolinea;
-    private String origen;
-    private String destino;
+    private String o_terminal;
+    private String o_ciudad;
+    private String o_pais;
+    private String d_terminal;
+    private String d_ciudad;
+    private String d_pais;
     private Date salida;
     private int duracion;
     private int capacidad;
@@ -23,11 +27,17 @@ public class Vuelo {
     private char activo;
     private int precio;
 
-    public Vuelo(int id, char aerolinea, String origen, String destino, Date salida, int duracion, int capacidad, int ocupados, char activo, int precio) {
+    public Vuelo(int id, char aerolinea, String o_terminal, String o_ciudad, String o_pais, 
+            String d_terminal, String d_ciudad, String d_pais, Date salida, int duracion, 
+            int capacidad, int ocupados, char activo, int precio) {
         this.id = id;
         this.aerolinea = aerolinea;
-        this.origen = origen;
-        this.destino = destino;
+        this.o_terminal = o_terminal;
+        this.o_ciudad = o_ciudad;
+        this.o_pais = o_pais;
+        this.d_terminal = d_terminal;
+        this.d_ciudad = d_ciudad;
+        this.d_pais = d_pais;
         this.salida = salida;
         this.duracion = duracion;
         this.capacidad = capacidad;
@@ -35,13 +45,6 @@ public class Vuelo {
         this.activo = activo;
         this.precio = precio;
     }
-
-    public Vuelo(int id, char aerolinea) {
-        this.id = id;
-        this.aerolinea = aerolinea;
-    }
-    
-    
 
     public Vuelo() {
     }
@@ -62,20 +65,52 @@ public class Vuelo {
         this.aerolinea = aerolinea;
     }
 
-    public String getOrigen() {
-        return origen;
+    public String getO_terminal() {
+        return o_terminal;
     }
 
-    public void setOrigen(String origen) {
-        this.origen = origen;
+    public void setO_terminal(String o_terminal) {
+        this.o_terminal = o_terminal;
     }
 
-    public String getDestino() {
-        return destino;
+    public String getO_ciudad() {
+        return o_ciudad;
     }
 
-    public void setDestino(String destino) {
-        this.destino = destino;
+    public void setO_ciudad(String o_ciudad) {
+        this.o_ciudad = o_ciudad;
+    }
+
+    public String getO_pais() {
+        return o_pais;
+    }
+
+    public void setO_pais(String o_pais) {
+        this.o_pais = o_pais;
+    }
+
+    public String getD_terminal() {
+        return d_terminal;
+    }
+
+    public void setD_terminal(String d_terminal) {
+        this.d_terminal = d_terminal;
+    }
+
+    public String getD_ciudad() {
+        return d_ciudad;
+    }
+
+    public void setD_ciudad(String d_ciudad) {
+        this.d_ciudad = d_ciudad;
+    }
+
+    public String getD_pais() {
+        return d_pais;
+    }
+
+    public void setD_pais(String d_pais) {
+        this.d_pais = d_pais;
     }
 
     public Date getSalida() {
@@ -125,6 +160,4 @@ public class Vuelo {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
-    
-    
 }

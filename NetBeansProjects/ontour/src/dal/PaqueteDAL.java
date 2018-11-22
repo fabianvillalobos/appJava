@@ -51,14 +51,16 @@ public class PaqueteDAL {
         return result;
     }
 
-    public List<Vuelo> getVuelos(String v_origen, int v_pasajeros, String v_destino, Date v_fecha) throws MalformedURLException, IOException, ParseException {
+    public List<Vuelo> getVuelos(String o_terminal, String o_ciudad, String o_pais, int pasajeros, 
+            String d_terminal, String d_ciudad, String d_pais, Date v_fecha) throws MalformedURLException, IOException, ParseException {
         
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String v_salida = df.format(v_fecha);
-        String laUrl = "http://ontour.somee.com/wsproveedores.asmx/json_getVuelos?origen="
-                +v_origen+"&destino="+v_destino+"&salida="+v_salida+"&pasajeros="+v_pasajeros;
-        laUrl = laUrl.replaceAll(" ", "%20");
-    
+        String laUrl = "http://ontour.somee.com/wsproveedores.asmx/json_getVuelos?origen_terminal="
+                +o_terminal+"&origen_ciudad="+o_ciudad+"&origen_pais="+o_pais
+                +"&destino_terminal="+d_terminal+"&destino_ciudad="+d_ciudad+"&destino_pais="
+                +d_pais+"&salida="+v_fecha+"&pasajeros="+pasajeros;
+        laUrl = laUrl.replaceAll(" ", "%20");     
         URL oracle = new URL(laUrl);
         
         System.out.println(oracle.toString());
@@ -72,24 +74,26 @@ public class PaqueteDAL {
             for (JsonElement obj : gsonArr) {
                 JsonObject gsonObj = obj.getAsJsonObject();
 
-                int id = gsonObj.get("id").getAsInt();
-                char aerolinea = gsonObj.get("aerolinea").getAsCharacter();
-                String origen = gsonObj.get("origen").getAsString();
-                String destino = gsonObj.get("destino").getAsString();
+                int vid = gsonObj.get("id").getAsInt();
+                char vaerolinea = gsonObj.get("aerolinea").getAsCharacter();
+                String vo_terminal = gsonObj.get("o_terminal").getAsString();
+                String vo_ciudad = gsonObj.get("o_ciudad").getAsString();
+                String vo_pais = gsonObj.get("o_pais").getAsString();
+                String vd_terminal = gsonObj.get("d_terminal").getAsString();
+                String vd_ciudad = gsonObj.get("d_ciudad").getAsString();
+                String vd_pais = gsonObj.get("d_pais").getAsString();
                 String salida = gsonObj.get("salida").getAsString();
-                
+                int vduracion = gsonObj.get("duracion").getAsInt();
+                int vcapacidad = gsonObj.get("capacidad").getAsInt();
+                int vocupados = gsonObj.get("ocupados").getAsInt();
+                char vactivo = gsonObj.get("activo").getAsCharacter();
+                int vprecio = gsonObj.get("precio").getAsInt();
                 String str = salida.replace("/Date(", "").replace(")/", ""); 
                 SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy");
                 Date d_salida = new Date(Long.parseLong(str));
-               
                 
-                int duracion = gsonObj.get("duracion").getAsInt();
-                int capacidad = gsonObj.get("capacidad").getAsInt();
-                int ocupados = gsonObj.get("ocupados").getAsInt();
-                char activo = gsonObj.get("activo").getAsCharacter();
-                int precio = gsonObj.get("precio").getAsInt();
-                
-                Vuelo vuelo = new Vuelo(id,aerolinea,origen,destino,d_salida,duracion,capacidad,ocupados,activo,precio);
+                Vuelo vuelo = new Vuelo(vid,vaerolinea,vo_terminal,vo_ciudad,vo_pais,vd_terminal,vd_ciudad,
+                        vd_pais,d_salida,vduracion,vcapacidad,vocupados,vactivo,vprecio);
                 vuelos.add(vuelo);
             }
         }
@@ -280,23 +284,26 @@ public class PaqueteDAL {
             for (JsonElement obj : gsonArr) {
                 JsonObject gsonObj = obj.getAsJsonObject();
 
-                int id = gsonObj.get("id").getAsInt();
-                char aerolinea = gsonObj.get("aerolinea").getAsCharacter();
-                String origen = gsonObj.get("origen").getAsString();
-                String destino = gsonObj.get("destino").getAsString();
+                int vid = gsonObj.get("id").getAsInt();
+                char vaerolinea = gsonObj.get("aerolinea").getAsCharacter();
+                String vo_terminal = gsonObj.get("o_terminal").getAsString();
+                String vo_ciudad = gsonObj.get("o_ciudad").getAsString();
+                String vo_pais = gsonObj.get("o_pais").getAsString();
+                String vd_terminal = gsonObj.get("d_terminal").getAsString();
+                String vd_ciudad = gsonObj.get("d_ciudad").getAsString();
+                String vd_pais = gsonObj.get("d_pais").getAsString();
                 String salida = gsonObj.get("salida").getAsString();
-                
+                int vduracion = gsonObj.get("duracion").getAsInt();
+                int vcapacidad = gsonObj.get("capacidad").getAsInt();
+                int vocupados = gsonObj.get("ocupados").getAsInt();
+                char vactivo = gsonObj.get("activo").getAsCharacter();
+                int vprecio = gsonObj.get("precio").getAsInt();
                 String str = salida.replace("/Date(", "").replace(")/", ""); 
                 SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy");
                 Date d_salida = new Date(Long.parseLong(str));
-               
-                int duracion = gsonObj.get("duracion").getAsInt();
-                int capacidad = gsonObj.get("capacidad").getAsInt();
-                int ocupados = gsonObj.get("ocupados").getAsInt();
-                char activo = gsonObj.get("activo").getAsCharacter();
-                int precio = gsonObj.get("precio").getAsInt();
                 
-                Vuelo vuelo = new Vuelo(id,aerolinea,origen,destino,d_salida,duracion,capacidad,ocupados,activo,precio);
+                Vuelo vuelo = new Vuelo(vid,vaerolinea,vo_terminal,vo_ciudad,vo_pais,vd_terminal,vd_ciudad,
+                        vd_pais,d_salida,vduracion,vcapacidad,vocupados,vactivo,vprecio);
                 vuelos.add(vuelo);
             }
         }
