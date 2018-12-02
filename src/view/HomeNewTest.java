@@ -228,7 +228,13 @@ public class HomeNewTest extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
         
-        System.exit(0);
+//        System.exit(0);
+        IniciarSesion login;
+        login = new view.IniciarSesion();
+        login.setState(login.NORMAL);
+        login.setVisible(true);
+
+        this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
