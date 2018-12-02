@@ -72,6 +72,7 @@ public class HomeNewTest extends javax.swing.JFrame {
         btnUsuarios.setText("Usuarios");
         btnUsuarios.setBorderPainted(false);
         btnUsuarios.setContentAreaFilled(false);
+        btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUsuarios.setFocusPainted(false);
         btnUsuarios.setOpaque(true);
         btnUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -98,6 +99,7 @@ public class HomeNewTest extends javax.swing.JFrame {
         btnPaquetesTuristicos.setText("Paquetes turísticos");
         btnPaquetesTuristicos.setBorderPainted(false);
         btnPaquetesTuristicos.setContentAreaFilled(false);
+        btnPaquetesTuristicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPaquetesTuristicos.setFocusPainted(false);
         btnPaquetesTuristicos.setOpaque(true);
         btnPaquetesTuristicos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -209,11 +211,12 @@ public class HomeNewTest extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPaquetesTuristicosMouseClicked
 
     private void btnPaquetesTuristicosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaquetesTuristicosMouseExited
-        btnUsuarios.setBackground(Color.black);
+        btnPaquetesTuristicos.setBackground(Color.black);
+        
     }//GEN-LAST:event_btnPaquetesTuristicosMouseExited
 
     private void btnPaquetesTuristicosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaquetesTuristicosMouseEntered
-        btnUsuarios.setBackground(new Color(91,91,91));
+        btnPaquetesTuristicos.setBackground(new Color(91,91,91));
     }//GEN-LAST:event_btnPaquetesTuristicosMouseEntered
 
     private void btnPaquetesTuristicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaquetesTuristicosActionPerformed
