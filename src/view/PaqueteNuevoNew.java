@@ -50,13 +50,13 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
     public PaqueteNuevoNew() {
         initComponents();
         descripcion = this.txtDescripcion;
-        origen = this.txtOrigen;
+        origen = this.txtOrigenTerminal;
         
         PlainDocument doc = (PlainDocument) this.txtNumPasajeros.getDocument();
         doc.setDocumentFilter(new MyIntFilter());
         
         numPasajeros = this.txtNumPasajeros;
-        destino = this.txtDestino;
+        destino = this.txtOrigenCiudad;
         viajes = this.listadoViajes;
         fechaIda = this.dateIda;
         fechaRegreso = this.dateRegreso;
@@ -68,11 +68,11 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         this.listadoViajes.setEnabled(false);
         this.servicios.clear();
         
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        Date fechaHoy = new Date();
-        String fechaahora = df.format(fechaHoy);
-        precio.setText("0");
-        fecha.setText(fechaahora);
+//        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+//        Date fechaHoy = new Date();
+//        String fechaahora = df.format(fechaHoy);
+//        precio.setText("0");
+//        fecha.setText(fechaahora);
         this.fechaRegreso.setEnabled(false);
         this.btnOtraConsulta.setEnabled(false);
     }
@@ -113,8 +113,6 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
 
         jPanel6 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
@@ -123,23 +121,24 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
-        txtOrigen = new javax.swing.JTextField();
-        jLabel34 = new javax.swing.JLabel();
+        txtOrigenTerminal = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         cbTipoTransporte = new javax.swing.JComboBox<>();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
-        txtDestino = new javax.swing.JTextField();
+        txtOrigenCiudad = new javax.swing.JTextField();
         txtNumPasajeros = new javax.swing.JTextField();
         btnConsultar = new javax.swing.JButton();
         dateIda = new org.jdatepicker.JDatePanel();
         dateRegreso = new org.jdatepicker.JDatePanel();
         btnOtraConsulta = new javax.swing.JButton();
+        txtOrigenPais = new javax.swing.JTextField();
+        txtDestinoTerminal = new javax.swing.JTextField();
+        txtDestinoCiudad = new javax.swing.JTextField();
+        txtDestinoPais = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
@@ -171,16 +170,6 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         jLabel27.setForeground(new java.awt.Color(102, 102, 102));
         jLabel27.setText("Descripción del paquete turístico");
 
-        jLabel30.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel30.setText("*");
-
-        jLabel32.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel32.setText("*");
-
         txtDescripcion.setColumns(20);
         txtDescripcion.setRows(5);
         jScrollPane3.setViewportView(txtDescripcion);
@@ -192,25 +181,15 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1047, 1047, 1047))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel27)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel30))
-                    .addComponent(jLabel32))
+                .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -258,42 +237,23 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         jLabel26.setForeground(new java.awt.Color(102, 102, 102));
         jLabel26.setText("Origen");
 
-        txtOrigen.setText("Santiago, Chile");
-        txtOrigen.setToolTipText("Santiago, Chile");
-        txtOrigen.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
-        txtOrigen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOrigenActionPerformed(evt);
+        txtOrigenTerminal.setText("Terminal");
+        txtOrigenTerminal.setToolTipText("Terminal");
+        txtOrigenTerminal.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
+        txtOrigenTerminal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtOrigenTerminalMouseClicked(evt);
             }
         });
-
-        jLabel34.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel34.setText("Destino");
 
         jLabel35.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(102, 102, 102));
         jLabel35.setText("Fecha de ida");
 
-        jLabel36.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel36.setText("*");
-
         jLabel37.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 0, 51));
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel37.setText("*");
-
-        jLabel38.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel38.setText("*");
-
-        jLabel39.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel39.setText("*");
 
         jLabel21.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(102, 102, 102));
@@ -309,12 +269,12 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         jLabel41.setForeground(new java.awt.Color(102, 102, 102));
         jLabel41.setText("Número de Pasajeros");
 
-        txtDestino.setText("Pucón, Chile");
-        txtDestino.setToolTipText("");
-        txtDestino.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
-        txtDestino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDestinoActionPerformed(evt);
+        txtOrigenCiudad.setText("Ciudad");
+        txtOrigenCiudad.setToolTipText("Ciudad");
+        txtOrigenCiudad.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
+        txtOrigenCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtOrigenCiudadMouseClicked(evt);
             }
         });
 
@@ -333,7 +293,6 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         btnConsultar.setBorderPainted(false);
         btnConsultar.setContentAreaFilled(false);
         btnConsultar.setFocusPainted(false);
-        btnConsultar.setIgnoreRepaint(true);
         btnConsultar.setOpaque(true);
         btnConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -371,7 +330,6 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         btnOtraConsulta.setBorderPainted(false);
         btnOtraConsulta.setContentAreaFilled(false);
         btnOtraConsulta.setFocusPainted(false);
-        btnOtraConsulta.setIgnoreRepaint(true);
         btnOtraConsulta.setOpaque(true);
         btnOtraConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -390,6 +348,46 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             }
         });
 
+        txtOrigenPais.setText("Pais");
+        txtOrigenPais.setToolTipText("Pais");
+        txtOrigenPais.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
+        txtOrigenPais.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtOrigenPaisMouseClicked(evt);
+            }
+        });
+
+        txtDestinoTerminal.setText("Terminal");
+        txtDestinoTerminal.setToolTipText("Terminal");
+        txtDestinoTerminal.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
+        txtDestinoTerminal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDestinoTerminalMouseClicked(evt);
+            }
+        });
+
+        txtDestinoCiudad.setText("Ciudad");
+        txtDestinoCiudad.setToolTipText("Ciudad");
+        txtDestinoCiudad.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
+        txtDestinoCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDestinoCiudadMouseClicked(evt);
+            }
+        });
+
+        txtDestinoPais.setText("Pais");
+        txtDestinoPais.setToolTipText("Pais");
+        txtDestinoPais.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
+        txtDestinoPais.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDestinoPaisMouseClicked(evt);
+            }
+        });
+
+        jLabel33.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel33.setText("Destino");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -398,33 +396,30 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnOtraConsulta))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel26)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtOrigen, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                            .addComponent(txtNumPasajeros)
-                            .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel26)
+                            .addComponent(txtOrigenTerminal)
+                            .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDestinoTerminal)
+                            .addComponent(txtNumPasajeros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel34)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtDestino)
-                            .addComponent(cbTipoTransporte, 0, 200, Short.MAX_VALUE)))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtOrigenCiudad)
+                            .addComponent(cbTipoTransporte, 0, 200, Short.MAX_VALUE)
+                            .addComponent(txtDestinoCiudad))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnOtraConsulta)))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel35)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtOrigenPais)
+                            .addComponent(txtDestinoPais, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
+                    .addComponent(jLabel33))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel35)
                     .addComponent(dateIda, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,9 +435,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel40)
-                            .addComponent(jLabel39))
+                        .addComponent(jLabel40)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(dateRegreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -456,34 +449,39 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                                         .addComponent(jLabel26)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                                        .addComponent(txtOrigenTerminal, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtOrigenCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtOrigenPais, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addGap(41, 41, 41)
                                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel36))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtDestinoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtDestinoPais, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel33)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbTipoTransporte))
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addComponent(jLabel41)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtNumPasajeros, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
+                                        .addComponent(txtDestinoTerminal, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(21, 21, 21)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnOtraConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel41))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addComponent(txtNumPasajeros, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(49, 49, 49)
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnOtraConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(cbTipoTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel35)
-                                    .addComponent(jLabel38))
+                                .addComponent(jLabel35)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(dateIda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(15, Short.MAX_VALUE))))
+                        .addContainerGap(29, Short.MAX_VALUE))))
         );
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -532,7 +530,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel28)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -581,7 +579,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel29)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -642,7 +640,6 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         btnGuardar.setBorderPainted(false);
         btnGuardar.setContentAreaFilled(false);
         btnGuardar.setFocusPainted(false);
-        btnGuardar.setIgnoreRepaint(true);
         btnGuardar.setOpaque(true);
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -675,7 +672,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         headerPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -752,7 +749,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 1202, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -777,7 +774,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 861, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -809,140 +806,6 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
                 .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrigenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrigenActionPerformed
-
-    private void txtDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDestinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDestinoActionPerformed
-
-    private void txtNumPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumPasajerosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumPasajerosActionPerformed
-
-    private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
-
-    }//GEN-LAST:event_btnConsultarMouseClicked
-
-    private void btnConsultarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseExited
-        // TODO add your handling code here:
-        btnConsultar.setBackground(new Color(88,185,87));
-    }//GEN-LAST:event_btnConsultarMouseExited
-
-    private void btnConsultarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseEntered
-        // TODO add your handling code here:
-        btnConsultar.setBackground(Color.black);
-    }//GEN-LAST:event_btnConsultarMouseEntered
-
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        try {
-            String v_origen = origen.getText();
-            int v_pasajeros = 0;
-            if (!numPasajeros.getText().isEmpty()) {
-                v_pasajeros = Integer.parseInt(numPasajeros.getText());
-            }
-
-            String v_destino = destino.getText();
-            Date v_fecha = controllerPaqueteViaje.getCalendarFecha(fechaIda);
-            int v_transporte = transporte.getSelectedIndex();
-
-            if (v_origen.isEmpty() && v_destino.isEmpty() && v_pasajeros<=0) {
-                System.out.println("campos vacios");
-            } else{
-                System.out.println("campos llenos");
-            }
-
-            //Viajes
-            DefaultTableModel modelViajes = new DefaultTableModel();
-            try {
-                modelViajes = controllerPaqueteViaje.cargarViajes(v_destino, v_origen, v_origen, v_pasajeros, v_destino, v_origen, v_origen, v_fecha, v_transporte);
-            } catch (IOException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ParseException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            this.listadoViajes.setModel(modelViajes);
-
-            //Estadia
-            DefaultTableModel modelEstadia = new DefaultTableModel();
-            try {
-                modelEstadia = controllerPaqueteViaje.cargarEstadia(v_destino, v_pasajeros);
-            } catch (IOException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ParseException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            this.listadoEstadia.setModel(modelEstadia);
-
-            //Seguros
-            DefaultTableModel modelSeguros = new DefaultTableModel();
-            try {
-                modelSeguros = controllerPaqueteViaje.cargarSeguros();
-            } catch (IOException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ParseException ex) {
-                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            this.listadoSeguros.setModel(modelSeguros);
-            this.listadoEstadia.setEnabled(true);
-            this.listadoSeguros.setEnabled(true);
-            this.listadoViajes.setEnabled(true);
-            this.dateIda.setEnabled(false);
-            this.dateRegreso.setEnabled(false);
-            this.btnConsultar.setEnabled(false);
-            this.cbTipoTransporte.setEnabled(false);
-            this.destino.setEnabled(false);
-            this.numPasajeros.setEnabled(false);
-            this.origen.setEnabled(false);
-            this.btnOtraConsulta.setEnabled(true);
-        } catch (ParseException ex) {
-            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnConsultarActionPerformed
-
-    private void dateIdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateIdaActionPerformed
-        try {
-            if (!this.controllerPaqueteViaje.fechaValida(fechaIda)) {
-                JOptionPane.showMessageDialog(this, "No puedes seleccionar una fecha pasada");
-                this.fechaIda.getModel().setValue(null);
-            }else{
-                this.fechaRegreso.getModel().setValue(null);
-                this.fechaRegreso.setEnabled(true);
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_dateIdaActionPerformed
-
-    private void dateRegresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateRegresoActionPerformed
-        try {
-            if (!this.controllerPaqueteViaje.fechaValidaRegreso(fechaRegreso, fechaIda)) {
-                JOptionPane.showMessageDialog(this, "No puedes seleccionar una fecha pasada");
-                this.fechaRegreso.getModel().setValue(null);
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_dateRegresoActionPerformed
-
-    private void btnOtraConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOtraConsultaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnOtraConsultaMouseClicked
-
-    private void btnOtraConsultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOtraConsultaMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnOtraConsultaMouseExited
-
-    private void btnOtraConsultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOtraConsultaMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnOtraConsultaMouseEntered
-
-    private void btnOtraConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOtraConsultaActionPerformed
-        this.activarCampos();
-        this.limpiarTablas();
-    }//GEN-LAST:event_btnOtraConsultaActionPerformed
 
     private void listadoViajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoViajesMouseClicked
         // TODO add your handling code here:
@@ -1102,37 +965,178 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         parent.revalidate();
     }//GEN-LAST:event_verPaquetesTuristicosActionPerformed
 
+    private void txtDestinoPaisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDestinoPaisMouseClicked
+        txtDestinoPais.setText("");
+    }//GEN-LAST:event_txtDestinoPaisMouseClicked
+
+    private void txtDestinoCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDestinoCiudadMouseClicked
+        txtDestinoCiudad.setText("");
+    }//GEN-LAST:event_txtDestinoCiudadMouseClicked
+
+    private void txtDestinoTerminalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDestinoTerminalMouseClicked
+        txtDestinoTerminal.setText("");
+    }//GEN-LAST:event_txtDestinoTerminalMouseClicked
+
+    private void txtOrigenPaisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOrigenPaisMouseClicked
+        txtOrigenPais.setText("");
+    }//GEN-LAST:event_txtOrigenPaisMouseClicked
+
+    private void btnOtraConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOtraConsultaActionPerformed
+        this.activarCampos();
+        this.limpiarTablas();
+    }//GEN-LAST:event_btnOtraConsultaActionPerformed
+
+    private void btnOtraConsultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOtraConsultaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOtraConsultaMouseEntered
+
+    private void btnOtraConsultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOtraConsultaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOtraConsultaMouseExited
+
+    private void btnOtraConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOtraConsultaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOtraConsultaMouseClicked
+
+    private void dateRegresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateRegresoActionPerformed
+        try {
+            if (!this.controllerPaqueteViaje.fechaValidaRegreso(fechaRegreso, fechaIda)) {
+                JOptionPane.showMessageDialog(this, "No puedes seleccionar una fecha pasada");
+                this.fechaRegreso.getModel().setValue(null);
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_dateRegresoActionPerformed
+
+    private void dateIdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateIdaActionPerformed
+        try {
+            if (!this.controllerPaqueteViaje.fechaValida(fechaIda)) {
+                JOptionPane.showMessageDialog(this, "No puedes seleccionar una fecha pasada");
+                this.fechaIda.getModel().setValue(null);
+            }else{
+                this.fechaRegreso.getModel().setValue(null);
+                this.fechaRegreso.setEnabled(true);
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_dateIdaActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        try {
+            String v_origen = origen.getText();
+            int v_pasajeros = 0;
+            if (!numPasajeros.getText().isEmpty()) {
+                v_pasajeros = Integer.parseInt(numPasajeros.getText());
+            }
+
+            String v_destino = destino.getText();
+            Date v_fecha = controllerPaqueteViaje.getCalendarFecha(fechaIda);
+            int v_transporte = transporte.getSelectedIndex();
+
+            if (v_origen.isEmpty() && v_destino.isEmpty() && v_pasajeros<=0) {
+                System.out.println("campos vacios");
+            } else{
+                System.out.println("campos llenos");
+            }
+
+            //Viajes
+            DefaultTableModel modelViajes = new DefaultTableModel();
+            try {
+                modelViajes = controllerPaqueteViaje.cargarViajes(v_destino, v_origen, v_origen, v_pasajeros, v_destino, v_origen, v_origen, v_fecha, v_transporte);
+            } catch (IOException ex) {
+                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.listadoViajes.setModel(modelViajes);
+
+            //Estadia
+            DefaultTableModel modelEstadia = new DefaultTableModel();
+            try {
+                modelEstadia = controllerPaqueteViaje.cargarEstadia(v_destino, v_pasajeros);
+            } catch (IOException ex) {
+                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.listadoEstadia.setModel(modelEstadia);
+
+            //Seguros
+            DefaultTableModel modelSeguros = new DefaultTableModel();
+            try {
+                modelSeguros = controllerPaqueteViaje.cargarSeguros();
+            } catch (IOException ex) {
+                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.listadoSeguros.setModel(modelSeguros);
+            this.listadoEstadia.setEnabled(true);
+            this.listadoSeguros.setEnabled(true);
+            this.listadoViajes.setEnabled(true);
+            this.dateIda.setEnabled(false);
+            this.dateRegreso.setEnabled(false);
+            this.btnConsultar.setEnabled(false);
+            this.cbTipoTransporte.setEnabled(false);
+            this.destino.setEnabled(false);
+            this.numPasajeros.setEnabled(false);
+            this.origen.setEnabled(false);
+            this.btnOtraConsulta.setEnabled(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnConsultarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseEntered
+        // TODO add your handling code here:
+        btnConsultar.setBackground(Color.black);
+    }//GEN-LAST:event_btnConsultarMouseEntered
+
+    private void btnConsultarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseExited
+        // TODO add your handling code here:
+        btnConsultar.setBackground(new Color(88,185,87));
+    }//GEN-LAST:event_btnConsultarMouseExited
+
+    private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
+
+    }//GEN-LAST:event_btnConsultarMouseClicked
+
+    private void txtNumPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumPasajerosActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txtNumPasajerosActionPerformed
+
+    private void txtOrigenCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOrigenCiudadMouseClicked
+        txtOrigenCiudad.setText("");
+    }//GEN-LAST:event_txtOrigenCiudadMouseClicked
+
+    private void txtOrigenTerminalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOrigenTerminalMouseClicked
+        txtOrigenTerminal.setText("");
+    }//GEN-LAST:event_txtOrigenTerminalMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnOtraConsulta;
-    public javax.swing.JComboBox<String> cbTipoTransporte;
-    private javax.swing.JButton crearPaqueteTuristico;
+    private javax.swing.JComboBox<String> cbTipoTransporte;
     private org.jdatepicker.JDatePanel dateIda;
     private org.jdatepicker.JDatePanel dateRegreso;
-    private javax.swing.JPanel headerPanel;
     private javax.swing.JPanel headerPanel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
@@ -1156,9 +1160,13 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
     private javax.swing.JTable listadoSeguros;
     private javax.swing.JTable listadoViajes;
     private javax.swing.JTextArea txtDescripcion;
-    public javax.swing.JTextField txtDestino;
-    public javax.swing.JTextField txtNumPasajeros;
-    public javax.swing.JTextField txtOrigen;
+    private javax.swing.JTextField txtDestinoCiudad;
+    private javax.swing.JTextField txtDestinoPais;
+    private javax.swing.JTextField txtDestinoTerminal;
+    private javax.swing.JTextField txtNumPasajeros;
+    private javax.swing.JTextField txtOrigenCiudad;
+    private javax.swing.JTextField txtOrigenPais;
+    private javax.swing.JTextField txtOrigenTerminal;
     private javax.swing.JButton verPaquetesTuristicos;
     // End of variables declaration//GEN-END:variables
 }

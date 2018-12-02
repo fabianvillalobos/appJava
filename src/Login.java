@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import view.Home;
-
+import view.IniciarSesion;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -22,7 +22,6 @@ import view.Home;
  */
 public class Login extends javax.swing.JFrame {
     //private view.home home;
-    private ConLogin controllerLogin = new ConLogin();
     /**
      * Creates new form main
      */
@@ -274,30 +273,6 @@ public class Login extends javax.swing.JFrame {
 
     private void jIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIniciarSesionMouseClicked
 
-        String login = this.jUserName.getText();
-        String clave = new String(this.jPassword.getPassword());
-        if (login.isEmpty() || clave.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Debes completar los campos para poder ingresar");
-        }else{
-            try {    
-                if (controllerLogin.validarUsuario(login, clave)) {
-                    //view.Home home;
-                    //home = new view.Home();
-                    view.HomeNewTest home;
-                    home = new view.HomeNewTest();
-                    home.setState(home.NORMAL);
-                    home.setVisible(true);
-                    
-                    this.dispose();
-                }else{
-                    JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o no posees los permisos suficientes.");
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }    
-        }
     }//GEN-LAST:event_jIniciarSesionMouseClicked
 
     private void jIniciarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIniciarSesionMouseEntered
@@ -341,7 +316,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new IniciarSesion().setVisible(true);
             }
         });
     }

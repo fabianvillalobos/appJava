@@ -112,10 +112,10 @@ public class PaqueteDAL {
         String fecha = df.format(v_salida);
         String laUrl = "http://ontour.somee.com/wsproveedores.asmx/json_getBuses?origen_terminal="
                 + o_terminal + "&origen_ciudad=" + o_ciudad + "&origen_pais=" + o_pais + "&destino_terminal=" + d_terminal
-                + "&destino_ciudad=" + d_ciudad + "&destino_pais=" + d_pais + "&salida=" + v_salida + "&pasajeros="
+                + "&destino_ciudad=" + d_ciudad + "&destino_pais=" + d_pais + "&salida=" + fecha + "&pasajeros="
                 + v_pasajeros;
         laUrl = laUrl.replaceAll(" ", "%20");
-
+        
         URL oracle = new URL(laUrl);
 
         System.out.println(oracle.toString());

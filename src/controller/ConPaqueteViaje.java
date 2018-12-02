@@ -158,10 +158,10 @@ public class ConPaqueteViaje implements ActionListener {
         String col[] = {"ID", "Nombre", "Direccion", "Ciudad", "Pais", "Precio", "Servicios"};
         DefaultTableModel model = new DefaultTableModel(col, 0);
 
-        String v_ciudad = v_destino.substring(0, v_destino.indexOf(","));
-        String v_pais = v_destino.substring(v_destino.lastIndexOf(',') + 1).trim();
+//        String v_ciudad = v_destino.substring(0, v_destino.indexOf(","));
+//        String v_pais = v_destino.substring(v_destino.lastIndexOf(',') + 1).trim();
 
-        List<Alojamiento> alojamientos = this.paqueteDAL.getAlojamientos(v_ciudad, v_pais, v_pasajeros);
+        List<Alojamiento> alojamientos = this.paqueteDAL.getAlojamientos(v_destino, v_destino, v_pasajeros);
 
         for (int i = 0; i < alojamientos.size(); i++) {
             int id = alojamientos.get(i).getId();
