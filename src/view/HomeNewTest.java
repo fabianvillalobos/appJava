@@ -212,6 +212,7 @@ public class HomeNewTest extends javax.swing.JFrame {
 
     private void btnPaquetesTuristicosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaquetesTuristicosMouseExited
         btnPaquetesTuristicos.setBackground(Color.black);
+        
     }//GEN-LAST:event_btnPaquetesTuristicosMouseExited
 
     private void btnPaquetesTuristicosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaquetesTuristicosMouseEntered
