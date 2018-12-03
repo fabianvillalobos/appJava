@@ -37,7 +37,6 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import org.jdatepicker.JDatePanel;
 
-
 /**
  *
  * @author luisponce
@@ -94,7 +93,7 @@ public class ConPaqueteViaje implements ActionListener {
             String d_terminal, String d_ciudad, String d_pais, Date v_fecha, int v_transporte) throws IOException, MalformedURLException, ParseException {
         if (v_transporte == 0) {
             //Vuelo
-            String col[] = {"ID", "Aerolinea", "Terminal Salida", "Ciudad, Pais", "Terminal Llegada", "Ciudad, Pais", "Hora", "Precio"};
+            String col[] = {"ID", "Aerolinea", "Terminal Salida", "Ciudad", "Pais", "Terminal Llegada", "Ciudad", "Pais", "Hora", "Precio"};
             DefaultTableModel model = new DefaultTableModel(col, 0);
 
             List<Vuelo> vuelos = this.paqueteDAL.getVuelos(o_terminal, o_ciudad, o_pais, v_pasajeros,
@@ -103,7 +102,7 @@ public class ConPaqueteViaje implements ActionListener {
                 for (int i = 0; i < vuelos.size(); i++) {
                     int vid = vuelos.get(i).getId();
                     char vaerolinea = vuelos.get(i).getAerolinea();
-                    String vo_terminal = vuelos.get(i).getD_terminal();
+                    String vo_terminal = vuelos.get(i).getO_terminal();
                     String vo_ciudad = vuelos.get(i).getO_ciudad();
                     String vo_pais = vuelos.get(i).getO_pais();
                     String vd_terminal = vuelos.get(i).getD_terminal();
@@ -114,8 +113,7 @@ public class ConPaqueteViaje implements ActionListener {
                     int vocupados = vuelos.get(i).getOcupados();
                     char vactivo = vuelos.get(i).getActivo();
                     int vprecio = vuelos.get(i).getPrecio();
-                    Object[] data = {vid, vaerolinea, vo_terminal, vo_ciudad + ", "
-                        + vo_pais, vd_terminal, vd_ciudad + ", " + vd_pais, vduracion, vprecio};
+                    Object[] data = {vid, vaerolinea, vo_terminal, vo_ciudad, vo_pais, vd_terminal, vd_ciudad, vd_pais, vduracion, vprecio};
                     model.addRow(data);
                 }
             } else {
@@ -125,14 +123,14 @@ public class ConPaqueteViaje implements ActionListener {
             return model;
         } else {
             //Buses
-            String col[] = {"ID", "Terminal Salida", "Ciudad, Pais", "Terminal Llegada", "Ciudad, Pais", "Hora", "Precio"};
+            String col[] = {"ID", "Terminal Salida", "Ciudad", "Pais", "Terminal Llegada", "Ciudad", "Pais", "Hora", "Precio"};
             DefaultTableModel model = new DefaultTableModel(col, 0);
 
             List<Bus> buses = this.paqueteDAL.getBuses(o_terminal, o_ciudad, o_pais, d_terminal, d_ciudad, d_pais, v_fecha, v_pasajeros);
 
             for (int i = 0; i < buses.size(); i++) {
                 int id = buses.get(i).getId();
-                String bo_terminal = buses.get(i).getD_terminal();
+                String bo_terminal = buses.get(i).getO_terminal();
                 String bo_ciudad = buses.get(i).getO_ciudad();
                 String bo_pais = buses.get(i).getO_pais();
                 String bd_terminal = buses.get(i).getD_terminal();
@@ -144,24 +142,23 @@ public class ConPaqueteViaje implements ActionListener {
                 char bactivo = buses.get(i).getActivo();
                 int bprecio = buses.get(i).getPrecio();
 
-                Object[] data = {id, bo_terminal, bo_ciudad + ", "
-                    + bo_pais, bd_terminal, bd_ciudad + ", " + bd_pais, bduracion, bprecio};
+                Object[] data = {id, bo_terminal, bo_ciudad, bo_pais, bd_terminal, bd_ciudad, bd_pais, bduracion, bprecio};
                 System.out.println(id + bo_terminal + bo_ciudad + bo_pais + bd_terminal + bd_ciudad + bd_pais + bduracion + bprecio);
                 model.addRow(data);
             }
+
             return model;
         }
     }
 
-    public DefaultTableModel cargarEstadia(String v_destino, int v_pasajeros) throws IOException, MalformedURLException, ParseException {
+    public DefaultTableModel cargarEstadia(String d_ciudad, String d_pais, int v_pasajeros) throws IOException, MalformedURLException, ParseException {
         //Estadia
         String col[] = {"ID", "Nombre", "Direccion", "Ciudad", "Pais", "Precio", "Servicios"};
         DefaultTableModel model = new DefaultTableModel(col, 0);
 
 //        String v_ciudad = v_destino.substring(0, v_destino.indexOf(","));
 //        String v_pais = v_destino.substring(v_destino.lastIndexOf(',') + 1).trim();
-
-        List<Alojamiento> alojamientos = this.paqueteDAL.getAlojamientos(v_destino, v_destino, v_pasajeros);
+        List<Alojamiento> alojamientos = this.paqueteDAL.getAlojamientos(d_ciudad, d_pais, v_pasajeros);
 
         for (int i = 0; i < alojamientos.size(); i++) {
             int id = alojamientos.get(i).getId();
@@ -309,7 +306,7 @@ public class ConPaqueteViaje implements ActionListener {
 
     public DefaultTableModel getVueloConId(int idWs) throws IOException {
         //Vuelo
-        String col[] = {"ID", "Aerolinea", "Terminal Salida", "Ciudad, Pais", "Terminal Llegada", "Ciudad, Pais", "Hora", "Precio"};
+        String col[] = {"ID", "Aerolinea", "Terminal Salida", "Ciudad", "Pais", "Terminal Llegada", "Ciudad", "Pais", "Hora", "Precio"};
         DefaultTableModel model = new DefaultTableModel(col, 0);
 
         List<Vuelo> vuelos = this.paqueteDAL.getVuelosConId(idWs);
@@ -339,7 +336,7 @@ public class ConPaqueteViaje implements ActionListener {
     }
 
     public DefaultTableModel getBusConId(int idWs) throws IOException {
-        String col[] = {"ID", "Terminal Salida", "Ciudad, Pais", "Terminal Llegada", "Ciudad, Pais", "Hora", "Precio"};
+        String col[] = {"ID", "Terminal Salida", "Ciudad", "Pais", "Terminal Llegada", "Ciudad", "Pais", "Hora", "Precio"};
 
         DefaultTableModel model = new DefaultTableModel(col, 0);
         List<Bus> buses = this.paqueteDAL.getBusesConId(idWs);

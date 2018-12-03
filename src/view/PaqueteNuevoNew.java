@@ -36,7 +36,7 @@ import org.jdatepicker.JDatePanel;
  */
 public class PaqueteNuevoNew extends javax.swing.JPanel {
     private JTextArea descripcion;
-    private JTextField origen, numPasajeros, destino;
+    private JTextField oTerminal, oCiudad, oPais, numPasajeros, dTerminal, dCiudad, dPais;
     private JTable viajes;
     private JDatePanel fechaIda, fechaRegreso;
     private JLabel precio, fecha;
@@ -50,13 +50,17 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
     public PaqueteNuevoNew() {
         initComponents();
         descripcion = this.txtDescripcion;
-        origen = this.txtOrigenTerminal;
+        oTerminal = this.txtOrigenTerminal;
+        oCiudad = this.txtOrigenCiudad;
+        oPais = this.txtOrigenPais;
+        dTerminal = this.txtDestinoTerminal;
+        dCiudad = this.txtDestinoCiudad;
+        dPais = this.txtDestinoPais;
         
         PlainDocument doc = (PlainDocument) this.txtNumPasajeros.getDocument();
         doc.setDocumentFilter(new MyIntFilter());
         
-        numPasajeros = this.txtNumPasajeros;
-        destino = this.txtOrigenCiudad;
+        numPasajeros = this.txtNumPasajeros;        
         viajes = this.listadoViajes;
         fechaIda = this.dateIda;
         fechaRegreso = this.dateRegreso;
@@ -97,9 +101,13 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         this.dateRegreso.setEnabled(true);
         this.btnConsultar.setEnabled(true);
         this.cbTipoTransporte.setEnabled(true);
-        this.destino.setEnabled(true);
+        this.dTerminal.setEnabled(true);
+        this.dCiudad.setEnabled(true);
+        this.dPais.setEnabled(true);
         this.numPasajeros.setEnabled(true);
-        this.origen.setEnabled(true);
+        this.oTerminal.setEnabled(true);
+        this.oCiudad.setEnabled(true);
+        this.oPais.setEnabled(true);
     }
 
     /**
@@ -139,6 +147,12 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         txtDestinoCiudad = new javax.swing.JTextField();
         txtDestinoPais = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
@@ -237,7 +251,6 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         jLabel26.setForeground(new java.awt.Color(102, 102, 102));
         jLabel26.setText("Origen");
 
-        txtOrigenTerminal.setText("Terminal");
         txtOrigenTerminal.setToolTipText("Terminal");
         txtOrigenTerminal.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtOrigenTerminal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -269,7 +282,6 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         jLabel41.setForeground(new java.awt.Color(102, 102, 102));
         jLabel41.setText("Número de Pasajeros");
 
-        txtOrigenCiudad.setText("Ciudad");
         txtOrigenCiudad.setToolTipText("Ciudad");
         txtOrigenCiudad.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtOrigenCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -298,11 +310,11 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnConsultarMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnConsultarMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnConsultarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnConsultarMouseExited(evt);
             }
         });
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -348,7 +360,6 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             }
         });
 
-        txtOrigenPais.setText("Pais");
         txtOrigenPais.setToolTipText("Pais");
         txtOrigenPais.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtOrigenPais.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -357,7 +368,6 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             }
         });
 
-        txtDestinoTerminal.setText("Terminal");
         txtDestinoTerminal.setToolTipText("Terminal");
         txtDestinoTerminal.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtDestinoTerminal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -366,7 +376,6 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             }
         });
 
-        txtDestinoCiudad.setText("Ciudad");
         txtDestinoCiudad.setToolTipText("Ciudad");
         txtDestinoCiudad.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtDestinoCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -375,7 +384,6 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             }
         });
 
-        txtDestinoPais.setText("Pais");
         txtDestinoPais.setToolTipText("Pais");
         txtDestinoPais.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtDestinoPais.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -388,6 +396,30 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         jLabel33.setForeground(new java.awt.Color(102, 102, 102));
         jLabel33.setText("Destino");
 
+        jLabel30.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel30.setText("Ciudad");
+
+        jLabel32.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel32.setText("Terminal");
+
+        jLabel34.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel34.setText("Pais");
+
+        jLabel36.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel36.setText("Terminal");
+
+        jLabel38.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel38.setText("Ciudad");
+
+        jLabel39.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel39.setText("Pais");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -399,25 +431,38 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
                         .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnOtraConsulta))
+                    .addComponent(jLabel33)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel26)
-                            .addComponent(txtOrigenTerminal)
-                            .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDestinoTerminal)
-                            .addComponent(txtNumPasajeros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtOrigenTerminal, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel41, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDestinoTerminal, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNumPasajeros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                            .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOrigenCiudad)
-                            .addComponent(cbTipoTransporte, 0, 200, Short.MAX_VALUE)
-                            .addComponent(txtDestinoCiudad))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtOrigenPais)
-                            .addComponent(txtDestinoPais, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
-                    .addComponent(jLabel33))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtOrigenCiudad)
+                                        .addComponent(cbTipoTransporte, 0, 200, Short.MAX_VALUE)
+                                        .addComponent(txtDestinoCiudad))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtOrigenPais)
+                                        .addComponent(txtDestinoPais, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel35)
                     .addComponent(dateIda, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -455,20 +500,32 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
                                         .addComponent(txtOrigenPais, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addGap(41, 41, 41)
-                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(txtDestinoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtDestinoPais, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel33)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtDestinoTerminal, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(21, 21, 21)
+                                        .addComponent(txtDestinoTerminal, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel36)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addGap(9, 9, 9)
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel30)
+                                            .addComponent(jLabel32)
+                                            .addComponent(jLabel34))
+                                        .addGap(33, 33, 33)
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(txtDestinoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtDestinoPais, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel38)
+                                            .addComponent(jLabel39))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel41))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel8Layout.createSequentialGroup()
                                         .addComponent(txtNumPasajeros, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -481,7 +538,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
                                 .addComponent(jLabel35)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(dateIda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(29, Short.MAX_VALUE))))
+                        .addContainerGap(60, Short.MAX_VALUE))))
         );
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -672,7 +729,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         headerPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -921,8 +978,12 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
                 if (controllerPaqueteViaje.nuevoPaquete(descripcion.getText(),v_precio,this.servicios)) {
                     JOptionPane.showMessageDialog(this, "El paquete ha sido guardado");
                     this.limpiarTablas();
-                    this.origen.setText("");
-                    this.destino.setText("");
+                    this.oTerminal.setText("");
+                    this.oCiudad.setText("");
+                    this.oPais.setText("");
+                    this.dTerminal.setText("");
+                    this.dCiudad.setText("");
+                    this.dPais.setText("");
                     this.numPasajeros.setText("");
                     this.fechaRegreso.getModel().setValue(null);
                     this.fechaIda.getModel().setValue(null);
@@ -1025,18 +1086,24 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         try {
-            String v_origen = origen.getText();
+            String o_terminal = txtOrigenTerminal.getText();
+            String o_ciudad= txtOrigenCiudad.getText();
+            String o_pais= txtOrigenPais.getText();
+            String d_terminal = txtDestinoTerminal.getText();
+            String d_ciudad = txtDestinoCiudad.getText();
+            String d_pais = txtDestinoPais.getText();
+            
             int v_pasajeros = 0;
             if (!numPasajeros.getText().isEmpty()) {
                 v_pasajeros = Integer.parseInt(numPasajeros.getText());
             }
-
-            String v_destino = destino.getText();
+            
             Date v_fecha = controllerPaqueteViaje.getCalendarFecha(fechaIda);
             int v_transporte = transporte.getSelectedIndex();
 
-            if (v_origen.isEmpty() && v_destino.isEmpty() && v_pasajeros<=0) {
-                System.out.println("campos vacios");
+            if (o_terminal.isEmpty() || o_ciudad.isEmpty() || o_pais.isEmpty() || d_terminal.isEmpty() || 
+                    d_ciudad.isEmpty() || d_pais.isEmpty() || v_pasajeros<=0) {
+                JOptionPane.showMessageDialog(this, "Consultar viajes no debe tener campos vacios");                
             } else{
                 System.out.println("campos llenos");
             }
@@ -1044,7 +1111,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             //Viajes
             DefaultTableModel modelViajes = new DefaultTableModel();
             try {
-                modelViajes = controllerPaqueteViaje.cargarViajes(v_destino, v_origen, v_origen, v_pasajeros, v_destino, v_origen, v_origen, v_fecha, v_transporte);
+                modelViajes = controllerPaqueteViaje.cargarViajes(o_terminal, o_ciudad, o_pais, v_pasajeros, d_terminal, d_ciudad, d_pais, v_fecha, v_transporte);
             } catch (IOException ex) {
                 Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ParseException ex) {
@@ -1055,7 +1122,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             //Estadia
             DefaultTableModel modelEstadia = new DefaultTableModel();
             try {
-                modelEstadia = controllerPaqueteViaje.cargarEstadia(v_destino, v_pasajeros);
+                modelEstadia = controllerPaqueteViaje.cargarEstadia(d_ciudad, d_pais, v_pasajeros);
             } catch (IOException ex) {
                 Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ParseException ex) {
@@ -1080,9 +1147,13 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             this.dateRegreso.setEnabled(false);
             this.btnConsultar.setEnabled(false);
             this.cbTipoTransporte.setEnabled(false);
-            this.destino.setEnabled(false);
+            this.oTerminal.setEnabled(false);
+            this.oCiudad.setEnabled(false);
+            this.oPais.setEnabled(false);
             this.numPasajeros.setEnabled(false);
-            this.origen.setEnabled(false);
+            this.dTerminal.setEnabled(false);
+            this.dCiudad.setEnabled(false);
+            this.dPais.setEnabled(false);
             this.btnOtraConsulta.setEnabled(true);
         } catch (ParseException ex) {
             Logger.getLogger(PaqueteNuevo.class.getName()).log(Level.SEVERE, null, ex);
@@ -1121,7 +1192,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnOtraConsulta;
-    private javax.swing.JComboBox<String> cbTipoTransporte;
+    public javax.swing.JComboBox<String> cbTipoTransporte;
     private org.jdatepicker.JDatePanel dateIda;
     private org.jdatepicker.JDatePanel dateRegreso;
     private javax.swing.JPanel headerPanel1;
@@ -1133,10 +1204,16 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
@@ -1160,13 +1237,13 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
     private javax.swing.JTable listadoSeguros;
     private javax.swing.JTable listadoViajes;
     private javax.swing.JTextArea txtDescripcion;
-    private javax.swing.JTextField txtDestinoCiudad;
-    private javax.swing.JTextField txtDestinoPais;
-    private javax.swing.JTextField txtDestinoTerminal;
-    private javax.swing.JTextField txtNumPasajeros;
-    private javax.swing.JTextField txtOrigenCiudad;
-    private javax.swing.JTextField txtOrigenPais;
-    private javax.swing.JTextField txtOrigenTerminal;
+    public javax.swing.JTextField txtDestinoCiudad;
+    public javax.swing.JTextField txtDestinoPais;
+    public javax.swing.JTextField txtDestinoTerminal;
+    public javax.swing.JTextField txtNumPasajeros;
+    public javax.swing.JTextField txtOrigenCiudad;
+    public javax.swing.JTextField txtOrigenPais;
+    public javax.swing.JTextField txtOrigenTerminal;
     private javax.swing.JButton verPaquetesTuristicos;
     // End of variables declaration//GEN-END:variables
 }

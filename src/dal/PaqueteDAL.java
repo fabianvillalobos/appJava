@@ -59,7 +59,7 @@ public class PaqueteDAL {
         String laUrl = "http://ontour.somee.com/wsproveedores.asmx/json_getVuelos?origen_terminal="
                 + o_terminal + "&origen_ciudad=" + o_ciudad + "&origen_pais=" + o_pais
                 + "&destino_terminal=" + d_terminal + "&destino_ciudad=" + d_ciudad + "&destino_pais="
-                + d_pais + "&salida=" + v_fecha + "&pasajeros=" + pasajeros;
+                + d_pais + "&salida=" + v_salida + "&pasajeros=" + pasajeros;
         laUrl = laUrl.replaceAll(" ", "%20");
         URL oracle = new URL(laUrl);
 
@@ -147,7 +147,8 @@ public class PaqueteDAL {
                 SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy");
                 Date d_salida = new Date(Long.parseLong(str));
 
-                Bus bus = new Bus(bid, salida, d_salida, bduracion, bcapacidad, bocupados, bactivo, bprecio, o_terminal, o_ciudad, o_pais, d_terminal, d_ciudad, d_pais);
+                Bus bus = new Bus(bid, blinea, d_salida, bduracion, bcapacidad, bocupados, bactivo, bprecio, bo_terminal, bo_ciudad,
+                        bo_pais, bd_terminal, bd_ciudad, bd_pais);
                 buses.add(bus);
             }
         }
@@ -346,7 +347,7 @@ public class PaqueteDAL {
                 String str = salida.replace("/Date(", "").replace(")/", "");
                 SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy");
                 Date d_salida = new Date(Long.parseLong(str));
-                Bus bus = new Bus(bid, salida, d_salida, bduracion, bcapacidad, bocupados, bactivo, bprecio, bo_terminal, bo_ciudad, bo_pais, bd_terminal, bd_ciudad, bd_pais);
+                Bus bus = new Bus(bid, blinea, d_salida, bduracion, bcapacidad, bocupados, bactivo, bprecio, bo_terminal, bo_ciudad, bo_pais, bd_terminal, bd_ciudad, bd_pais);
                 buses.add(bus);
             }
         }
