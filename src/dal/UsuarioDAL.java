@@ -32,7 +32,7 @@ public class UsuarioDAL {
     
     public int AgregarUsuario(UsuarioDTO usuarioDTO) throws SQLException, ClassNotFoundException{  
         Connection con = new Conexion().abrirOracle();
-        CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_InsertaUsuario(?,?,?,?,?)}");
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.SP_INSERTAUSUARIOJV(?,?,?,?,?)}");
         cstmt.setString(1,usuarioDTO.getLoginUsr());
         cstmt.setString(2, usuarioDTO.getPassUsr());
         cstmt.setInt(3,usuarioDTO.getIdTipoUsuario());
@@ -64,10 +64,11 @@ public class UsuarioDAL {
         CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_ListaUsuarios(?)}");
         cstmt.registerOutParameter(1, OracleTypes.CURSOR);   
         cstmt.executeUpdate();
-        result = (ResultSet)cstmt.getObject(1);
-        
+        result = (ResultSet)cstmt.getObject(1);       
         return result;
     }
+    
+  
     
     public boolean eliminarUsuario(int userID) throws SQLException, ClassNotFoundException{
         Connection con = new Conexion().abrirOracle();        

@@ -8,7 +8,6 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
-import dal.*;
 
 /**
  *
@@ -207,7 +206,7 @@ public class HomeNewTest extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnPaquetesTuristicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaquetesTuristicosMouseClicked
-        btnUsuarios.setBackground(new Color(91,91,91));
+        btnPaquetesTuristicos.setBackground(new Color(91,91,91));
     }//GEN-LAST:event_btnPaquetesTuristicosMouseClicked
 
     private void btnPaquetesTuristicosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaquetesTuristicosMouseExited
