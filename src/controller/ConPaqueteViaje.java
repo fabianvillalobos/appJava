@@ -88,7 +88,7 @@ public class ConPaqueteViaje implements ActionListener {
         }
         return new DefaultTableModel(data, columnNames);
     }
-
+// Carga los viajes en la vista de creación de paquetes
     public DefaultTableModel cargarViajes(String o_terminal, String o_ciudad, String o_pais, int v_pasajeros,
             String d_terminal, String d_ciudad, String d_pais, Date v_fecha, int v_transporte) throws IOException, MalformedURLException, ParseException {
         if (v_transporte == 0) {
@@ -150,7 +150,7 @@ public class ConPaqueteViaje implements ActionListener {
             return model;
         }
     }
-
+// Carga las estadias recuperadas desde el WS
     public DefaultTableModel cargarEstadia(String d_ciudad, String d_pais, int v_pasajeros) throws IOException, MalformedURLException, ParseException {
         //Estadia
         String col[] = {"ID", "Nombre", "Direccion", "Ciudad", "Pais", "Precio", "Servicios"};
