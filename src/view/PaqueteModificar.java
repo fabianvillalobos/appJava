@@ -929,7 +929,7 @@ public class PaqueteModificar extends javax.swing.JInternalFrame {
             //Estadia
             DefaultTableModel modelEstadia = new DefaultTableModel();   
             try {
-                modelEstadia = controllerPaqueteViaje.cargarEstadia(v_destino, v_pasajeros);   
+                modelEstadia = controllerPaqueteViaje.cargarEstadia(v_origen, v_origen, v_pasajeros);   
             } catch (IOException ex) {
                 Logger.getLogger(PaqueteModificar.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ParseException ex) {

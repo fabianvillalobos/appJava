@@ -14,7 +14,7 @@ import java.util.Date;
 public class Bus {
 
     private int id;
-    private String linea;
+    private char linea;
     private Date salida;
     private int duracion;
     private int capacidad;
@@ -31,7 +31,7 @@ public class Bus {
     public Bus() {
     }
 
-    public Bus(int id, String linea, Date salida, int duracion, int capacidad, int ocupados, char activo, int precio, String o_terminal, String o_ciudad, String o_pais, String d_terminal, String d_ciudad, String d_pais) {
+    public Bus(int id, char linea, Date salida, int duracion, int capacidad, int ocupados, char activo, int precio, String o_terminal, String o_ciudad, String o_pais, String d_terminal, String d_ciudad, String d_pais) {
         this.id = id;
         this.linea = linea;
         this.salida = salida;
@@ -56,11 +56,11 @@ public class Bus {
         this.id = id;
     }
 
-    public String getLinea() {
+    public char getLinea() {
         return linea;
     }
 
-    public void setLinea(String linea) {
+    public void setLinea(char linea) {
         this.linea = linea;
     }
 
