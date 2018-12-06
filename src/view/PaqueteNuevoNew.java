@@ -218,7 +218,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         lblPrecio.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         lblPrecio.setForeground(new java.awt.Color(153, 153, 153));
         lblPrecio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPrecio.setText("2200500");
+        lblPrecio.setText("0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1177,7 +1177,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
 
     private void txtNumPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumPasajerosActionPerformed
         // TODO add your handling code here:
-
+        
     }//GEN-LAST:event_txtNumPasajerosActionPerformed
 
     private void txtOrigenCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOrigenCiudadMouseClicked

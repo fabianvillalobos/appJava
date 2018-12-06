@@ -204,7 +204,7 @@ public class ConPaqueteViaje implements ActionListener {
         int precioTotal = 0;
         int row = listadoViajes.getSelectedRow();
         if (row >= 0) {
-            valor = (int) listadoViajes.getModel().getValueAt(row, 5);
+            valor = (int) listadoViajes.getModel().getValueAt(row, 9);
         }
 
         row = listadoEstadia.getSelectedRow();
