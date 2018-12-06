@@ -123,13 +123,14 @@ public class ConPaqueteViaje implements ActionListener {
             return model;
         } else {
             //Buses
-            String col[] = {"ID", "Terminal Salida", "Ciudad", "Pais", "Terminal Llegada", "Ciudad", "Pais", "Hora", "Precio"};
+            String col[] = {"ID", "Linea", "Terminal Salida", "Ciudad", "Pais", "Terminal Llegada", "Ciudad", "Pais", "Hora", "Precio"};
             DefaultTableModel model = new DefaultTableModel(col, 0);
 
             List<Bus> buses = this.paqueteDAL.getBuses(o_terminal, o_ciudad, o_pais, d_terminal, d_ciudad, d_pais, v_fecha, v_pasajeros);
 
             for (int i = 0; i < buses.size(); i++) {
                 int id = buses.get(i).getId();
+                char vlinea = buses.get(i).getLinea();
                 String bo_terminal = buses.get(i).getO_terminal();
                 String bo_ciudad = buses.get(i).getO_ciudad();
                 String bo_pais = buses.get(i).getO_pais();
@@ -142,8 +143,8 @@ public class ConPaqueteViaje implements ActionListener {
                 char bactivo = buses.get(i).getActivo();
                 int bprecio = buses.get(i).getPrecio();
 
-                Object[] data = {id, bo_terminal, bo_ciudad, bo_pais, bd_terminal, bd_ciudad, bd_pais, bduracion, bprecio};
-                System.out.println(id + bo_terminal + bo_ciudad + bo_pais + bd_terminal + bd_ciudad + bd_pais + bduracion + bprecio);
+                Object[] data = {id, vlinea, bo_terminal, bo_ciudad, bo_pais, bd_terminal, bd_ciudad, bd_pais, bduracion, bprecio};
+                System.out.println(id + vlinea + bo_terminal + bo_ciudad + bo_pais + bd_terminal + bd_ciudad + bd_pais + bduracion + bprecio);
                 model.addRow(data);
             }
 
