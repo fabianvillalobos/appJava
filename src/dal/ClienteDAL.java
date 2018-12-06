@@ -9,8 +9,11 @@ import ConexionJB.Conexion;
 import dto.ClienteDTO;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
+import java.sql.Statement;
+import javax.swing.JComboBox;
+import oracle.jdbc.OracleTypes;
 
 /**
  *
@@ -34,5 +37,27 @@ public class ClienteDAL {
         cstmt.setString(10,clienteDTO.getFonoCli());
         cstmt.execute();
     }
-    
+      public JComboBox listarClienteSinUsuarios() throws SQLException, ClassNotFoundException{
+        JComboBox listadoClientes = new JComboBox();
+        Connection con = new Conexion().abrirOracle();
+        Statement stmt;
+        ResultSet result;
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.SP_LISTACLIENTESSINUSUARIO(?)}");
+        cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+        cstmt.executeUpdate();
+        result = (ResultSet)cstmt.getObject(1);
+           
+        while(result.next()){                     
+         listadoClientes.addItem(result.getString("datos_cliente")); 
+        }
+        return listadoClientes;     
+      }
+      
+      public void actualizarClienteSinUsuario(int numrut_param, int usr_param) throws ClassNotFoundException, SQLException{
+          Connection con = new Conexion().abrirOracle();
+          CallableStatement cstmt = con.prepareCall("{CALL ontour.SP_UPDATEUSERCLI(?,?)}");
+          cstmt.setInt(1, numrut_param);
+          cstmt.setInt(2, usr_param);
+          cstmt.execute();
+      }
 }

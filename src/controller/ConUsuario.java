@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dal.ClienteDAL;
 import dal.UsuarioDAL;
 import dto.*;
 import hash.HashMD5;
@@ -57,6 +58,18 @@ public class ConUsuario implements ActionListener{
         }
         return tipoUsuario;
     }
+    
+    public ComboBoxModel listarClientesSinUsuarios() throws SQLException{
+        ComboBoxModel clientes = null;
+        ClienteDAL clienteDAL = new ClienteDAL();
+        try {
+            clientes = clienteDAL.listarClienteSinUsuarios().getModel();
+        } catch (Exception e) {
+            
+        }
+        return clientes;
+    }
+    
     
     public DefaultTableModel listarUsuarios() throws SQLException{
         UsuarioDAL usuarioDAL = new UsuarioDAL();
@@ -147,7 +160,17 @@ public class ConUsuario implements ActionListener{
         return usuarioPersonaDTO;
     }
     
+    public int crearUsuario(String login_usr, String pass_usr, int id_tipo_usuario) throws SQLException, ClassNotFoundException{
+        UsuarioDAL usuarioDAL = new UsuarioDAL();
+        UsuarioDTO usuarioIngresar = new UsuarioDTO(login_usr, pass_usr, id_tipo_usuario, 'T');
+        return usuarioDAL.AgregarUsuario(usuarioIngresar);
+    }
     
+    public void actualizarClienteSinUser(int numrut_param, int usr_param) throws ClassNotFoundException, SQLException{
+        ClienteDAL clienteDal = new ClienteDAL();
+        clienteDal.actualizarClienteSinUsuario(numrut_param, usr_param);
+        
+    }
     public void actualizarUsuario(
             JTextField usuario, JPasswordField clave, JPasswordField repetirClave, 
             JComboBox cbtipoUsuario, JTextField txtNombre, JTextField txtSegundoNombre, 

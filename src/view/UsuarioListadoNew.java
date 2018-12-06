@@ -173,17 +173,17 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
         crearUsuario.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         crearUsuario.setForeground(java.awt.Color.white);
         crearUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon-add.png"))); // NOI18N
-        crearUsuario.setText("Crear usuario");
+        crearUsuario.setText("Crear usuario cliente");
         crearUsuario.setBorderPainted(false);
         crearUsuario.setContentAreaFilled(false);
         crearUsuario.setFocusPainted(false);
         crearUsuario.setOpaque(true);
         crearUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                crearUsuarioMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 crearUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                crearUsuarioMouseExited(evt);
             }
         });
         crearUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -201,13 +201,13 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
                 .addGroup(headerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(headerPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel34)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(620, Short.MAX_VALUE))
                     .addGroup(headerPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel25)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel29)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(crearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(crearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))))
         );
         headerPanel2Layout.setVerticalGroup(
@@ -222,6 +222,8 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
                 .addComponent(jLabel34)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
+
+        crearUsuario.getAccessibleContext().setAccessibleName("Crear usuario cliente");
 
         jPanel5.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -1004,7 +1006,7 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
         // TODO add your handling code here:
         JPanel parent = HomeNewTest.getParentPanel();
-        UsuarioNuevoNew listado = new UsuarioNuevoNew();
+        UsuarioNuevoNewCli listado = new UsuarioNuevoNewCli();
         HomeNewTest.setNewPanel(listado);
         listado.setLocation(0, 0);
         parent.removeAll();

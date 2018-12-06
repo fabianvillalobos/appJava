@@ -20,7 +20,7 @@ import javax.swing.JTextField;
  *
  * @author luisponce
  */
-public class UsuarioNuevoNew extends javax.swing.JPanel {
+public class UsuarioNuevoNewEmp extends javax.swing.JPanel {
 /**
      * Creates new form UsuarioNuevo
      */
@@ -30,7 +30,8 @@ public class UsuarioNuevoNew extends javax.swing.JPanel {
     private JComboBox tipoUsuario;
     private ConUsuario conUsuario = new ConUsuario();
     
-    public UsuarioNuevoNew() {
+    
+    public UsuarioNuevoNewEmp() {
         initComponents();
         /* datos de la cuenta */
         usuario = this.txtUserName;
@@ -166,7 +167,7 @@ public class UsuarioNuevoNew extends javax.swing.JPanel {
         jLabel15.setText("*");
 
         jLabel21.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
-        jLabel21.setText("2. Información personal");
+        jLabel21.setText("2. Información personal empleado");
 
         txtDRut.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
 
