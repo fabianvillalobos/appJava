@@ -218,7 +218,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         lblPrecio.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         lblPrecio.setForeground(new java.awt.Color(153, 153, 153));
         lblPrecio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPrecio.setText("$ 2200500");
+        lblPrecio.setText("0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
