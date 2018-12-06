@@ -6,6 +6,7 @@
 package view;
 
 import controller.ConUsuario;
+import hash.HashMD5;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.sql.SQLException;
@@ -423,12 +424,13 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
             if(!contraseñaPrimera.equals(contraseñaRepetir)){
                 throw new Exception("Contraseñas incorrectas");
             }
-            int tipoUsuario = cbTipoUsuario.getSelectedIndex() +1; //1) Adm 2) Ejec 3) Cli 4) Dueñ
+            String hashClave = HashMD5.getHashMD5(contraseñaPrimera);
+            int tipoUsuarioSelec = cbTipoUsuario.getSelectedIndex() +1; //1) Adm 2) Ejec 3) Cli 4) Dueñ
             String cliente = cbClienteSelecc.getSelectedItem().toString();
             int indiceGuionRut = cliente.indexOf("-");
             String rutCliente = cliente.substring(0, indiceGuionRut);
             System.out.println(rutCliente);
-            int userId = conUsuario.crearUsuario(userName, contraseñaPrimera, tipoUsuario);
+            int userId = conUsuario.crearUsuario(userName, hashClave, tipoUsuarioSelec);
             Integer rutClienteInteger = Integer.parseInt(rutCliente);
             conUsuario.actualizarClienteSinUser(rutClienteInteger, userId);
             
@@ -436,6 +438,7 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
             txtUserName.setText(null);
             pswClave.setText(null);
             pswRepetirClave.setText(null);
+            
             cbClienteSelecc.revalidate();
             cbClienteSelecc.repaint();
             
