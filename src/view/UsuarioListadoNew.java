@@ -224,8 +224,6 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        crearUsuario.getAccessibleContext().setAccessibleName("Crear usuario cliente");
-
         jPanel5.setBackground(new java.awt.Color(245, 245, 245));
 
         btnGuardarCambios.setBackground(new java.awt.Color(88, 185, 87));
@@ -237,11 +235,11 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
         btnGuardarCambios.setFocusPainted(false);
         btnGuardarCambios.setOpaque(true);
         btnGuardarCambios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnGuardarCambiosMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnGuardarCambiosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGuardarCambiosMouseExited(evt);
             }
         });
         btnGuardarCambios.addActionListener(new java.awt.event.ActionListener() {
@@ -259,11 +257,11 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
         btnBorrarUsuario.setFocusPainted(false);
         btnBorrarUsuario.setOpaque(true);
         btnBorrarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnBorrarUsuarioMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBorrarUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBorrarUsuarioMouseExited(evt);
             }
         });
         btnBorrarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -877,7 +875,7 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -959,7 +957,9 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
             this.txtApellidoPaterno.setText(usuarioPersonaDTO.getApellidoPat());
             this.txtApellidoMaterno.setText(usuarioPersonaDTO.getApelliddoMat());
             this.txtNumRut.setText(Integer.toString(usuarioPersonaDTO.getNumrut()));
+            this.txtNumRut.disable();
             this.txtDRut.setText(Character.toString(usuarioPersonaDTO.getDrut()));
+            this.txtDRut.disable();
             this.txtFechaNacimiento.setText((new SimpleDateFormat("yyyy-mm-dd")).format(usuarioPersonaDTO.getFechaNacimiento()));
             /* datos de contacto */
             this.txtTelefono.setText(usuarioPersonaDTO.getFono());
@@ -1029,9 +1029,20 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
     private void btnGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCambiosActionPerformed
         // TODO add your handling code here:
         try {
+//            JOptionPane.showConfirmDialog(this, "Desea guardar los cambios?");
+            
             conUsuario.actualizarUsuario(usuario, clave, repetirClave, tipoUsuario, nombre,
                 segundoNombre, apellidoPaterno, apellidoMaterno, rut, drut,
                 fechaNacimiento, telefono, email, direccion, idUser);
+            
+//            txtNombre.setText("");
+//            txtSegundoNombre.setText("");
+//            txtApellidoMaterno.setText("");
+//            txtApellidoPaterno.setText("");
+//            txtTelefono.setText("");
+//            txtEmail.setText("");
+//            txtFechaNacimiento.setText("");
+//            txtDireccion.setText("");
 
         } catch (Exception e) {
 
@@ -1046,7 +1057,7 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
         try {
             conUsuario.eliminarUsuario(userID);
             DefaultTableModel usuarioTableModel = (DefaultTableModel) tableListadoUsuarios.getModel();
-            JOptionPane.showConfirmDialog(this, "Desea Eliminar al usuario?");
+            JOptionPane.showMessageDialog(this,"Usuario Eliminado Correctamente");
             usuarioTableModel.removeRow(row);
             tableListadoUsuarios.revalidate();
         } catch (Exception e) {

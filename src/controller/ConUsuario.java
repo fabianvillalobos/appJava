@@ -171,6 +171,7 @@ public class ConUsuario implements ActionListener{
         clienteDal.actualizarClienteSinUsuario(numrut_param, usr_param);
         
     }
+    
     public void actualizarUsuario(
             JTextField usuario, JPasswordField clave, JPasswordField repetirClave, 
             JComboBox cbtipoUsuario, JTextField txtNombre, JTextField txtSegundoNombre, 
