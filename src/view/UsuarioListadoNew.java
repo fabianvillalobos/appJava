@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -1045,6 +1046,7 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
         try {
             conUsuario.eliminarUsuario(userID);
             DefaultTableModel usuarioTableModel = (DefaultTableModel) tableListadoUsuarios.getModel();
+            JOptionPane.showConfirmDialog(this, "Desea Eliminar al usuario?");
             usuarioTableModel.removeRow(row);
             tableListadoUsuarios.revalidate();
         } catch (Exception e) {
