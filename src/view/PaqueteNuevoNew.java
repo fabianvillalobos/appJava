@@ -1030,13 +1030,15 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
     private void verPaquetesTuristicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPaquetesTuristicosActionPerformed
         // TODO add your handling code here:
         JPanel parent = HomeNewTest.getParentPanel();
-        PaqueteNuevoNew listado = new PaqueteNuevoNew();
+        PaqueteListadoNew listado = new PaqueteListadoNew();
         HomeNewTest.setNewPanel(listado);
         listado.setLocation(0, 0);
         parent.removeAll();
         parent.add(listado, BorderLayout.CENTER);
         parent.repaint();
         parent.revalidate();
+
+        
     }//GEN-LAST:event_verPaquetesTuristicosActionPerformed
 
     private void txtDestinoPaisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDestinoPaisMouseClicked

@@ -982,6 +982,7 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
+        this.txtNombre.setEnabled(false);
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void txtNumRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumRutActionPerformed
