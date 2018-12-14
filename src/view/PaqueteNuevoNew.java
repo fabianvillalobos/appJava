@@ -252,10 +252,16 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         jLabel26.setText("Origen");
 
         txtOrigenTerminal.setToolTipText("Terminal");
+        txtOrigenTerminal.setAutoscrolls(false);
         txtOrigenTerminal.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtOrigenTerminal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtOrigenTerminalMouseClicked(evt);
+            }
+        });
+        txtOrigenTerminal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOrigenTerminalActionPerformed(evt);
             }
         });
 
@@ -283,6 +289,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         jLabel41.setText("Número de Pasajeros");
 
         txtOrigenCiudad.setToolTipText("Ciudad");
+        txtOrigenCiudad.setAutoscrolls(false);
         txtOrigenCiudad.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtOrigenCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -291,6 +298,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         });
 
         txtNumPasajeros.setToolTipText("");
+        txtNumPasajeros.setAutoscrolls(false);
         txtNumPasajeros.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtNumPasajeros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -361,6 +369,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         });
 
         txtOrigenPais.setToolTipText("Pais");
+        txtOrigenPais.setAutoscrolls(false);
         txtOrigenPais.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtOrigenPais.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -369,6 +378,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         });
 
         txtDestinoTerminal.setToolTipText("Terminal");
+        txtDestinoTerminal.setAutoscrolls(false);
         txtDestinoTerminal.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtDestinoTerminal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -377,6 +387,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         });
 
         txtDestinoCiudad.setToolTipText("Ciudad");
+        txtDestinoCiudad.setAutoscrolls(false);
         txtDestinoCiudad.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtDestinoCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -385,6 +396,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
         });
 
         txtDestinoPais.setToolTipText("Pais");
+        txtDestinoPais.setAutoscrolls(false);
         txtDestinoPais.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtDestinoPais.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -435,33 +447,32 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtOrigenTerminal, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel41, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDestinoTerminal, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNumPasajeros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                            .addComponent(txtDestinoTerminal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNumPasajeros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtOrigenTerminal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel8Layout.createSequentialGroup()
-                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtOrigenCiudad)
-                                        .addComponent(cbTipoTransporte, 0, 200, Short.MAX_VALUE)
-                                        .addComponent(txtDestinoCiudad))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtOrigenPais)
-                                        .addComponent(txtDestinoPais, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
-                                .addGroup(jPanel8Layout.createSequentialGroup()
-                                    .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtOrigenCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbTipoTransporte, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtDestinoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtOrigenPais, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDestinoPais, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel35)
@@ -702,11 +713,11 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGuardarMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnGuardarMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnGuardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseExited(evt);
             }
         });
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -972,6 +983,8 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        
+        // Aca redirigir a calcular precio
         int v_precio = Integer.parseInt(this.lblPrecio.getText());
         if(v_precio > 0){
             try {
@@ -1017,13 +1030,15 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
     private void verPaquetesTuristicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPaquetesTuristicosActionPerformed
         // TODO add your handling code here:
         JPanel parent = HomeNewTest.getParentPanel();
-        PaqueteNuevoNew listado = new PaqueteNuevoNew();
+        PaqueteListadoNew listado = new PaqueteListadoNew();
         HomeNewTest.setNewPanel(listado);
         listado.setLocation(0, 0);
         parent.removeAll();
         parent.add(listado, BorderLayout.CENTER);
         parent.repaint();
         parent.revalidate();
+
+        
     }//GEN-LAST:event_verPaquetesTuristicosActionPerformed
 
     private void txtDestinoPaisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDestinoPaisMouseClicked
@@ -1176,7 +1191,7 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
 
     private void txtNumPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumPasajerosActionPerformed
         // TODO add your handling code here:
-
+        
     }//GEN-LAST:event_txtNumPasajerosActionPerformed
 
     private void txtOrigenCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOrigenCiudadMouseClicked
@@ -1186,6 +1201,10 @@ public class PaqueteNuevoNew extends javax.swing.JPanel {
     private void txtOrigenTerminalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOrigenTerminalMouseClicked
         txtOrigenTerminal.setText("");
     }//GEN-LAST:event_txtOrigenTerminalMouseClicked
+
+    private void txtOrigenTerminalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrigenTerminalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOrigenTerminalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

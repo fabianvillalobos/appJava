@@ -248,12 +248,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtOrigenTerminal" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel41" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
-                              <Component id="txtDestinoTerminal" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNumPasajeros" alignment="0" pref="201" max="32767" attributes="0"/>
+                              <Component id="txtDestinoTerminal" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="txtNumPasajeros" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
                               <Component id="jLabel32" alignment="1" max="32767" attributes="0"/>
                               <Component id="jLabel36" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtOrigenTerminal" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -262,25 +262,23 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabel34" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabel21" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
-                                          <Component id="txtOrigenCiudad" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cbTipoTransporte" alignment="0" pref="200" max="32767" attributes="0"/>
-                                          <Component id="txtDestinoCiudad" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtOrigenPais" max="32767" attributes="0"/>
-                                          <Component id="txtDestinoPais" pref="184" max="32767" attributes="0"/>
-                                      </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel21" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
+                                      <Component id="txtOrigenCiudad" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="cbTipoTransporte" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtDestinoCiudad" min="-2" pref="200" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel38" min="-2" pref="201" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jLabel39" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtOrigenPais" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="txtDestinoPais" min="-2" pref="180" max="-2" attributes="0"/>
                                   </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel38" min="-2" pref="201" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jLabel39" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -405,6 +403,7 @@
         <Component class="javax.swing.JTextField" name="txtOrigenTerminal">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Terminal"/>
+            <Property name="autoscrolls" type="boolean" value="false"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                 <CompoundBorder>
@@ -424,6 +423,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtOrigenTerminalMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOrigenTerminalActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -502,6 +502,7 @@
         <Component class="javax.swing.JTextField" name="txtOrigenCiudad">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Ciudad"/>
+            <Property name="autoscrolls" type="boolean" value="false"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                 <CompoundBorder>
@@ -529,6 +530,7 @@
         <Component class="javax.swing.JTextField" name="txtNumPasajeros">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="autoscrolls" type="boolean" value="false"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                 <CompoundBorder>
@@ -614,6 +616,7 @@
         <Component class="javax.swing.JTextField" name="txtOrigenPais">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Pais"/>
+            <Property name="autoscrolls" type="boolean" value="false"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                 <CompoundBorder>
@@ -641,6 +644,7 @@
         <Component class="javax.swing.JTextField" name="txtDestinoTerminal">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Terminal"/>
+            <Property name="autoscrolls" type="boolean" value="false"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                 <CompoundBorder>
@@ -668,6 +672,7 @@
         <Component class="javax.swing.JTextField" name="txtDestinoCiudad">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Ciudad"/>
+            <Property name="autoscrolls" type="boolean" value="false"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                 <CompoundBorder>
@@ -695,6 +700,7 @@
         <Component class="javax.swing.JTextField" name="txtDestinoPais">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Pais"/>
+            <Property name="autoscrolls" type="boolean" value="false"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                 <CompoundBorder>
@@ -1082,8 +1088,8 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGuardarMouseClicked"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGuardarMouseExited"/>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGuardarMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGuardarMouseExited"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
           </Events>
         </Component>
@@ -1186,8 +1192,8 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="verPaquetesTuristicosMouseExited"/>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="verPaquetesTuristicosMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="verPaquetesTuristicosMouseExited"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verPaquetesTuristicosActionPerformed"/>
           </Events>
         </Component>
