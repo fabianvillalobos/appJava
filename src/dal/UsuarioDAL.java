@@ -42,7 +42,39 @@ public class UsuarioDAL {
         return cstmt.getInt(5);
     }
     
-    public JComboBox listarTipoUsuario() throws SQLException, ClassNotFoundException{
+    public JComboBox listarTipoUsuarioSinEmp() throws SQLException, ClassNotFoundException{
+        JComboBox tipoUsuarios = new JComboBox();
+        Connection con = new Conexion().abrirOracle();
+        Statement stmt;
+        ResultSet result;
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_ListaTipoUsuariosSinEmp(?)}");
+        cstmt.registerOutParameter(1, OracleTypes.CURSOR);   
+        cstmt.executeUpdate();
+        result = (ResultSet)cstmt.getObject(1);
+           
+        while(result.next()){                     
+         tipoUsuarios.addItem(result.getString("DESC_TIPO_USUARIO")); 
+        }
+        return tipoUsuarios;
+    }
+    
+    public JComboBox listarTipoUsuarioSinCliente() throws SQLException, ClassNotFoundException{
+        JComboBox tipoUsuarios = new JComboBox();
+        Connection con = new Conexion().abrirOracle();
+        Statement stmt;
+        ResultSet result;
+        CallableStatement cstmt = con.prepareCall("{CALL ontour.sp_ListaTipoUsuariosSinCliente(?)}");
+        cstmt.registerOutParameter(1, OracleTypes.CURSOR);   
+        cstmt.executeUpdate();
+        result = (ResultSet)cstmt.getObject(1);
+           
+        while(result.next()){                     
+         tipoUsuarios.addItem(result.getString("DESC_TIPO_USUARIO")); 
+        }
+        return tipoUsuarios;
+    }
+    
+        public JComboBox listarTipoUsuarios() throws SQLException, ClassNotFoundException{
         JComboBox tipoUsuarios = new JComboBox();
         Connection con = new Conexion().abrirOracle();
         Statement stmt;

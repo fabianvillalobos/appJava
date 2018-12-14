@@ -53,11 +53,32 @@ public class ConUsuario implements ActionListener{
         UsuarioDAL usuarioDAL = new UsuarioDAL();
         ResultSet rs = null;
         try {
-            tipoUsuario = usuarioDAL.listarTipoUsuario().getModel();
+            tipoUsuario = usuarioDAL.listarTipoUsuarios().getModel();
         } catch (Exception e) {
         }
         return tipoUsuario;
     }
+            
+    public ComboBoxModel listarTipoUsuariosSinEmp() throws SQLException{
+        ComboBoxModel tipoUsuario = null;
+        UsuarioDAL usuarioDAL = new UsuarioDAL();
+        ResultSet rs = null;
+        try {
+            tipoUsuario = usuarioDAL.listarTipoUsuarioSinEmp().getModel();
+        } catch (Exception e) {
+        }
+        return tipoUsuario;
+    }
+    public ComboBoxModel listarTipoUsuariosSinCliente() throws SQLException{
+        ComboBoxModel tipoUsuario = null;
+        UsuarioDAL usuarioDAL = new UsuarioDAL();
+        ResultSet rs = null;
+        try {
+            tipoUsuario = usuarioDAL.listarTipoUsuarioSinCliente().getModel();
+        } catch (Exception e) {
+        }
+        return tipoUsuario;
+    }    
     
     public ComboBoxModel listarClientesSinUsuarios() throws SQLException{
         ComboBoxModel clientes = null;

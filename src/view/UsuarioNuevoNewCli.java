@@ -42,7 +42,7 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
         /* datos personales */
 
         try {
-            this.cbTipoUsuario.setModel(conUsuario.listarTipoUsuarios());
+            this.cbTipoUsuario.setModel(conUsuario.listarTipoUsuariosSinEmp());
             this.cbClienteSelecc.setModel(conUsuario.listarClientesSinUsuarios());
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioNuevo.class.getName()).log(Level.SEVERE, null, ex);
@@ -119,11 +119,11 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
         btnCrearUsuario.setFocusPainted(false);
         btnCrearUsuario.setOpaque(true);
         btnCrearUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCrearUsuarioMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCrearUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCrearUsuarioMouseExited(evt);
             }
         });
         btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -212,6 +212,7 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
         jLabel18.setText("Tipo de usuario");
 
         cbTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbTipoUsuario.setSelectedIndex(3);
 
         jLabel20.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
         jLabel20.setText("1. Información de la cuenta");
@@ -324,11 +325,11 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
         verUsuarios.setFocusPainted(false);
         verUsuarios.setOpaque(true);
         verUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                verUsuariosMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 verUsuariosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                verUsuariosMouseExited(evt);
             }
         });
         verUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -352,7 +353,7 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(verUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(verUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))))
         );
         headerPanelLayout.setVerticalGroup(
@@ -415,7 +416,13 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
         // TODO add your handling code here:
         btnCrearUsuario.setBackground(Color.black);
     }//GEN-LAST:event_btnCrearUsuarioMouseEntered
-
+    private int obtenerTipoUsuario(int indexCboTipo){
+        switch(indexCboTipo){
+            case 0:
+                return 3;
+        }           
+        return 0;
+    }
     private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
         try {
             String userName = txtUserName.getText();
@@ -425,7 +432,9 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
                 throw new Exception("Contraseñas incorrectas");
             }
             String hashClave = HashMD5.getHashMD5(contraseñaPrimera);
-            int tipoUsuarioSelec = cbTipoUsuario.getSelectedIndex() +1; //1) Adm 2) Ejec 3) Cli 4) Dueñ
+            
+            int tipoUsuarioSelec = obtenerTipoUsuario(cbTipoUsuario.getSelectedIndex()); //1) Adm 2) Ejec 3) Cli 4) Dueñ
+            
             String cliente = cbClienteSelecc.getSelectedItem().toString();
             int indiceGuionRut = cliente.indexOf("-");
             String rutCliente = cliente.substring(0, indiceGuionRut);

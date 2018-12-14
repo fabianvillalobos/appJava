@@ -88,6 +88,7 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
         jLabel29 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         crearUsuario = new javax.swing.JButton();
+        crearUsuarioEmpleado = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         btnGuardarCambios = new javax.swing.JButton();
         btnBorrarUsuario = new javax.swing.JButton();
@@ -193,6 +194,29 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
             }
         });
 
+        crearUsuarioEmpleado.setBackground(new java.awt.Color(88, 185, 87));
+        crearUsuarioEmpleado.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        crearUsuarioEmpleado.setForeground(java.awt.Color.white);
+        crearUsuarioEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon-add.png"))); // NOI18N
+        crearUsuarioEmpleado.setBorderPainted(false);
+        crearUsuarioEmpleado.setContentAreaFilled(false);
+        crearUsuarioEmpleado.setFocusPainted(false);
+        crearUsuarioEmpleado.setLabel("Crear usuario empleado");
+        crearUsuarioEmpleado.setOpaque(true);
+        crearUsuarioEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                crearUsuarioEmpleadoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                crearUsuarioEmpleadoMouseExited(evt);
+            }
+        });
+        crearUsuarioEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearUsuarioEmpleadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout headerPanel2Layout = new javax.swing.GroupLayout(headerPanel2);
         headerPanel2.setLayout(headerPanel2Layout);
         headerPanel2Layout.setHorizontalGroup(
@@ -202,14 +226,15 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
                 .addGroup(headerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(headerPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel34)
-                        .addContainerGap(620, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(crearUsuarioEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(headerPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel25)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel29)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(crearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))))
+                        .addComponent(crearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25))
         );
         headerPanel2Layout.setVerticalGroup(
             headerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,11 +245,11 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
                     .addComponent(jLabel25)
                     .addComponent(crearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel34)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGroup(headerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel34)
+                    .addComponent(crearUsuarioEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        crearUsuario.getAccessibleContext().setAccessibleName("Crear usuario cliente");
 
         jPanel5.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -259,11 +284,11 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
         btnBorrarUsuario.setFocusPainted(false);
         btnBorrarUsuario.setOpaque(true);
         btnBorrarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnBorrarUsuarioMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBorrarUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBorrarUsuarioMouseExited(evt);
             }
         });
         btnBorrarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -1061,12 +1086,32 @@ public class UsuarioListadoNew extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBorrarUsuarioMouseExited
 
+    private void crearUsuarioEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearUsuarioEmpleadoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crearUsuarioEmpleadoMouseEntered
+
+    private void crearUsuarioEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearUsuarioEmpleadoMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crearUsuarioEmpleadoMouseExited
+
+    private void crearUsuarioEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioEmpleadoActionPerformed
+        JPanel parent = HomeNewTest.getParentPanel();
+        UsuarioNuevoNewEmp listado = new UsuarioNuevoNewEmp();
+        HomeNewTest.setNewPanel(listado);
+        listado.setLocation(0, 0);
+        parent.removeAll();
+        parent.add(listado, BorderLayout.CENTER);
+        parent.repaint();
+        parent.revalidate();
+    }//GEN-LAST:event_crearUsuarioEmpleadoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrarUsuario;
     private javax.swing.JButton btnGuardarCambios;
     public javax.swing.JComboBox<String> cbTipoUsuario;
     private javax.swing.JButton crearUsuario;
+    private javax.swing.JButton crearUsuarioEmpleado;
     private javax.swing.JPanel headerPanel2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
