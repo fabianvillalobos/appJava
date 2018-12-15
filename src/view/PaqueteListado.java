@@ -264,17 +264,16 @@ public class PaqueteListado extends javax.swing.JPanel {
         btnBorrar.setBorderPainted(false);
         btnBorrar.setContentAreaFilled(false);
         btnBorrar.setFocusPainted(false);
-        btnBorrar.setIgnoreRepaint(true);
         btnBorrar.setOpaque(true);
         btnBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBorrarMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnBorrarMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBorrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBorrarMouseExited(evt);
             }
         });
         btnBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -355,7 +354,7 @@ public class PaqueteListado extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(crearPaqueteTuristico, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(crearPaqueteTuristico, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))))
         );
         headerPanelLayout.setVerticalGroup(
