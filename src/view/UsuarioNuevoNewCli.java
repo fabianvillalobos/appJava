@@ -362,10 +362,12 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,7 +377,7 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(122, 122, 122))
         );
@@ -415,19 +417,22 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
     private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
         try {
             String userName = txtUserName.getText();
+            
             String contraseñaPrimera = pswClave.getText();
             String contraseñaRepetir = pswRepetirClave.getText();
-            if(!contraseñaPrimera.equals(contraseñaRepetir)){
+            if(!contraseñaPrimera.equals(contraseñaRepetir))
                 throw new Exception("Contraseñas incorrectas");
-            }
+            if(userName.length() < 3)
+                throw new Exception("Nombre de usuario debe ser mayor a 3 dígitos");
+            if(contraseñaPrimera.length() < 4)
+                throw new Exception("Contraseña debe ser mayor a 4 dígitos");
             String hashClave = HashMD5.getHashMD5(contraseñaPrimera);
-            
             int tipoUsuarioSelec = obtenerTipoUsuario(cbTipoUsuario.getSelectedIndex()); //1) Adm 2) Ejec 3) Cli 4) Dueñ
-            
             String cliente = cbClienteSelecc.getSelectedItem().toString();
             int indiceGuionRut = cliente.indexOf("-");
             String rutCliente = cliente.substring(0, indiceGuionRut);
             System.out.println(rutCliente);
+            //Creando usuario
             int userId = conUsuario.crearUsuario(userName, hashClave, tipoUsuarioSelec);
             Integer rutClienteInteger = Integer.parseInt(rutCliente);
             conUsuario.actualizarClienteSinUser(rutClienteInteger, userId);
