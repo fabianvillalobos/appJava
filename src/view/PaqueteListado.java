@@ -7,16 +7,17 @@ package view;
 
 import controller.ConPaqueteViaje;
 import dto.Servicio;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import org.jdatepicker.JDatePanel;
@@ -25,7 +26,7 @@ import org.jdatepicker.JDatePanel;
  *
  * @author luisponce
  */
-public class PaqueteListado extends javax.swing.JInternalFrame {
+public class PaqueteListado extends javax.swing.JPanel {
     /**
      * Creates new form UsuarioNuevo
      */
@@ -35,8 +36,9 @@ public class PaqueteListado extends javax.swing.JInternalFrame {
     private int idPaqueteTuristico = 0;
     
     ConPaqueteViaje controllerPaqueteViaje = new ConPaqueteViaje();
-    
-    
+    /**
+     * Creates new form PaqueteListadoNew
+     */
     public PaqueteListado() {
         initComponents();
         this.actualizar();
@@ -54,9 +56,6 @@ public class PaqueteListado extends javax.swing.JInternalFrame {
         model.setRowCount(0);
     }
     
-    public void clear(){
-    }
-    
     public void actualizar(){
         DefaultTableModel modelViajes = new DefaultTableModel();
         try {
@@ -71,7 +70,6 @@ public class PaqueteListado extends javax.swing.JInternalFrame {
         this.btnBorrar.setEnabled(false);
         this.limpiarTablas();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,16 +79,10 @@ public class PaqueteListado extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listadoPaquetes = new javax.swing.JTable();
-        jLabel10 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        jLabel45 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         listadoTransporte = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
@@ -101,30 +93,15 @@ public class PaqueteListado extends javax.swing.JInternalFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         listadoSeguros = new javax.swing.JTable();
         jPanel13 = new javax.swing.JPanel();
-        jLabel49 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btnBorrar = new javax.swing.JButton();
+        headerPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        crearPaqueteTuristico = new javax.swing.JButton();
 
-        setBorder(null);
-        setClosable(true);
-        setIconifiable(true);
-        setAlignmentX(-5.0F);
-        setAlignmentY(-5.0F);
-        setAutoscrolls(true);
-        setMinimumSize(new java.awt.Dimension(150, 765));
-        setPreferredSize(new java.awt.Dimension(980, 550));
-
-        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(980, 765));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        jLabel1.setText("Paquetes");
-
-        jLabel3.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("|   Listado");
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel6.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -146,37 +123,24 @@ public class PaqueteListado extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(listadoPaquetes);
 
-        jLabel10.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel10.setText("Haz clic sobre un paquete para ver sus servicios");
-
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(21, 21, 21))
         );
 
         jPanel9.setBackground(new java.awt.Color(245, 245, 245));
-
-        jLabel45.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel45.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel45.setText("*");
 
         listadoTransporte.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -260,13 +224,10 @@ public class PaqueteListado extends javax.swing.JInternalFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
                         .addGap(38, 38, 38)))
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(435, 435, 435)
-                .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1042, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane5))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
@@ -274,13 +235,8 @@ public class PaqueteListado extends javax.swing.JInternalFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel45))
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(jLabel6)))
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel6)
                         .addGap(50, 50, 50)
                         .addComponent(jLabel7)
                         .addGap(33, 33, 33)
@@ -292,15 +248,10 @@ public class PaqueteListado extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jPanel13.setBackground(new java.awt.Color(245, 245, 245));
-
-        jLabel49.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel49.setText("*");
 
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(153, 153, 153));
@@ -337,104 +288,114 @@ public class PaqueteListado extends javax.swing.JInternalFrame {
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel9)
-                .addGap(361, 361, 361)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBorrar)
-                .addGap(110, 110, 110)
-                .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel9)
-                        .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel49))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1)
+        headerPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel2.setText("Paquetes");
+
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel4.setText("|   Listado");
+
+        jLabel19.setFont(new java.awt.Font("Open Sans", 2, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel19.setText("Haz clic sobre un paquete para ver sus servicios");
+
+        crearPaqueteTuristico.setBackground(new java.awt.Color(88, 185, 87));
+        crearPaqueteTuristico.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        crearPaqueteTuristico.setForeground(java.awt.Color.white);
+        crearPaqueteTuristico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon-add.png"))); // NOI18N
+        crearPaqueteTuristico.setText("Crear paquete turístico");
+        crearPaqueteTuristico.setBorderPainted(false);
+        crearPaqueteTuristico.setContentAreaFilled(false);
+        crearPaqueteTuristico.setFocusPainted(false);
+        crearPaqueteTuristico.setOpaque(true);
+        crearPaqueteTuristico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                crearPaqueteTuristicoMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                crearPaqueteTuristicoMouseEntered(evt);
+            }
+        });
+        crearPaqueteTuristico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearPaqueteTuristicoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(crearPaqueteTuristico, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2)
+                    .addComponent(crearPaqueteTuristico, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jScrollPane2.setViewportView(jPanel1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBorrarMouseClicked
-
-    private void btnBorrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBorrarMouseExited
-
-    private void btnBorrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBorrarMouseEntered
-
-    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
-        int row = this.listadoPaquetes.getSelectedRow();
-        try {
-            if (this.controllerPaqueteViaje.eliminarPaqueteViaje(this.idPaqueteTuristico)) {
-                JOptionPane.showMessageDialog(this, "El paquete turístico ha sido eliminado");
-                
-                DefaultTableModel usuarioTableModel = (DefaultTableModel) this.listadoPaquetes.getModel();
-                usuarioTableModel.removeRow(row);
-                this.listadoPaquetes.revalidate();
-                this.limpiarTablas();
-                this.btnBorrar.setEnabled(false);
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void listadoPaquetesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoPaquetesMouseClicked
         int paqueteSeleccionado = this.listadoPaquetes.getSelectedRow();
@@ -456,87 +417,137 @@ public class PaqueteListado extends javax.swing.JInternalFrame {
                 int idWs = servicio.getIdWs();
                 switch(servicio.getIdTipoServicio()){
                     case 1:
-                        //vuelo
-                        try {
-                            DefaultTableModel modelVuelo = new DefaultTableModel();
-                            modelVuelo = this.controllerPaqueteViaje.getVueloConId(idWs);
-                            this.listadoTransporte.setModel(modelVuelo);
-                        } catch (IOException ex) {
-                            Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        break;
+                    //vuelo
+                    try {
+                        DefaultTableModel modelVuelo = new DefaultTableModel();
+                        modelVuelo = this.controllerPaqueteViaje.getVueloConId(idWs);
+                        this.listadoTransporte.setModel(modelVuelo);
+                    } catch (IOException ex) {
+                        Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
                     case 2:
-                        //Bus
-                        try {
-                            DefaultTableModel modelBus = new DefaultTableModel();
-                            modelBus = this.controllerPaqueteViaje.getBusConId(idWs);
-                            this.listadoTransporte.setModel(modelBus);
-                        } catch (IOException ex) {
-                            Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        break;
+                    //Bus
+                    try {
+                        DefaultTableModel modelBus = new DefaultTableModel();
+                        modelBus = this.controllerPaqueteViaje.getBusConId(idWs);
+                        this.listadoTransporte.setModel(modelBus);
+                    } catch (IOException ex) {
+                        Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
                     case 3:
-                        //Estadia
-                        try {
-                            DefaultTableModel modelEstadia = new DefaultTableModel();
-                            modelEstadia = this.controllerPaqueteViaje.getEstadiaConId(idWs);
-                            this.listadoEstadia.setModel(modelEstadia);
-                        } catch (IOException ex) {
-                            Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        break;
+                    //Estadia
+                    try {
+                        DefaultTableModel modelEstadia = new DefaultTableModel();
+                        modelEstadia = this.controllerPaqueteViaje.getEstadiaConId(idWs);
+                        this.listadoEstadia.setModel(modelEstadia);
+                    } catch (IOException ex) {
+                        Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
                     case 4:
-                        //Seguro
-                        try {
-                            DefaultTableModel modelSeguro = new DefaultTableModel();
-                            modelSeguro = this.controllerPaqueteViaje.getSeguroConId(idWs);
-                            this.listadoSeguros.setModel(modelSeguro);
-                        } catch (IOException ex) {
-                            Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        break;
+                    //Seguro
+                    try {
+                        DefaultTableModel modelSeguro = new DefaultTableModel();
+                        modelSeguro = this.controllerPaqueteViaje.getSeguroConId(idWs);
+                        this.listadoSeguros.setModel(modelSeguro);
+                    } catch (IOException ex) {
+                        Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
                     case 5:
-                        //actividad
-                        break;
-                }           
+                    //actividad
+                    break;
+                }
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_listadoPaquetesMouseClicked
-
-    private void listadoEstadiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoEstadiaMouseClicked
-       
-    }//GEN-LAST:event_listadoEstadiaMouseClicked
-
-    private void listadoSegurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoSegurosMouseClicked
-        
-    }//GEN-LAST:event_listadoSegurosMouseClicked
 
     private void listadoTransporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoTransporteMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_listadoTransporteMouseClicked
 
+    private void listadoEstadiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoEstadiaMouseClicked
+
+    }//GEN-LAST:event_listadoEstadiaMouseClicked
+
+    private void listadoSegurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoSegurosMouseClicked
+
+    }//GEN-LAST:event_listadoSegurosMouseClicked
+
+    private void btnBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBorrarMouseClicked
+
+    private void btnBorrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseExited
+        this.btnBorrar.setBackground(new Color(88,185,87));
+    }//GEN-LAST:event_btnBorrarMouseExited
+
+    private void btnBorrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseEntered
+        this.btnBorrar.setBackground(Color.black);
+    }//GEN-LAST:event_btnBorrarMouseEntered
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        int row = this.listadoPaquetes.getSelectedRow();
+        try {
+            if (this.controllerPaqueteViaje.eliminarPaqueteViaje(this.idPaqueteTuristico)) {
+                JOptionPane.showMessageDialog(this, "El paquete turístico ha sido eliminado");
+
+                DefaultTableModel usuarioTableModel = (DefaultTableModel) this.listadoPaquetes.getModel();
+                usuarioTableModel.removeRow(row);
+                this.listadoPaquetes.revalidate();
+                this.limpiarTablas();
+                this.btnBorrar.setEnabled(false);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(PaqueteListado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void crearPaqueteTuristicoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearPaqueteTuristicoMouseExited
+        this.crearPaqueteTuristico.setBackground(new Color(88,185,87));
+    }//GEN-LAST:event_crearPaqueteTuristicoMouseExited
+
+    private void crearPaqueteTuristicoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearPaqueteTuristicoMouseEntered
+        this.crearPaqueteTuristico.setBackground(Color.black);
+    }//GEN-LAST:event_crearPaqueteTuristicoMouseEntered
+
+    private void crearPaqueteTuristicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPaqueteTuristicoActionPerformed
+        // TODO add your handling code here:
+        JPanel parent = Home.getParentPanel();
+        PaqueteNuevo listado = new PaqueteNuevo();
+        Home.setNewPanel(listado);
+        listado.setLocation(0, 0);
+        parent.removeAll();
+        parent.add(listado, BorderLayout.CENTER);
+        parent.repaint();
+        parent.revalidate();
+    }//GEN-LAST:event_crearPaqueteTuristicoActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel49;
+    private javax.swing.JButton crearPaqueteTuristico;
+    private javax.swing.JPanel headerPanel;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;

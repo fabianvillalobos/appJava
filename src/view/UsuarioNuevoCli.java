@@ -22,7 +22,7 @@ import javax.swing.JTextField;
  *
  * @author javiersanchez
  */
-public class UsuarioNuevoNewCli extends javax.swing.JPanel {
+public class UsuarioNuevoCli extends javax.swing.JPanel {
 /**
      * Creates new form UsuarioNuevo
      */
@@ -32,7 +32,7 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
     private ConUsuario conUsuario = new ConUsuario();
    
     
-    public UsuarioNuevoNewCli() {
+    public UsuarioNuevoCli() {
         initComponents();
         /* datos de la cuenta */
         usuario = this.txtUserName;
@@ -45,7 +45,7 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
             this.cbTipoUsuario.setModel(conUsuario.listarTipoUsuariosSinEmp());
             this.cbClienteSelecc.setModel(conUsuario.listarClientesSinUsuarios());
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioNuevoCli.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
 
@@ -445,9 +445,9 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
             cbClienteSelecc.revalidate();
             cbClienteSelecc.repaint();
             
-            JPanel parent = HomeNewTest.getParentPanel();
-            UsuarioNuevoNewCli listado = new UsuarioNuevoNewCli();
-            HomeNewTest.setNewPanel(listado);
+            JPanel parent = Home.getParentPanel();
+            UsuarioNuevoCli listado = new UsuarioNuevoCli();
+            Home.setNewPanel(listado);
             listado.setLocation(0, 0);
             parent.removeAll();
             parent.add(listado, BorderLayout.CENTER);
@@ -464,10 +464,10 @@ public class UsuarioNuevoNewCli extends javax.swing.JPanel {
    
     private void verUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verUsuariosActionPerformed
         // TODO add your handling code here:
-        JPanel parent = HomeNewTest.getParentPanel();
+        JPanel parent = Home.getParentPanel();
         
-        UsuarioListadoNew listado = new UsuarioListadoNew();
-        HomeNewTest.setNewPanel(listado);
+        UsuarioListado listado = new UsuarioListado();
+        Home.setNewPanel(listado);
         listado.setLocation(0, 0);
         parent.removeAll();
         parent.add(listado, BorderLayout.CENTER);

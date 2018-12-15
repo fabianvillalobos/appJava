@@ -5,30 +5,36 @@
  */
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.JPanel;
 
 /**
  *
  * @author luisponce
  */
 public class Home extends javax.swing.JFrame {
-    UsuarioListado usuarioListado = new UsuarioListado();
-    UsuarioNuevo usuarioNuevo = new UsuarioNuevo();
+    static JPanel principal = new JPanel();
+
+    static void setNewPanel(JPanel listado) {
+        listado.setLocation(0, 0);
+        Home.principal.removeAll();
+        Home.principal.add(listado, BorderLayout.CENTER);
+        Home.principal.repaint();
+        Home.principal.revalidate();
+    }
     
-    PaqueteNuevo paqueteNuevo = new PaqueteNuevo();
-    PaqueteListado paqueteListado = new PaqueteListado();
-    
-    /**
-     * Creates new form home
-     */
     public Home() {
-        initComponents();
+        initComponents(); 
         this.setLocationRelativeTo(this);
         this.setBackground(Color.white);
         this.setState(this.NORMAL);
         this.setExtendedState( this.getExtendedState()|this.MAXIMIZED_BOTH );
-        /* load home page */ 
+        principal = this.mainContainer;
+    }
+    
+    public static JPanel getParentPanel(){
+        return Home.principal;
     }
 
     /**
@@ -40,154 +46,198 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        menuVerUSuarios = new javax.swing.JMenuItem();
-        menuAddUsuario = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        btnVerPaquetes = new javax.swing.JMenuItem();
-        btnNuevoPaquete = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
-        cerrarPrograma = new javax.swing.JMenuItem();
-
-        jMenu1.setText("jMenu1");
-
-        jMenu2.setText("jMenu2");
-
-        jMenu3.setText("jMenu3");
-
-        jMenuItem1.setText("jMenuItem1");
-
-        jMenu6.setText("jMenu6");
-
-        jMenuItem2.setText("jMenuItem2");
-
-        jMenuItem3.setText("jMenuItem3");
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        btnUsuarios = new javax.swing.JButton();
+        btnPaquetesTuristicos = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mainContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(51, 51, 51));
-        setUndecorated(true);
-        setPreferredSize(null);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
 
-        jMenu4.setText("Usuarios");
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        menuVerUSuarios.setText("Ver usuarios");
-        menuVerUSuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuVerUSuariosActionPerformed(evt);
+        jLabel1.setBackground(new java.awt.Color(51, 153, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ontour-inside-logo.png"))); // NOI18N
+        jLabel1.setOpaque(true);
+
+        btnUsuarios.setBackground(new java.awt.Color(0, 0, 0));
+        btnUsuarios.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnUsuarios.setForeground(java.awt.Color.white);
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon-usuarios.png"))); // NOI18N
+        btnUsuarios.setText("Usuarios");
+        btnUsuarios.setBorderPainted(false);
+        btnUsuarios.setContentAreaFilled(false);
+        btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUsuarios.setFocusPainted(false);
+        btnUsuarios.setOpaque(true);
+        btnUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUsuariosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnUsuariosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnUsuariosMouseExited(evt);
             }
         });
-        jMenu4.add(menuVerUSuarios);
-
-        menuAddUsuario.setText("Añadir usuario");
-        menuAddUsuario.addActionListener(new java.awt.event.ActionListener() {
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuAddUsuarioActionPerformed(evt);
+                btnUsuariosActionPerformed(evt);
             }
         });
-        jMenu4.add(menuAddUsuario);
 
-        jMenuBar1.add(jMenu4);
-
-        jMenu5.setText("Paquetes de viajes");
-
-        btnVerPaquetes.setText("Ver paquetes turísticos");
-        btnVerPaquetes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerPaquetesActionPerformed(evt);
+        btnPaquetesTuristicos.setBackground(new java.awt.Color(0, 0, 0));
+        btnPaquetesTuristicos.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnPaquetesTuristicos.setForeground(java.awt.Color.white);
+        btnPaquetesTuristicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon-usuarios.png"))); // NOI18N
+        btnPaquetesTuristicos.setText("Paquetes turísticos");
+        btnPaquetesTuristicos.setBorderPainted(false);
+        btnPaquetesTuristicos.setContentAreaFilled(false);
+        btnPaquetesTuristicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPaquetesTuristicos.setFocusPainted(false);
+        btnPaquetesTuristicos.setOpaque(true);
+        btnPaquetesTuristicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPaquetesTuristicosMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPaquetesTuristicosMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPaquetesTuristicosMouseEntered(evt);
             }
         });
-        jMenu5.add(btnVerPaquetes);
-
-        btnNuevoPaquete.setText("Crear un paquete turístico");
-        btnNuevoPaquete.addActionListener(new java.awt.event.ActionListener() {
+        btnPaquetesTuristicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoPaqueteActionPerformed(evt);
+                btnPaquetesTuristicosActionPerformed(evt);
             }
         });
-        jMenu5.add(btnNuevoPaquete);
 
-        jMenuBar1.add(jMenu5);
-
-        jMenu7.setText("Salir");
-
-        cerrarPrograma.setText("Cerrar Sesión");
-        cerrarPrograma.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setBackground(new java.awt.Color(0, 0, 0));
+        btnSalir.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnSalir.setForeground(java.awt.Color.white);
+        btnSalir.setText("Salir");
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setFocusPainted(false);
+        btnSalir.setMaximumSize(new java.awt.Dimension(202, 31));
+        btnSalir.setMinimumSize(new java.awt.Dimension(202, 31));
+        btnSalir.setPreferredSize(new java.awt.Dimension(202, 31));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cerrarProgramaActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
-        jMenu7.add(cerrarPrograma);
 
-        jMenuBar1.add(jMenu7);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btnPaquetesTuristicos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 554, Short.MAX_VALUE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+            .addComponent(btnPaquetesTuristicos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
-        setJMenuBar(jMenuBar1);
+        jScrollPane1.setBorder(null);
+
+        mainContainer.setBackground(new java.awt.Color(255, 255, 255));
+        mainContainer.setMinimumSize(new java.awt.Dimension(600, 600));
+        mainContainer.setLayout(new java.awt.BorderLayout());
+        jScrollPane1.setViewportView(mainContainer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /*
-    
-    */
-    private void menuVerUSuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerUSuariosActionPerformed
-        // Muestra ventana usuarios
-        this.add(usuarioListado);
-        usuarioListado.show();
-        usuarioNuevo.hide();
-        paqueteNuevo.hide();
-        paqueteListado.hide();
-    }//GEN-LAST:event_menuVerUSuariosActionPerformed
 
-    private void menuAddUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddUsuarioActionPerformed
-        // Muestra ventana añadir usuario
-        BasicInternalFrameUI bi = (BasicInternalFrameUI)usuarioNuevo.getUI();
-        this.add(usuarioNuevo);
-        usuarioNuevo.show();
-        usuarioListado.hide();
-        paqueteNuevo.hide();
-        paqueteListado.hide();
-    }//GEN-LAST:event_menuAddUsuarioActionPerformed
+    private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
+        btnUsuarios.setBackground(new Color(91,91,91));
+    }//GEN-LAST:event_btnUsuariosMouseClicked
 
-    private void cerrarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarProgramaActionPerformed
-        // Cierra la aplicación
-        System.exit(0);
-    }//GEN-LAST:event_cerrarProgramaActionPerformed
+    private void btnUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseExited
+        btnUsuarios.setBackground(Color.black);
+    }//GEN-LAST:event_btnUsuariosMouseExited
 
-    private void btnVerPaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPaquetesActionPerformed
-        // Muestra ventana paquetes
-        this.add(paqueteListado);
-        paqueteListado.show();
-        paqueteListado.actualizar();
-        paqueteNuevo.hide();
-        usuarioNuevo.hide();
-        usuarioListado.hide();
-    }//GEN-LAST:event_btnVerPaquetesActionPerformed
+    private void btnUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseEntered
+        btnUsuarios.setBackground(new Color(91,91,91));
+    }//GEN-LAST:event_btnUsuariosMouseEntered
 
-    private void btnNuevoPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPaqueteActionPerformed
-        // Muestra ventana nuevo paquete
-        this.add(paqueteNuevo);
-        paqueteNuevo.show();
-        paqueteListado.hide();
-        usuarioNuevo.hide();
-        usuarioListado.hide();
-    }//GEN-LAST:event_btnNuevoPaqueteActionPerformed
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        UsuarioListado listadoUsuarios = new UsuarioListado();
+        listadoUsuarios.setLocation(0, 0);
+        this.mainContainer.removeAll();
+        this.mainContainer.add(listadoUsuarios, BorderLayout.CENTER);
+        this.mainContainer.repaint();
+        this.mainContainer.revalidate();
+    }//GEN-LAST:event_btnUsuariosActionPerformed
+
+    private void btnPaquetesTuristicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaquetesTuristicosMouseClicked
+        btnPaquetesTuristicos.setBackground(new Color(91,91,91));
+    }//GEN-LAST:event_btnPaquetesTuristicosMouseClicked
+
+    private void btnPaquetesTuristicosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaquetesTuristicosMouseExited
+        btnPaquetesTuristicos.setBackground(Color.black);
+        
+    }//GEN-LAST:event_btnPaquetesTuristicosMouseExited
+
+    private void btnPaquetesTuristicosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaquetesTuristicosMouseEntered
+        btnPaquetesTuristicos.setBackground(new Color(91,91,91));
+    }//GEN-LAST:event_btnPaquetesTuristicosMouseEntered
+
+    private void btnPaquetesTuristicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaquetesTuristicosActionPerformed
+        PaqueteListado paqueteListado = new PaqueteListado();
+        paqueteListado.setLocation(0, 0);
+        this.mainContainer.removeAll();
+        this.mainContainer.add(paqueteListado, BorderLayout.CENTER);
+        this.mainContainer.repaint();
+        this.mainContainer.revalidate();
+    }//GEN-LAST:event_btnPaquetesTuristicosActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        
+//        System.exit(0);
+        IniciarSesion login;
+        login = new view.IniciarSesion();
+        login.setState(login.NORMAL);
+        login.setVisible(true);
+
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,7 +266,7 @@ public class Home extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -225,24 +275,13 @@ public class Home extends javax.swing.JFrame {
         });
     }
 
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem btnNuevoPaquete;
-    private javax.swing.JMenuItem btnVerPaquetes;
-    private javax.swing.JMenuItem cerrarPrograma;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem menuAddUsuario;
-    private javax.swing.JMenuItem menuVerUSuarios;
+    private javax.swing.JButton btnPaquetesTuristicos;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnUsuarios;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel mainContainer;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import view.Home;
 import view.IniciarSesion;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -323,8 +322,8 @@ public class IniciarSesion extends javax.swing.JFrame {
                 if (controllerLogin.validarUsuario(login, clave)) {
                     //view.Home home;
                     //home = new view.Home();
-                    view.HomeNewTest home;
-                    home = new view.HomeNewTest();
+                    view.Home home;
+                    home = new view.Home();
                     home.setState(home.NORMAL);
                     home.setVisible(true);
 

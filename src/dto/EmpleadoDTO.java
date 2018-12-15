@@ -25,6 +25,9 @@ public class EmpleadoDTO {
     private Date fechaNacimientoEmp;
     private String fonoEmp;
 
+    public EmpleadoDTO(){
+        
+    }
     public EmpleadoDTO(int numrutEmp, char drutEmp, String nombreEmp, String apellidoPatEmp, String apelliddoMatEmp, String mailLaboral, String direccionEmp, char activo, int idUsr, Date fechaNacimientoEmp, String fonoEmp) {
         this.numrutEmp = numrutEmp;
         this.drutEmp = drutEmp;

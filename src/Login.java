@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import view.Home;
 import view.IniciarSesion;
 /*
  * To change this license header, choose License Headers in Project Properties.
