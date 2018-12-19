@@ -764,7 +764,7 @@ public class UsuarioNuevoEmp extends javax.swing.JPanel {
             String fono= txtTelefono.getText();
             char activo = 'T';
             Date fechaNacimiento = dateChooserPanel1.getSelectedDate().getTime();
-            if(validarFechaNacimiento(fechaNacimiento))throw new Exception("Fecha nacimiento no puede ser mayor a fecha actual");
+            if(!validarFechaNacimiento(fechaNacimiento))throw new Exception("Fecha nacimiento no puede ser mayor a fecha actual");
             //Creando usuario para obtener id
             int userId = conUsuario.crearUsuario(userName, hashClave, tipoUsuarioSelec);           
             EmpleadoDTO empleado = new EmpleadoDTO();
