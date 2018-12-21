@@ -27,14 +27,15 @@ public class ConEmpleado implements ActionListener{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void crearEmpleado(EmpleadoDTO empleadoDTO) throws SQLException{
+    public String crearEmpleado(EmpleadoDTO empleadoDTO) throws SQLException{
         EmpleadoDAL empleadoDal = new EmpleadoDAL();
+        String retorno = "";
          try {
-            empleadoDal.agregarEmpleado(empleadoDTO);
-             
+            retorno += empleadoDal.agregarEmpleado(empleadoDTO);
             //empleadoDal.agregarEmpleado();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
+         return retorno;
     }
 }

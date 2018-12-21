@@ -90,7 +90,6 @@ public class UsuarioListado extends javax.swing.JPanel {
         crearUsuario = new javax.swing.JButton();
         crearUsuarioEmpleado = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        btnGuardarCambios = new javax.swing.JButton();
         btnBorrarUsuario = new javax.swing.JButton();
         jpanelTabla = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -108,10 +107,8 @@ public class UsuarioListado extends javax.swing.JPanel {
         jLabel27 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
         pswRepetirClave = new javax.swing.JPasswordField();
         jPanel11 = new javax.swing.JPanel();
-        jLabel32 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         cbTipoUsuario = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
@@ -131,11 +128,9 @@ public class UsuarioListado extends javax.swing.JPanel {
         txtApellidoPaterno = new javax.swing.JTextField();
         jPanel19 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         txtApellidoMaterno = new javax.swing.JTextField();
         jPanel20 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         txtNumRut = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtDRut = new javax.swing.JTextField();
@@ -253,28 +248,6 @@ public class UsuarioListado extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(245, 245, 245));
 
-        btnGuardarCambios.setBackground(new java.awt.Color(88, 185, 87));
-        btnGuardarCambios.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        btnGuardarCambios.setForeground(java.awt.Color.white);
-        btnGuardarCambios.setText("Guardar Cambios");
-        btnGuardarCambios.setBorderPainted(false);
-        btnGuardarCambios.setContentAreaFilled(false);
-        btnGuardarCambios.setFocusPainted(false);
-        btnGuardarCambios.setOpaque(true);
-        btnGuardarCambios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnGuardarCambiosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnGuardarCambiosMouseExited(evt);
-            }
-        });
-        btnGuardarCambios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarCambiosActionPerformed(evt);
-            }
-        });
-
         btnBorrarUsuario.setBackground(new java.awt.Color(88, 185, 87));
         btnBorrarUsuario.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnBorrarUsuario.setForeground(java.awt.Color.white);
@@ -302,20 +275,16 @@ public class UsuarioListado extends javax.swing.JPanel {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(btnGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         jpanelTabla.setBackground(new java.awt.Color(255, 255, 255));
@@ -407,7 +376,6 @@ public class UsuarioListado extends javax.swing.JPanel {
         jLabel31.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 0, 51));
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel31.setText("*");
 
         jLabel27.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(102, 102, 102));
@@ -445,11 +413,6 @@ public class UsuarioListado extends javax.swing.JPanel {
         jLabel28.setForeground(new java.awt.Color(102, 102, 102));
         jLabel28.setText("Repetir contraseña");
 
-        jLabel33.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel33.setText("*");
-
         pswRepetirClave.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -458,11 +421,8 @@ public class UsuarioListado extends javax.swing.JPanel {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pswRepetirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -470,20 +430,13 @@ public class UsuarioListado extends javax.swing.JPanel {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pswRepetirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
 
         jPanel11.setBackground(new java.awt.Color(245, 245, 245));
-
-        jLabel32.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel32.setText("*");
 
         jLabel18.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(102, 102, 102));
@@ -497,13 +450,10 @@ public class UsuarioListado extends javax.swing.JPanel {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,9 +462,7 @@ public class UsuarioListado extends javax.swing.JPanel {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel32)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(32, 32, 32)
                         .addComponent(cbTipoUsuario)))
                 .addGap(28, 28, 28))
         );
@@ -573,7 +521,7 @@ public class UsuarioListado extends javax.swing.JPanel {
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel35)
-                .addContainerGap(839, Short.MAX_VALUE))
+                .addContainerGap(860, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -601,7 +549,6 @@ public class UsuarioListado extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 0, 51));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel13.setText("*");
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -706,11 +653,6 @@ public class UsuarioListado extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Apellido materno");
 
-        jLabel15.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel15.setText("*");
-
         txtApellidoMaterno.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
@@ -721,19 +663,14 @@ public class UsuarioListado extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel19Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
+                .addGap(19, 19, 19)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -744,11 +681,6 @@ public class UsuarioListado extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("RUT");
-
-        jLabel16.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel16.setText("*");
 
         txtNumRut.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5)));
         txtNumRut.addActionListener(new java.awt.event.ActionListener() {
@@ -768,11 +700,8 @@ public class UsuarioListado extends javax.swing.JPanel {
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
                     .addGroup(jPanel20Layout.createSequentialGroup()
                         .addComponent(txtNumRut, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -785,9 +714,7 @@ public class UsuarioListado extends javax.swing.JPanel {
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel16))
+                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNumRut, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -808,7 +735,7 @@ public class UsuarioListado extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 212, Short.MAX_VALUE)
+                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -974,25 +901,37 @@ public class UsuarioListado extends javax.swing.JPanel {
 
             UsuarioPersonaDTO usuarioPersonaDTO = conUsuario.verUsuarioPersona(userID);
             this.txtUserName.setText(usuarioPersonaDTO.getLoginUsr());
+            this.txtUserName.disable();
             this.pswRepetirClave.setText(usuarioPersonaDTO.getPassUsr());
+            this.pswRepetirClave.disable();
             this.pswRepetirClave.setText(usuarioPersonaDTO.getPassUsr());
+            this.pswClave.disable();
             tipoUsuario = this.cbTipoUsuario;
             /* datos personales */
             this.txtNombre.setText(usuarioPersonaDTO.getNombre());;
+            this.txtNombre.disable();
             segundoNombre = this.txtSegundoNombre;
+            this.segundoNombre.disable();
             this.txtApellidoPaterno.setText(usuarioPersonaDTO.getApellidoPat());
+            this.txtApellidoPaterno.disable();
             this.txtApellidoMaterno.setText(usuarioPersonaDTO.getApelliddoMat());
+            this.txtApellidoMaterno.disable();
             this.txtNumRut.setText(Integer.toString(usuarioPersonaDTO.getNumrut()));
             this.txtNumRut.disable();
             this.txtDRut.setText(Character.toString(usuarioPersonaDTO.getDrut()));
             this.txtDRut.disable();
             this.txtFechaNacimiento.setText((new SimpleDateFormat("yyyy-mm-dd")).format(usuarioPersonaDTO.getFechaNacimiento()));
+            this.txtFechaNacimiento.disable();
             /* datos de contacto */
             this.txtTelefono.setText(usuarioPersonaDTO.getFono());
+            this.txtTelefono.disable();
             this.txtEmail.setText(usuarioPersonaDTO.getMail());
+            this.txtEmail.disable();
             this.txtDireccion.setText(usuarioPersonaDTO.getDireccion());
+            this.txtDireccion.disable();
             try {
                 this.cbTipoUsuario.setModel(conUsuario.listarTipoUsuarios());
+                this.cbTipoUsuario.disable();
             } catch (SQLException ex) {
                 
             }
@@ -1010,10 +949,6 @@ public class UsuarioListado extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.txtNombre.setEnabled(false);
     }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtNumRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumRutActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumRutActionPerformed
 
     private void txtFechaNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaNacimientoActionPerformed
         // TODO add your handling code here:
@@ -1042,39 +977,6 @@ public class UsuarioListado extends javax.swing.JPanel {
         parent.repaint();
         parent.revalidate();
     }//GEN-LAST:event_crearUsuarioActionPerformed
-
-    private void btnGuardarCambiosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCambiosMouseExited
-        // TODO add your handling code here:
-        btnGuardarCambios.setBackground(new Color(88,185,87));
-    }//GEN-LAST:event_btnGuardarCambiosMouseExited
-
-    private void btnGuardarCambiosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCambiosMouseEntered
-        // TODO add your handling code here:
-        btnGuardarCambios.setBackground(Color.black);
-    }//GEN-LAST:event_btnGuardarCambiosMouseEntered
-
-    private void btnGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCambiosActionPerformed
-        // TODO add your handling code here:
-        try {
-//            JOptionPane.showConfirmDialog(this, "Desea guardar los cambios?");
-            
-            conUsuario.actualizarUsuario(usuario, clave, repetirClave, tipoUsuario, nombre,
-                segundoNombre, apellidoPaterno, apellidoMaterno, rut, drut,
-                fechaNacimiento, telefono, email, direccion, idUser);
-            
-//            txtNombre.setText("");
-//            txtSegundoNombre.setText("");
-//            txtApellidoMaterno.setText("");
-//            txtApellidoPaterno.setText("");
-//            txtTelefono.setText("");
-//            txtEmail.setText("");
-//            txtFechaNacimiento.setText("");
-//            txtDireccion.setText("");
-
-        } catch (Exception e) {
-
-        }
-    }//GEN-LAST:event_btnGuardarCambiosActionPerformed
 
     private void btnBorrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarUsuarioActionPerformed
         // TODO add your handling code here:
@@ -1118,11 +1020,14 @@ public class UsuarioListado extends javax.swing.JPanel {
         parent.revalidate();
     }//GEN-LAST:event_crearUsuarioEmpleadoActionPerformed
 
+    private void txtNumRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumRutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumRutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrarUsuario;
-    private javax.swing.JButton btnGuardarCambios;
-    public javax.swing.JComboBox<String> cbTipoUsuario;
+    private javax.swing.JComboBox<String> cbTipoUsuario;
     private javax.swing.JButton crearUsuario;
     private javax.swing.JButton crearUsuarioEmpleado;
     private javax.swing.JPanel headerPanel2;
@@ -1131,8 +1036,6 @@ public class UsuarioListado extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
@@ -1142,8 +1045,6 @@ public class UsuarioListado extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
@@ -1176,15 +1077,15 @@ public class UsuarioListado extends javax.swing.JPanel {
     public javax.swing.JPasswordField pswClave;
     public javax.swing.JPasswordField pswRepetirClave;
     private javax.swing.JTable tableListadoUsuarios;
-    public javax.swing.JTextField txtApellidoMaterno;
+    private javax.swing.JTextField txtApellidoMaterno;
     public javax.swing.JTextField txtApellidoPaterno;
-    public javax.swing.JTextField txtDRut;
+    private javax.swing.JTextField txtDRut;
     public javax.swing.JTextField txtDireccion;
     public javax.swing.JTextField txtEmail;
     public javax.swing.JTextField txtFechaNacimiento;
     public javax.swing.JTextField txtNombre;
-    public javax.swing.JTextField txtNumRut;
-    public javax.swing.JTextField txtSegundoNombre;
+    private javax.swing.JTextField txtNumRut;
+    private javax.swing.JTextField txtSegundoNombre;
     public javax.swing.JTextField txtTelefono;
     public javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables

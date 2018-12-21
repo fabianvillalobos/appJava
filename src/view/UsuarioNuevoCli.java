@@ -434,27 +434,29 @@ public class UsuarioNuevoCli extends javax.swing.JPanel {
             System.out.println(rutCliente);
             //Creando usuario
             int userId = conUsuario.crearUsuario(userName, hashClave, tipoUsuarioSelec);
-            Integer rutClienteInteger = Integer.parseInt(rutCliente);
-            conUsuario.actualizarClienteSinUser(rutClienteInteger, userId);
-            
-            JOptionPane.showMessageDialog(this, "Usuario creado y asignado al cliente exitosamente");
-            txtUserName.setText(null);
-            pswClave.setText(null);
-            pswRepetirClave.setText(null);
-            
-            cbClienteSelecc.revalidate();
-            cbClienteSelecc.repaint();
-            
-            JPanel parent = Home.getParentPanel();
-            UsuarioNuevoCli listado = new UsuarioNuevoCli();
-            Home.setNewPanel(listado);
-            listado.setLocation(0, 0);
-            parent.removeAll();
-            parent.add(listado, BorderLayout.CENTER);
-            parent.repaint();
-            parent.revalidate();
-            
-            
+            if(userId== 999){
+                JOptionPane.showMessageDialog(this, "Usuario ya existe, no se puede crear");
+            }else{
+                Integer rutClienteInteger = Integer.parseInt(rutCliente);
+                conUsuario.actualizarClienteSinUser(rutClienteInteger, userId);
+
+                JOptionPane.showMessageDialog(this, "Usuario creado y asignado al cliente exitosamente");
+                txtUserName.setText(null);
+                pswClave.setText(null);
+                pswRepetirClave.setText(null);
+
+                cbClienteSelecc.revalidate();
+                cbClienteSelecc.repaint();
+
+                JPanel parent = Home.getParentPanel();
+                UsuarioNuevoCli listado = new UsuarioNuevoCli();
+                Home.setNewPanel(listado);
+                listado.setLocation(0, 0);
+                parent.removeAll();
+                parent.add(listado, BorderLayout.CENTER);
+                parent.repaint();
+                parent.revalidate();
+            }
         } catch (Exception e) {
             
             JOptionPane.showMessageDialog(this, e.getMessage());

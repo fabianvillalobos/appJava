@@ -768,7 +768,10 @@ public class UsuarioNuevoEmp extends javax.swing.JPanel {
             Date fechaNacimiento = dateChooserPanel1.getSelectedDate().getTime();
             if(!validarFechaNacimiento(fechaNacimiento))throw new Exception("Fecha nacimiento no puede ser mayor a fecha actual");
             //Creando usuario para obtener id
-            int userId = conUsuario.crearUsuario(userName, hashClave, tipoUsuarioSelec);           
+            int userId = conUsuario.crearUsuario(userName, hashClave, tipoUsuarioSelec);  
+            if(userId == 999){
+                throw new Exception("Usuario ya existe");
+            }
             EmpleadoDTO empleado = new EmpleadoDTO();
             empleado.setNumrutEmp(numrutEmp);
             empleado.setDrutEmp(drutEmp);
@@ -782,8 +785,26 @@ public class UsuarioNuevoEmp extends javax.swing.JPanel {
             empleado.setIdUsr(userId);
             empleado.setFechaNacimientoEmp(fechaNacimiento);
             
-            conEmpleado.crearEmpleado(empleado);
-            JOptionPane.showMessageDialog(this,"Empleado y usuario creados exitosamente");
+            
+            String retornoControl = conEmpleado.crearEmpleado(empleado);
+            if(retornoControl.equals("Empleado ya existe")){
+                JOptionPane.showMessageDialog(this,retornoControl);
+            }else{
+                JOptionPane.showMessageDialog(this,"Empleado y usuario creados exitosamente");
+                JPanel parent = Home.getParentPanel();
+                UsuarioNuevoEmp listado = new UsuarioNuevoEmp();
+                Home.setNewPanel(listado);
+                listado.setLocation(0, 0);
+                parent.removeAll();
+                parent.add(listado, BorderLayout.CENTER);
+                parent.repaint();
+                parent.revalidate();
+            }
+            
+            
+            
+            
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
