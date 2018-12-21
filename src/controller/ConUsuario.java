@@ -150,24 +150,7 @@ public class ConUsuario implements ActionListener{
             UsuarioDTO usuarioDto = new UsuarioDTO(nombreUsuario, password, tipoUsuario,'T');
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             int usrId = usuarioDAL.AgregarUsuario(usuarioDto); // RETORNAR EL USRID RECIEN CREADO 
-            /*
-            try {
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-                Date fechaNacimientoFormat = formatter.parse(fechaNacimiento);
-                
-                if (tipoUsuario == 3) { //CLIENTE = 3 CAMBIAR LUEGO NO DEBERIA SER EN DURO
-                    
-                ClienteDTO clienteDTO = new ClienteDTO(numRut, dRut.charAt(0),nombre, apellidoPaterno, apellidoMaterno,email,'T',usrId,direccion, fechaNacimientoFormat, telefono);             
-                AGREGAR ACA METODO QUE LLAME AL DAL DE CLIENTE
-                }else{
-                        EmpleadoDTO empleadoDTO = new EmpleadoDTO(numRut, dRut.charAt(0),nombre, apellidoPaterno, apellidoMaterno,email,direccion,'T',usrId, fechaNacimientoFormat, telefono);
-                        AGREGAR ACA METODO QUE LLAME AL DAL DEL EMPLEADO
-                    }
-                
-            } catch (ParseException pe) {
-                pe.printStackTrace();
-            }
-            */
+
             return usrId;
         }
                     

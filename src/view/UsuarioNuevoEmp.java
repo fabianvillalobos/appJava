@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.ConEmpleado;
 import controller.ConUsuario;
 import dto.EmpleadoDTO;
 import hash.HashMD5;
@@ -36,6 +37,7 @@ public class UsuarioNuevoEmp extends javax.swing.JPanel {
     private JPasswordField clave, repetirClave;
     private JComboBox tipoUsuario;
     private ConUsuario conUsuario = new ConUsuario();
+    private ConEmpleado conEmpleado = new ConEmpleado();
     
     private int obtenerTipoUsuario(int indexCboTipo){
         switch(indexCboTipo){
@@ -779,8 +781,9 @@ public class UsuarioNuevoEmp extends javax.swing.JPanel {
             empleado.setActivo(activo);
             empleado.setIdUsr(userId);
             empleado.setFechaNacimientoEmp(fechaNacimiento);
-            JOptionPane.showMessageDialog(this,"Empleado y usuario creados exitosamente");
             
+            conEmpleado.crearEmpleado(empleado);
+            JOptionPane.showMessageDialog(this,"Empleado y usuario creados exitosamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
